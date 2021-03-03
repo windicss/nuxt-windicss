@@ -1,8 +1,8 @@
 {
-  "name": "nuxt-build-optimisations",
-  "version": "1.0.0",
-  "description": "Automatic optimisations for Nuxt build time.",
-  "repository": "loonpwn/nuxt-build-optimisations",
+  "name": "nuxt-windicss-module",
+  "version": "0.1.0",
+  "description": "Windi CSS for Nuxt.js",
+  "repository": "loonpwn/nuxt-windicss-module",
   "license": "MIT",
   "exports": {
     ".": "./dist/index.js",
