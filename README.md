@@ -16,12 +16,11 @@
 
 ## Features
 
-- ⚡️ **It's FAST** - 20~100x times faster than Tailwind on Vite
+- ⚡️ **It's FAST** - 20~100x times faster than [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module)
 - 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2)
 - 📦 On-demand native elements style reseting
 - 🔥 Hot module replacement (HMR)
 - 🍃 Load configurations from `tailwind.config.js`
-- 🤝 Framework-agnostic - Vue, React, Svelte and vanilla!
 - 📄 CSS `@apply` / `@screen` directives transforms (also works for Vue SFC's `<style>`)
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 
@@ -45,25 +44,10 @@ buildModules: [
 
 This module won't work with @nuxt/tailwind, you will need to remove this module.
 
-```javascript
+```diff
 buildModules: [
 -  'nuxt-windicss-module',
 ],
-```
-
-
-## Migration from Tailwind CSS
-
-If you are already using Tailwind CSS for your app, you can follow these instructions to migrate your installation.
-
-### `package.json`
-
-Some of your dependencies are no longer required, you can remove them if they were only needed for Tailwind CSS.
-
-```diff
-- "tailwindcss": "*",
-- "postcss": "*",
-- "autoprefixer": "*",
 ```
 
 ### `tailwind.config.js`
@@ -102,52 +86,6 @@ module.exports = {
 }
 ```
 
-### `main.css`
-
-You can now remove the Tailwind imports from your css entry.
-
-```diff
-- @import 'tailwindcss/base';
-- @import 'tailwindcss/components';
-- @import 'tailwindcss/utilities';
-```
-
-### Cleanup (optional)
-
-The following files can be removed if you don't use their other features.
-
-```diff
-- postcss.config.js
-```
-
-### All set.
-
-That's all, fire up your app and enjoy the speed!
-
-## TypeScript
-
-You can use TypeScript for your config file if you're using esbuild.
-
-Simply rename your config it to `tailwind.config.ts`.
-
-```ts
-// tailwind.config.ts
-import { defineConfig } from 'windicss-webpack-plugin'
-
-export default defineConfig({
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        teal: {
-          100: '#096',
-        },
-      },
-    },
-  },
-})
-```
-
 ## Configuration
 
 See [options.ts](https://github.com/windicss/windicss-webpack-plugin/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
@@ -156,8 +94,6 @@ See [options.ts](https://github.com/windicss/windicss-webpack-plugin/blob/main/p
 ## Caveats
 
 ### Scoped Style
-
-You will need to set `transformCSS: 'pre'` to get it work.
 
 `@media` directive with scoped style can **only works** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
 
