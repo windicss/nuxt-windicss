@@ -42,7 +42,7 @@ buildModules: [
 ],
 ```
 
-This module won't work with @nuxt/tailwind, you will need to remove this module.
+This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
 
 ```diff
 buildModules: [
