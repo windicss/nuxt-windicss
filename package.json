@@ -1,6 +1,6 @@
 {
   "name": "nuxt-windicss-module",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Windi CSS for Nuxt.js",
   "repository": "loonpwn/nuxt-windicss-module",
   "license": "MIT",
