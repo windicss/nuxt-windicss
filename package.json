@@ -38,6 +38,7 @@
     "test": "yarn lint && jest --verbose --detectOpenHandles"
   },
   "dependencies": {
+    "@nuxt/ufo": "^0.5.4",
     "defu": "^3.2.2",
     "rimraf": "^3.0.2",
     "semver": "^7.3.4",
