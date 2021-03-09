@@ -1,14 +1,14 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
 import type { Configuration as WebpackConfig } from 'webpack'
-import type { ModuleOptions } from './types'
 import { requireNuxtVersion } from './compatibility'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import { resolve } from 'upath'
 import logger from './logger'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
+import { Options } from 'windicss-webpack-plugin/dist/interfaces'
 
-const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
+const windicssModule: Module<Options> = function (moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
@@ -24,7 +24,7 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
       }
     }
   }
-  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, windicssOptions) as ModuleOptions
+  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, windicssOptions) as Options
 
   requireNuxtVersion(nuxt.constructor.version, '2.10')
 
@@ -34,10 +34,9 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
   }
 
   nuxt.hook('build:before', async () => {
-    const { windicssOptions } = options
-    await nuxt.callHook('windycss:config', windicssOptions)
+    await nuxt.callHook('windycss:config', options)
 
-    logger.debug('Post hook options', windicssOptions)
+    logger.debug('Post hook options', options)
 
     this.extendBuild((config: WebpackConfig,) => {
       // allow users to override the windicss config
@@ -46,7 +45,7 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
         config.plugins = []
       }
       config.plugins.push(
-          new WindiCSSWebpackPlugin(windicssOptions)
+          new WindiCSSWebpackPlugin(options)
       )
     })
     // add plugin to import windi.css

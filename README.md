@@ -61,14 +61,18 @@ If you were previously using `@nuxtjs/tailwindcss`, please consult the [document
 
 ## Configuration
 
-This module will resolve the option key with either `windicss` or `tailwindcss`.
-
 - Default:
 ```js
 windicss: {
   scan: {
     dirs: ['./'],
-    exclude: ['.nuxt/**/*']
+      exclude: ['.nuxt/**/*']
+  },
+  preflight: {
+    alias: {
+      // add nuxt aliases
+      'nuxt-link': 'a',
+    }
   }
 }
 ```  
