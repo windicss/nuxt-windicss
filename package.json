@@ -6,7 +6,9 @@
   "license": "MIT",
   "exports": {
     ".": "./dist/index.js",
-    "./": "./"
+    "./": "./",
+    "./src/files/*": "./dist/files/*",
+    "./src/middleware/*": "./dist/middleware/*"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
