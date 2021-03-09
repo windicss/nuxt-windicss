@@ -55,7 +55,7 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
       )
     })
     // add plugin to import windi.css
-    nuxt.options.plugins.push(resolve(__dirname, 'files', 'windicss.js'))
+    nuxt.options.plugins.push(resolve(__dirname, 'files', 'plugins', 'windicss.js'))
   })
 
   /*

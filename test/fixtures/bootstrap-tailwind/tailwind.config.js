@@ -1,4 +1,4 @@
-const typography = require('windicss/plugin/typography')
+const typography = require('windicss/plugin/typography')()
 /*
  ** TailwindCSS Configuration File
  **
