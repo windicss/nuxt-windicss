@@ -1,3 +1,5 @@
+![nuxt-windicss-module](https://repository-images.githubusercontent.com/343991410/68f83b80-811f-11eb-9638-51aed75785c4)
+
 <h1 align='center'>nuxt-windicss-module</h1>
 
 <p align='center'><a href="https://github.com/voorjaar/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
@@ -27,7 +29,7 @@
 ## Install
 
 ```bash
-yarn add nuxt-windicss-module -D 
+yarn add nuxt-windicss-module -D
 # npm inuxt-windicss-module -D
 ```
 
@@ -46,56 +48,47 @@ This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
 
 ```diff
 buildModules: [
--  'nuxt-windicss-module',
+-  '@nuxtjs/tailwindcss',
 ],
-```
-
-### `tailwind.config.js`
-
-All `variants` are enabled, since the overhead they caused is fixed by Windi's on-demand nature. `purge` is no longer needed as well. `colors` and `plugins` imports need to be renamed to `windicss` instead.
-
-```diff
--const colors = require('tailwindcss/colors')
-+const colors = require('windicss/colors')
--const typography = require('@tailwindcss/typography')
-+const typography = require('windicss/plugin/typography')
-
-module.exports = {
-- purge: {
--   content: [
--     './**/*.html',
--   ],
--   options: {
--     safelist: ['prose', 'prose-sm', 'm-auto'],
--   },
-- },
-- variants: {
--   extend: {
--     cursor: ['disabled'],
--   }
-- },
-  darkMode: 'class',
-  plugins: [typography],
-  theme: {
-    extend: {
-      colors: {
-        teal: colors.teal,
-      },
-    }
-  },
-}
 ```
 
 ## Configuration
 
-See [options.ts](https://github.com/windicss/windicss-webpack-plugin/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
+This module will resolve the option key with either `windicss` or `tailwindcss`.
+
+`viewer`
+
+- Default: `true`
+- Development only
+
+The module internally use [tailwind-config-viewer](https://github.com/rogden/tailwind-config-viewer) to setup the `/_windicss/` route.
+
+To disable the viewer in development, set it to false:
+
+```js
+export default {
+  windicss: {
+    viewer: false
+  }
+}
+```
+
+`windicssOptions`
+- Default:
+
+```js
+  scan: {
+    dirs: ['./'],
+    exclude: ['.nuxt/**/*']
+  }
+```  
+
+- See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
 
 
-## Caveats
+## Migrating
 
-### Scoped Style
-
-`@media` directive with scoped style can **only works** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
+If you were previously using `@nuxtjs/tailwindcss`, please consult the [documentation](https://windicss.netlify.app/guide/migration.html) on migrating.
 
 ## Credits
 

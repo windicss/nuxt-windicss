@@ -7,39 +7,33 @@ import { resolve } from 'upath'
 import logger from './logger'
 import { joinURL, withTrailingSlash } from 'ufo'
 import chalk from 'chalk'
+import defu from 'defu'
+import { UserOptions } from '@windicss/plugin-utils'
 
-const windicssModule: Module<ModuleOptions> = function () {
+const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
-  const defaults = {
-    enabled: true,
-    viewer: true,
-    windicssOptions: {
-      compile: false,
-      globalPreflight: true,
-      globalUtility: true
+
+  const windicssOptions : UserOptions = {
+    scan: {
+      dirs: ['./'],
+      exclude: ['.nuxt/**/*']
     }
-  } as ModuleOptions
-  const windicss = {
-    ...defaults,
-    ...nuxtOptions.windicss
-  } as ModuleOptions
+  }
+  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, {
+    windicssOptions,
+    viewer: nuxt.options.dev
+  }) as ModuleOptions
 
   requireNuxtVersion(nuxt.constructor.version, '2.10')
 
   if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
-    logger.error('Cannot use windicss with tailwind. Please remove the `@nuxtjs/tailwindcss` module.')
+    logger.error('Cannot use Windi CSS with tailwindcss. Please remove the `@nuxtjs/tailwindcss` module.')
     return
   }
 
   nuxt.hook('build:before', async () => {
-    // if the user has enabled speed measure plugin and we can
-    if (!windicss.enabled) {
-      logger.info('WindiCSS is disabled, not starting.')
-      return
-    }
-
-    const windicssOptions = windicss.windicssOptions
+    const { windicssOptions } = options
     await nuxt.callHook('windycss:config', windicssOptions)
 
     logger.debug('Post hook options', windicssOptions)
@@ -51,13 +45,7 @@ const windicssModule: Module<ModuleOptions> = function () {
         config.plugins = []
       }
       config.plugins.push(
-          new WindiCSSWebpackPlugin({
-            transformCSS: 'pre',
-            scan: {
-              dirs: ['./'],
-              exclude: ['.nuxt/**/*']
-            }
-          })
+          new WindiCSSWebpackPlugin(windicssOptions)
       )
     })
     // add plugin to import windi.css
@@ -67,8 +55,8 @@ const windicssModule: Module<ModuleOptions> = function () {
   /*
     ** Add /_windi UI
     */
-  if (nuxt.options.dev && windicss.viewer) {
-    const path = '/_windi/'
+  if (nuxt.options.dev && options.viewer) {
+    const path = '/_windicss/'
 
     // @ts-ignore
     process.nuxt = process.nuxt || {}
@@ -89,7 +77,7 @@ const windicssModule: Module<ModuleOptions> = function () {
     nuxt.hook('listen', () => {
       const url = withTrailingSlash(joinURL(nuxt.server.listeners && nuxt.server.listeners[0] ? nuxt.server.listeners[0].url : '/', path))
       nuxt.options.cli.badgeMessages.push(
-          `Windi Viewer: ${chalk.underline.yellow(url)}`
+          `Windi CSS Viewer: ${chalk.underline.yellow(url)}`
       )
     })
   }
