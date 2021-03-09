@@ -1,1 +1,1 @@
-require('windi.css')
+import 'windi.css'

@@ -2,6 +2,7 @@ import type { Module, NuxtOptions } from '@nuxt/types'
 import type { Configuration as WebpackConfig } from 'webpack'
 import { requireNuxtVersion } from './compatibility'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
+import WindiCSSVitePlugin from 'vite-plugin-windicss'
 import { resolve } from 'upath'
 import logger from './logger'
 import defu from 'defu'
@@ -49,6 +50,11 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     })
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'files', 'plugins', 'windicss.js'))
+  })
+
+  nuxt.hook('vite:extend', ({ config, nuxt }: { nuxt: { options: NuxtOptions }, config: { plugins: any[] }}) => {
+    nuxt.options.alias['windi.css'] = '@virtual/windi.css'
+    config.plugins.push(WindiCSSVitePlugin())
   })
 
 }
