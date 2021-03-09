@@ -6,9 +6,8 @@ import { resolve } from 'upath'
 import logger from './logger'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
-import { Options } from 'windicss-webpack-plugin/dist/interfaces'
 
-const windicssModule: Module<Options> = function (moduleOptions) {
+const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
@@ -24,7 +23,7 @@ const windicssModule: Module<Options> = function (moduleOptions) {
       }
     }
   }
-  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, windicssOptions) as Options
+  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, windicssOptions) as UserOptions
 
   requireNuxtVersion(nuxt.constructor.version, '2.10')
 
