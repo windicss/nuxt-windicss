@@ -63,31 +63,14 @@ If you were previously using `@nuxtjs/tailwindcss`, please consult the [document
 
 This module will resolve the option key with either `windicss` or `tailwindcss`.
 
-`viewer`
-
-- Default: `true`
-- Development only
-
-The module internally use [tailwind-config-viewer](https://github.com/rogden/tailwind-config-viewer) to setup the `/_windicss/` route.
-
-To disable the viewer in development, set it to false:
-
-```js
-export default {
-  windicss: {
-    viewer: false
-  }
-}
-```
-
-`windicssOptions`
 - Default:
-
 ```js
+windicss: {
   scan: {
     dirs: ['./'],
     exclude: ['.nuxt/**/*']
   }
+}
 ```  
 
 - See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
