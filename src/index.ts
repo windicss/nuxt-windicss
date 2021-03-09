@@ -54,7 +54,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
 
   nuxt.hook('vite:extend', ({ config, nuxt }: { nuxt: { options: NuxtOptions }, config: { plugins: any[] }}) => {
     nuxt.options.alias['windi.css'] = '@virtual/windi.css'
-    config.plugins.push(WindiCSSVitePlugin())
+    config.plugins.push(WindiCSSVitePlugin(options))
   })
 
 }
