@@ -52,6 +52,13 @@ buildModules: [
 ],
 ```
 
+This module will read from your root `tailwind.config.js` or `windi.config.js` file.
+
+
+## Migrating
+
+If you were previously using `@nuxtjs/tailwindcss`, please consult the [documentation](https://windicss.netlify.app/guide/migration.html) on migrating.
+
 ## Configuration
 
 This module will resolve the option key with either `windicss` or `tailwindcss`.
@@ -86,9 +93,13 @@ export default {
 - See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
 
 
-## Migrating
+## Caveats
 
-If you were previously using `@nuxtjs/tailwindcss`, please consult the [documentation](https://windicss.netlify.app/guide/migration.html) on migrating.
+### Scoped Style
+
+You will need to set `transformCSS: 'pre'` to get it work.
+
+`@media` directive with scoped style can **only works** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
 
 ## Credits
 

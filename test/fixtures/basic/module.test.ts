@@ -6,6 +6,7 @@ const cheerio = require('cheerio')
 describe('Dev test', () => {
   console.warn = jest.fn() // eslint-disable-line no-console
 
+  // @ts-ignore
   setupTest({
     testDir: __dirname,
     fixture: __dirname,
@@ -38,6 +39,7 @@ describe('Dev test', () => {
 describe('Production test', () => {
   console.warn = jest.fn() // eslint-disable-line no-console
 
+  // @ts-ignore
   setupTest({
     testDir: __dirname,
     fixture: __dirname,

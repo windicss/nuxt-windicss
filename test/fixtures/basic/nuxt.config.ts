@@ -1,10 +1,10 @@
 import { NuxtConfig } from '@nuxt/types'
-import nuxtBuildOptimisations from '../../../src'
+import nuxtWindicssModule from '../../../src'
 
 const config : NuxtConfig = {
   buildModules: [
     '@nuxt/typescript-build',
-    nuxtBuildOptimisations
+    nuxtWindicssModule
   ]
 }
 

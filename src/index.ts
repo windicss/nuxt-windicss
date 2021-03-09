@@ -18,6 +18,12 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
     scan: {
       dirs: ['./'],
       exclude: ['.nuxt/**/*']
+    },
+    preflight: {
+      alias: {
+        // add nuxt aliases
+        'nuxt-link': 'a',
+      }
     }
   }
   const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, {
