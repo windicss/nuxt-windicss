@@ -78,7 +78,7 @@ const windicssModule: Module<ModuleOptions> = function (moduleOptions) {
       })
     }
 
-    this.addServerMiddleware({ path, handler: require.resolve('./middleware/viewer') })
+    this.addServerMiddleware({ path, handler: resolve(__dirname, 'files', 'middleware', 'viewer.js') })
 
     nuxt.hook('listen', () => {
       const url = withTrailingSlash(joinURL(nuxt.server.listeners && nuxt.server.listeners[0] ? nuxt.server.listeners[0].url : '/', path))
