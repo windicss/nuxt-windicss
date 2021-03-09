@@ -1,4 +1,4 @@
-import nuxtBuildOptimisations from '../../../src'
+import nuxtWindicssModule from '../../../src'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -24,9 +24,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
-    nuxtBuildOptimisations
+    nuxtWindicssModule
   ],
 
   modern: process.env.NODE_ENV !== 'development',
