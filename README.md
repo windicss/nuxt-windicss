@@ -52,7 +52,7 @@ buildModules: [
 ],
 ```
 
-This module will read from your root `tailwind.config.js` or `windi.config.js` file.
+This module will read from your root `tailwind.config.js` or `windi.config.js` config if present. See [here](https://windicss.netlify.app/guide/configuration.html) for details.
 
 
 ## Migrating
