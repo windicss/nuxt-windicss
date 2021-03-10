@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import windicssModule from '../../../src'
+import windicssModule from '../../../dist'
 
 const config : NuxtConfig = {
   buildModules: [

@@ -13,6 +13,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
   const windicssOptions : UserOptions = {
+    root: nuxtOptions.rootDir,
     scan: {
       dirs: ['./'],
       exclude: [
@@ -58,15 +59,15 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
             new WindiCSSWebpackPlugin(options)
         )
       })
+      // add plugin to import windi.css
+      nuxt.options.plugins.push(resolve(__dirname, 'webpack', 'plugins', 'windicss.js'))
+    } else {
+      nuxt.options.plugins.push(resolve(__dirname, 'vite', 'plugins', 'windicss.js'))
     }
-    console.log('build before')
-    // add plugin to import windi.css
-    nuxt.options.plugins.push(resolve(__dirname, 'files', 'plugins', 'windicss.js'))
   })
 
   if (isViteMode) {
     nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
-      console.log('vite extend', options)
       config.plugins.push(WindiCSSVitePlugin(options))
     })
   }

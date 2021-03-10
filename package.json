@@ -7,7 +7,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./": "./",
-    "./src/files/*": "./dist/files/*"
+    "./src/vite/*": "./dist/vite/*",
+    "./src/webpack/*": "./dist/webpack/*"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +22,7 @@
     "build:static": "export NODE_ENV=production && nuxt-ts build test/fixtures/static",
     "build:vuetify": "export NODE_ENV=development && nuxt-ts build test/fixtures/vuetify",
     "dev:basic": "nuxt test/fixtures/basic",
-    "dev:vite": "nuxt test/fixtures/vite",
+    "dev:vite": "npm run build && nuxt test/fixtures/vite",
     "dev:bootstrap": "nuxt test/fixtures/bootstrap-tailwind",
     "dev:preset": "nuxt test/fixtures/preset",
     "dev:static": "nuxt-ts test/fixtures/static",

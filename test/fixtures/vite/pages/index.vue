@@ -1,7 +1,7 @@
 <template>
 <div class="bg-red-200 h-full">
   <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-800">
-    Hello World
+    Hello Vite
   </h1>
   <div class="text-center">
     <nuxt-link to="/page2" class="underline text-red-900 mx-auto pb-5 block">

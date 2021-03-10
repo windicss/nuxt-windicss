@@ -1,1 +1,1 @@
-import '@virtual/windi.css'
+require('windi.css')
