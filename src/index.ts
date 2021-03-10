@@ -2,6 +2,7 @@ import type { Module, NuxtOptions } from '@nuxt/types'
 import type { Configuration as WebpackConfig } from 'webpack'
 import { requireNuxtVersion } from './compatibility'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
+import WindiCSSVitePlugin from 'vite-plugin-windicss'
 import { resolve } from 'upath'
 import logger from './logger'
 import defu from 'defu'
@@ -12,6 +13,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
   const windicssOptions : UserOptions = {
+    root: nuxtOptions.rootDir,
     scan: {
       dirs: ['./'],
       exclude: [
@@ -36,6 +38,8 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     return
   }
 
+  const isViteMode = nuxtOptions.buildModules.includes('nuxt-vite')
+
   nuxt.hook('build:before', async () => {
     // allow users to override the windicss config
     // if they decided to return false - disabling windicss
@@ -47,16 +51,26 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
 
     logger.debug('Post hook options', options)
 
-    this.extendBuild((config: WebpackConfig,) => {
-      if (! config.plugins) { config.plugins = [] }
+    if (!isViteMode) {
+      this.extendBuild((config: WebpackConfig,) => {
+        if (! config.plugins) { config.plugins = [] }
       config.plugins.push(
           // push our webpack plugin
-          new WindiCSSWebpackPlugin(options)
-      )
-    })
-    // add plugin to import windi.css
-    nuxt.options.plugins.push(resolve(__dirname, 'files', 'plugins', 'windicss.js'))
+            new WindiCSSWebpackPlugin(options)
+        )
+      })
+      // add plugin to import windi.css
+      nuxt.options.plugins.push(resolve(__dirname, 'webpack', 'plugins', 'windicss.js'))
+    } else {
+      nuxt.options.plugins.push(resolve(__dirname, 'vite', 'plugins', 'windicss.js'))
+    }
   })
+
+  if (isViteMode) {
+    nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
+      config.plugins.push(WindiCSSVitePlugin(options))
+    })
+  }
 
 }
 
