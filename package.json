@@ -1,25 +1,25 @@
 {
   "name": "nuxt-windicss",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Windi CSS for Nuxt.js",
-  "license": "MIT",
-  "exports": {
-    ".": "./dist/index.js",
-    "./": "./",
-    "./src/template/*": "./dist/template/*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/loonpwn/nuxt-windicss-module"
-  },
-  "homepage": "https://github.com/loonpwn/nuxt-windicss-module",
-  "bugs": "https://github.com/loonpwn/nuxt-windicss-module/issues",
   "keywords": [
     "nuxt",
     "nuxt-module",
     "windicss",
     "tailwindcss"
   ],
+  "homepage": "https://github.com/loonpwn/nuxt-windicss-module",
+  "bugs": "https://github.com/loonpwn/nuxt-windicss-module/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loonpwn/nuxt-windicss-module"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": "./dist/index.js",
+    "./": "./",
+    "./src/template/*": "./dist/template/*"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
