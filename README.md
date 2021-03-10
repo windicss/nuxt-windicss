@@ -29,7 +29,7 @@
 
 ```bash
 yarn add nuxt-windicss-module -D
-# npm inuxt-windicss-module -D
+# npm i nuxt-windicss-module -D
 ```
 
 :warning: This module is a pre-release, please report any [issues](https://github.com/windicss/nuxt-windicss-module/issues) you find.
