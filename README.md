@@ -1,14 +1,14 @@
-![nuxt-windicss-module](https://repository-images.githubusercontent.com/343991410/68f83b80-811f-11eb-9638-51aed75785c4)
+![nuxt-windicss](https://repository-images.githubusercontent.com/343991410/68f83b80-811f-11eb-9638-51aed75785c4)
 
-<h1 align='center'>nuxt-windicss-module</h1>
+<h1 align='center'>nuxt-windicss</h1>
 
 <p align='center'><a href="https://github.com/voorjaar/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
 <sup><em>a.k.a On-demand Tailwind CSS</em></sup>
 </p>
 
 <p align='center'>
-<a href='https://www.npmjs.com/package/nuxt-windicss-module'>
-<img src='https://img.shields.io/npm/v/nuxt-windicss-module?color=0EA5E9&label='>
+<a href='https://www.npmjs.com/package/nuxt-windicss'>
+<img src='https://img.shields.io/npm/v/nuxt-windicss?color=0EA5E9&label='>
 </a>
 </p>
 
@@ -28,8 +28,8 @@
 ## Install
 
 ```bash
-yarn add nuxt-windicss-module -D
-# npm i nuxt-windicss-module -D
+yarn add nuxt-windicss -D
+# npm i nuxt-windicss -D
 ```
 
 :warning: This module is a pre-release, please report any [issues](https://github.com/windicss/nuxt-windicss-module/issues) you find.
@@ -41,7 +41,7 @@ Within your `nuxt.config.js` add the following.
 ```js
 // nuxt.config.js
 buildModules: [
-  'nuxt-windicss-module',
+  'nuxt-windicss',
 ],
 ```
 

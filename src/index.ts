@@ -49,7 +49,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     }
 
     logger.debug('Post hook options', options)
-    
+
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
@@ -61,8 +61,8 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
         )
       })
     })
-    
-  
+
+
   nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
     nuxt.options.alias['windi.css'] = '@virtual/windi.css'
     config.plugins.push(WindiCSSVitePlugin(options))
@@ -71,6 +71,6 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
 }
 
 // @ts-ignore
-windicssModule.meta = { name: 'nuxt-windicss-module' }
+windicssModule.meta = { name: 'nuxt-windicss' }
 
 export default windicssModule
