@@ -39,8 +39,6 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     return
   }
 
-  const isViteMode = nuxtOptions.buildModules.includes('nuxt-vite')
-
   nuxt.hook('build:before', async () => {
     // allow users to override the windicss config
     // if they decided to return false - disabling windicss
@@ -51,27 +49,24 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     }
 
     logger.debug('Post hook options', options)
+    
+    // add plugin to import windi.css
+    nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
-    if (!isViteMode) {
-      this.extendBuild((config: WebpackConfig,) => {
-        if (! config.plugins) { config.plugins = [] }
-        config.plugins.push(
-            // push our webpack plugin
-            new WindiCSSWebpackPlugin(options)
+    this.extendBuild((config: WebpackConfig,) => {
+      if (! config.plugins) { config.plugins = [] }
+      config.plugins.push(
+        // push our webpack plugin
+        new WindiCSSWebpackPlugin(options)
         )
       })
-      // add plugin to import windi.css
-      nuxt.options.plugins.push(resolve(__dirname, 'webpack', 'plugins', 'windicss.js'))
-    } else {
-      nuxt.options.plugins.push(resolve(__dirname, 'vite', 'plugins', 'windicss.js'))
-    }
-  })
-
-  if (isViteMode) {
-    nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
-      config.plugins.push(WindiCSSVitePlugin(options))
     })
-  }
+    
+  
+  nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
+    nuxt.options.alias['windi.css'] = '@virtual/windi.css'
+    config.plugins.push(WindiCSSVitePlugin(options))
+  })
 
 }
 

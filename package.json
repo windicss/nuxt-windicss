@@ -7,8 +7,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./": "./",
-    "./src/vite/*": "./dist/vite/*",
-    "./src/webpack/*": "./dist/webpack/*"
+    "./src/template/*": "./dist/template/*"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
