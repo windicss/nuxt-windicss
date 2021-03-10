@@ -17,8 +17,9 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     scan: {
       dirs: ['./'],
       exclude: [
-          '.nuxt/**/*',
-          '*.template.html'
+        '.nuxt/**/*',
+        '*.template.html',
+        'app.html'
       ]
     },
     transformCSS: 'pre',
@@ -54,8 +55,8 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     if (!isViteMode) {
       this.extendBuild((config: WebpackConfig,) => {
         if (! config.plugins) { config.plugins = [] }
-      config.plugins.push(
-          // push our webpack plugin
+        config.plugins.push(
+            // push our webpack plugin
             new WindiCSSWebpackPlugin(options)
         )
       })
