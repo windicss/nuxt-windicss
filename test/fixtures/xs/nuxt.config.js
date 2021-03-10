@@ -132,11 +132,6 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    plugins: process.env.NODE_ENV === 'dev' ? [
-      new ESLintPlugin({
-        fix: true
-      }),
-    ] : [],
 
     /*
      ** You can extend webpack config here
@@ -155,7 +150,4 @@ module.exports = {
     }
   },
   buildModules: [nuxtWindicssModule],
-  buildOptimisations: {
-    profile: 'risky'
-  }
 }

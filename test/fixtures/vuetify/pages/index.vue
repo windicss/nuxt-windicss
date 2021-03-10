@@ -1,8 +1,8 @@
 <template>
   <v-app id="inspire">
     <v-system-bar app>
-      <v-btn data-testid="button">
-        Hello World
+      <v-btn data-testid="button text-green-400 text-6xl">
+        Hello Windi 2
       </v-btn>
       <v-spacer />
 
@@ -69,10 +69,10 @@
 
                     :key="n"
                   >
-                    <v-list-item-avatar class="bg-blue-200" />
+                    <v-list-item-avatar class="bg-blue-600" />
 
                     <v-list-item-content>
-                      <v-list-item-title class="text-xl font-light border-b-2 border-gray-500 inline bg-yellow-300 text-yellow-900">Message {{ n }}</v-list-item-title>
+                      <v-list-item-title class="text-xl font-light border-b-2 border-gray-500 inline bg-yellow-100 text-yellow-900">Message {{ n }}</v-list-item-title>
 
                       <v-list-item-subtitle class="text-lg md:text-xs">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique

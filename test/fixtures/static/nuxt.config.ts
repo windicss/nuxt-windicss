@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import nuxtWindicssModule from '../../../dist'
+import nuxtWindicssModule from '../../../src'
 
 const config : NuxtConfig = {
   target: 'static',

@@ -11,8 +11,8 @@
     </b-nav-item>
   </b-nav>
   <div class="container text-2xl">
-    <h1 data-testid="hello" class="bg-green-700 font-bold text-white px-5 py-5">
-      Hello World
+    <h1 data-testid="hello" class="bg-green-700 font-bold text-white px-5 py-5 mb-5">
+      Hello Windi
     </h1>
     <article class="prose lg:prose-xl prose-red">
       <h1>Garlic with cheese: What the science tells us</h1>

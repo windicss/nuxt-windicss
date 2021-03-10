@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="text-6xl text-green-400">
+      <h1 class="text-6xl text-green-700 underline">
         preset
         <svg-logo />
         <img :src="require('../image/small.svg?data')" class="bg-red-400">
