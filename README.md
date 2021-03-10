@@ -19,12 +19,11 @@
 ## Features
 
 - ⚡️ **It's FAST** - 20~100x times faster than [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module)
-- 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2)
-- 📦 On-demand native elements style reseting
-- 🔥 Hot module replacement (HMR)
+- 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
 - 🍃 Load configurations from `tailwind.config.js`
-- 📄 CSS `@apply` / `@screen` directives transforms (also works for Vue SFC's `<style>`)
+- 📄 CSS `@apply` / `@screen` directives transforms
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
+- 🧑‍🤝‍🧑 Compatible with [nuxt-vite](https://github.com/nuxt/vite)
 
 ## Install
 
