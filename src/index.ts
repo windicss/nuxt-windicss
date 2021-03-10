@@ -14,8 +14,12 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const windicssOptions : UserOptions = {
     scan: {
       dirs: ['./'],
-      exclude: ['.nuxt/**/*']
+      exclude: [
+          '.nuxt/**/*',
+          '*.template.html'
+      ]
     },
+    transformCSS: 'pre',
     preflight: {
       alias: {
         // add nuxt aliases
@@ -33,17 +37,20 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   }
 
   nuxt.hook('build:before', async () => {
-    await nuxt.callHook('windycss:config', options)
+    // allow users to override the windicss config
+    // if they decided to return false - disabling windicss
+    await nuxt.callHook('windicss:config', options)
+    if (!options) {
+      logger.info('Windi CSS has been disabled via the `windicss:config` hook.')
+      return
+    }
 
     logger.debug('Post hook options', options)
 
     this.extendBuild((config: WebpackConfig,) => {
-      // allow users to override the windicss config
-      // if they decided to return false - disabling windicss
-      if (! config.plugins) {
-        config.plugins = []
-      }
+      if (! config.plugins) { config.plugins = [] }
       config.plugins.push(
+          // push our webpack plugin
           new WindiCSSWebpackPlugin(options)
       )
     })
