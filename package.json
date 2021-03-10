@@ -7,8 +7,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./": "./",
-    "./src/vite/*": "./dist/vite/*",
-    "./src/webpack/*": "./dist/webpack/*"
+    "./src/template/*": "./dist/template/*"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -79,7 +78,7 @@
     "jest": "latest",
     "loader-utils": "latest",
     "nuxt-edge": "2.16.0-26922275.d55864da",
-    "nuxt-vite": "^0.0.29",
+    "nuxt-vite": "^0.0.32",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "release-it": "^14.4.1",

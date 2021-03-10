@@ -11177,10 +11177,10 @@ nuxt-edge@2.16.0-26922275.d55864da:
     "@nuxt/vue-renderer-edge" "2.16.0-26922275.d55864da"
     "@nuxt/webpack-edge" "2.16.0-26922275.d55864da"
 
-nuxt-vite@^0.0.29:
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/nuxt-vite/-/nuxt-vite-0.0.29.tgz#1e02a5c4a11bbe1992a06954b47315b52bef5952"
-  integrity sha512-UZeSWX5jiixh37hO++Wfgln0XIDiLNsrGQ1w9Le8wvq11R4VxIPBpX0Qz89e1jyblVpKgVNO36Sz5ESnbfJO0g==
+nuxt-vite@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/nuxt-vite/-/nuxt-vite-0.0.32.tgz#b3c502966ec5d3ef43fa0027e592105769709212"
+  integrity sha512-mNAuQulgot8FgMqGYf8k1916Di0fnlLQGsnlic1sZ44wleg2wSOgviuV2QWoAScQtupQfSFR6ac1FybiRNXcJQ==
   dependencies:
     "@nuxt/http" "^0.6.4"
     chokidar "^3.5.1"
