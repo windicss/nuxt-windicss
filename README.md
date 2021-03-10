@@ -7,8 +7,8 @@
 </p>
 
 <p align='center'>
-<a href='https://www.npmjs.com/package/windicss-webpack-plugin'>
-<img src='https://img.shields.io/npm/v/windicss-webpack-plugin?color=0EA5E9&label='>
+<a href='https://www.npmjs.com/package/nuxt-windicss-module'>
+<img src='https://img.shields.io/npm/v/nuxt-windicss-module?color=0EA5E9&label='>
 </a>
 </p>
 

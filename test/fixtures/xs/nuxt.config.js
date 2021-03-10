@@ -1,4 +1,4 @@
-import nuxtBuildOptimisations from '../../../src'
+import nuxtWindicssModule from '../../../dist'
 
 const ESLintPlugin = require('eslint-webpack-plugin');
 let path = '.env'
@@ -154,7 +154,7 @@ module.exports = {
         isDev ? '[name].css' : '[contenthash].' + timestamp + '.css'
     }
   },
-  buildModules: [nuxtBuildOptimisations],
+  buildModules: [nuxtWindicssModule],
   buildOptimisations: {
     profile: 'risky'
   }
