@@ -69,6 +69,7 @@ windicss: {
     dirs: ['./'],
       exclude: ['.nuxt/**/*']
   },
+  transformCSS: 'pre',
   preflight: {
     alias: {
       // add nuxt aliases
