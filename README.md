@@ -67,7 +67,12 @@ If you were previously using `@nuxtjs/tailwindcss`, please consult the [document
 windicss: {
   scan: {
     dirs: ['./'],
-      exclude: ['.nuxt/**/*']
+      exclude: [
+        '.nuxt/**/*',
+        '*.template.html',
+        // Any classes added in app.html (that have not previously been referenced) will need to be added to the safelist
+        'app.html'
+      ]
   },
   transformCSS: 'pre',
   preflight: {
