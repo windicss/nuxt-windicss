@@ -79,14 +79,20 @@ windicss: {
 
 - See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
 
+## Hooks
+
+You can use the following nuxt hooks to modify the behaviour of the code.
+
+`windicss:config`
+- Arguments: options
+
+Modify the windicss configuration before it is passed to the webpack plugin.
 
 ## Caveats
 
 ### Scoped Style
 
-You will need to set `transformCSS: 'pre'` to get it work.
-
-`@media` directive with scoped style can **only works** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
+`@media` directive with scoped style can **only work** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
 
 ## Credits
 

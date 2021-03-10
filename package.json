@@ -1,6 +1,6 @@
 {
   "name": "nuxt-windicss-module",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Windi CSS for Nuxt.js",
   "repository": "loonpwn/nuxt-windicss-module",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "build:preset": "export NODE_ENV=production && nuxt build test/fixtures/preset",
     "build:static": "export NODE_ENV=production && nuxt-ts build test/fixtures/static",
     "build:vuetify": "export NODE_ENV=development && nuxt-ts build test/fixtures/vuetify",
-    "dev:basic": "nuxt-ts test/fixtures/basic",
+    "dev:basic": "nuxt test/fixtures/basic",
+    "dev:vite": "nuxt test/fixtures/vite",
     "dev:bootstrap": "nuxt test/fixtures/bootstrap-tailwind",
     "dev:preset": "nuxt test/fixtures/preset",
     "dev:static": "nuxt-ts test/fixtures/static",
@@ -43,7 +44,7 @@
     "semver": "^7.3.4",
     "upath": "^2.0.1",
     "vite-plugin-windicss": "^0.7.1",
-    "windicss-webpack-plugin": "^0.1.4"
+    "windicss-webpack-plugin": "^0.1.5"
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.10",
@@ -76,7 +77,8 @@
     "eslint-webpack-plugin": "^2.5.2",
     "jest": "latest",
     "loader-utils": "latest",
-    "nuxt-edge": "2.16.0-26920836.0d686799",
+    "nuxt-edge": "2.16.0-26922275.d55864da",
+    "nuxt-vite": "^0.0.29",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "release-it": "^14.4.1",

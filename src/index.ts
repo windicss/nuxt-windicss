@@ -15,8 +15,12 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const windicssOptions : UserOptions = {
     scan: {
       dirs: ['./'],
-      exclude: ['.nuxt/**/*']
+      exclude: [
+          '.nuxt/**/*',
+          '*.template.html'
+      ]
     },
+    transformCSS: 'pre',
     preflight: {
       alias: {
         // add nuxt aliases
@@ -33,29 +37,39 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     return
   }
 
+  const isViteMode = nuxtOptions.buildModules.includes('nuxt-vite')
+
   nuxt.hook('build:before', async () => {
-    await nuxt.callHook('windycss:config', options)
+    // allow users to override the windicss config
+    // if they decided to return false - disabling windicss
+    await nuxt.callHook('windicss:config', options)
+    if (!options) {
+      logger.info('Windi CSS has been disabled via the `windicss:config` hook.')
+      return
+    }
 
     logger.debug('Post hook options', options)
 
-    this.extendBuild((config: WebpackConfig,) => {
-      // allow users to override the windicss config
-      // if they decided to return false - disabling windicss
-      if (! config.plugins) {
-        config.plugins = []
-      }
+    if (!isViteMode) {
+      this.extendBuild((config: WebpackConfig,) => {
+        if (! config.plugins) { config.plugins = [] }
       config.plugins.push(
-          new WindiCSSWebpackPlugin(options)
-      )
-    })
+          // push our webpack plugin
+            new WindiCSSWebpackPlugin(options)
+        )
+      })
+    }
+    console.log('build before')
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'files', 'plugins', 'windicss.js'))
   })
 
-  nuxt.hook('vite:extend', ({ config, nuxt }: { nuxt: { options: NuxtOptions }, config: { plugins: any[] }}) => {
-    nuxt.options.alias['windi.css'] = '@virtual/windi.css'
-    config.plugins.push(WindiCSSVitePlugin(options))
-  })
+  if (isViteMode) {
+    nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
+      console.log('vite extend', options)
+      config.plugins.push(WindiCSSVitePlugin(options))
+    })
+  }
 
 }
 
