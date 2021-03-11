@@ -2,7 +2,7 @@
 
 <h1 align='center'>nuxt-windicss</h1>
 
-<p align='center'><a href="https://github.com/voorjaar/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
+<p align='center'><a href="https://github.com/windicss/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
 <sup><em>a.k.a On-demand Tailwind CSS</em></sup>
 </p>
 
