@@ -2,8 +2,8 @@
 <div>
   <el-container>
     <el-main>
-      <h1 data-testid="title">
-        Hello Static
+      <h1 data-testid="title" class="text-6xl underline font-light text-green-400">
+        Hello Windi
       </h1>
       <el-form ref="form" :model="form" label-width="120px">
         <el-form-item label="Activity name">

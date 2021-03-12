@@ -1,4 +1,4 @@
-import nuxtBuildOptimisations from '../../../src'
+import nuxtWindicssModule from '../../../dist'
 
 const ESLintPlugin = require('eslint-webpack-plugin');
 let path = '.env'
@@ -132,11 +132,6 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    plugins: process.env.NODE_ENV === 'dev' ? [
-      new ESLintPlugin({
-        fix: true
-      }),
-    ] : [],
 
     /*
      ** You can extend webpack config here
@@ -154,8 +149,5 @@ module.exports = {
         isDev ? '[name].css' : '[contenthash].' + timestamp + '.css'
     }
   },
-  buildModules: [nuxtBuildOptimisations],
-  buildOptimisations: {
-    profile: 'risky'
-  }
+  buildModules: [nuxtWindicssModule],
 }

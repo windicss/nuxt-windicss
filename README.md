@@ -1,12 +1,14 @@
-<h1 align='center'>nuxt-windicss-module</h1>
+![nuxt-windicss](https://repository-images.githubusercontent.com/343991410/68f83b80-811f-11eb-9638-51aed75785c4)
 
-<p align='center'><a href="https://github.com/voorjaar/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
+<h1 align='center'>nuxt-windicss</h1>
+
+<p align='center'><a href="https://github.com/windicss/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
 <sup><em>a.k.a On-demand Tailwind CSS</em></sup>
 </p>
 
 <p align='center'>
-<a href='https://www.npmjs.com/package/windicss-webpack-plugin'>
-<img src='https://img.shields.io/npm/v/windicss-webpack-plugin?color=0EA5E9&label='>
+<a href='https://www.npmjs.com/package/nuxt-windicss'>
+<img src='https://img.shields.io/npm/v/nuxt-windicss?color=0EA5E9&label='>
 </a>
 </p>
 
@@ -17,19 +19,20 @@
 ## Features
 
 - ⚡️ **It's FAST** - 20~100x times faster than [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module)
-- 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2)
-- 📦 On-demand native elements style reseting
-- 🔥 Hot module replacement (HMR)
+- 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
 - 🍃 Load configurations from `tailwind.config.js`
-- 📄 CSS `@apply` / `@screen` directives transforms (also works for Vue SFC's `<style>`)
+- 📄 CSS `@apply` / `@screen` directives transforms
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
+- 🧑‍🤝‍🧑 Compatible with [nuxt-vite](https://github.com/nuxt/vite)
 
 ## Install
 
 ```bash
-yarn add nuxt-windicss-module -D 
-# npm inuxt-windicss-module -D
+yarn add nuxt-windicss -D
+# npm i nuxt-windicss -D
 ```
+
+:warning: This module is a pre-release, please report any [issues](https://github.com/windicss/nuxt-windicss-module/issues) you find.
 
 ## Usage
 
@@ -38,7 +41,7 @@ Within your `nuxt.config.js` add the following.
 ```js
 // nuxt.config.js
 buildModules: [
-  'nuxt-windicss-module',
+  'nuxt-windicss',
 ],
 ```
 
@@ -46,56 +49,57 @@ This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
 
 ```diff
 buildModules: [
--  'nuxt-windicss-module',
+-  '@nuxtjs/tailwindcss',
 ],
 ```
 
-### `tailwind.config.js`
+This module will read from your root `tailwind.config.js` or `windi.config.js` config if present. See [here](https://windicss.netlify.app/guide/configuration.html) for details.
 
-All `variants` are enabled, since the overhead they caused is fixed by Windi's on-demand nature. `purge` is no longer needed as well. `colors` and `plugins` imports need to be renamed to `windicss` instead.
 
-```diff
--const colors = require('tailwindcss/colors')
-+const colors = require('windicss/colors')
--const typography = require('@tailwindcss/typography')
-+const typography = require('windicss/plugin/typography')
+## Migrating
 
-module.exports = {
-- purge: {
--   content: [
--     './**/*.html',
--   ],
--   options: {
--     safelist: ['prose', 'prose-sm', 'm-auto'],
--   },
-- },
-- variants: {
--   extend: {
--     cursor: ['disabled'],
--   }
-- },
-  darkMode: 'class',
-  plugins: [typography],
-  theme: {
-    extend: {
-      colors: {
-        teal: colors.teal,
-      },
-    }
-  },
-}
-```
+If you were previously using `@nuxtjs/tailwindcss`, please consult the [documentation](https://windicss.netlify.app/guide/migration.html) on migrating.
 
 ## Configuration
 
-See [options.ts](https://github.com/windicss/windicss-webpack-plugin/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
+- Default:
+```js
+windicss: {
+  scan: {
+    dirs: ['./'],
+      exclude: [
+        '.nuxt/**/*',
+        '*.template.html',
+        // Any classes added in app.html (that have not previously been referenced) will need to be added to the safelist
+        'app.html'
+      ]
+  },
+  transformCSS: 'pre',
+  preflight: {
+    alias: {
+      // add nuxt aliases
+      'nuxt-link': 'a',
+    }
+  }
+}
+```  
 
+- See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
+
+## Hooks
+
+You can use the following nuxt hooks to modify the behaviour of the code.
+
+`windicss:config`
+- Arguments: options
+
+Modify the windicss configuration before it is passed to the webpack plugin.
 
 ## Caveats
 
 ### Scoped Style
 
-`@media` directive with scoped style can **only works** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
+`@media` directive with scoped style can **only work** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
 
 ## Credits
 

@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import nuxtBuildOptimisations from '../../../src'
+import windicssModule from '../../../src'
 
 const config : NuxtConfig = {
   modules: [
@@ -10,13 +10,8 @@ const config : NuxtConfig = {
   ],
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/tailwindcss',
-    nuxtBuildOptimisations
+    windicssModule
   ],
-
-  buildOptimisations: {
-    profile: 'risky'
-  },
 
   components: true
 }
