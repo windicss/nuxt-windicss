@@ -3503,16 +3503,16 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@windicss/plugin-utils@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.5.0.tgz#dab121dd33074eccb4b7c85e7757eb5704f1c76e"
-  integrity sha512-d2oi4cY+PV0mcQ2wij1nI+Ku0s6Zw2/+zllxX8TtMyEknYqe5zHE69DbUyCjIyVg2DYCje2vIc8XnTWYDFEkjQ==
+"@windicss/plugin-utils@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.7.2.tgz#c43c89a2f51110eb6f49da565dc235fb2af30269"
+  integrity sha512-4znRERKhhStIOFy1/eB0rJXnXs+NyumBREjh0GZVMoHVmUB9up08tNUpbbq3tlJC96t27VsD4vdfv00T+It/IA==
   dependencies:
-    esbuild "^0.8.50"
-    esbuild-register "^2.0.0"
+    esbuild "^0.8.57"
+    esbuild-register "^2.2.0"
     fast-glob "^3.2.5"
     micromatch "^4.0.2"
-    windicss "^2.2.0"
+    windicss "^2.3.0"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -6445,25 +6445,22 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-register@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/esbuild-register/-/esbuild-register-2.0.0.tgz#579a6eff4e5713a318602b4d305bcb6f8c5b08f9"
-  integrity sha512-98i1+7OnCURCbKaWw5wnY05e4v7uknFEER7LtVxi/lCs8U+sl6/LnITvfeoDLrsqxlA3O6BjxK8QqsirfYULfA==
+esbuild-register@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/esbuild-register/-/esbuild-register-2.2.0.tgz#1c68af6e8e6c4a23af01825224e71bcbd3c85d83"
+  integrity sha512-27039YMtpC3lI8yYGGm78SAQBtBo/4IPMReWVsNh4++VtvozmasBd1a2HiTdk0297iuA2pMzrzvL5cZJqQCKxQ==
   dependencies:
-    joycon "^2.2.5"
-    pirates "^4.0.1"
-    source-map-support "^0.5.19"
-    strip-json-comments "^3.1.1"
+    jsonc-parser "^3.0.0"
 
 esbuild@^0.7.22:
   version "0.7.22"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.7.22.tgz#9149b903f8128b7c45a754046c24199d76bbe08e"
   integrity sha512-B43SYg8LGWYTCv9Gs0RnuLNwjzpuWOoCaZHTWEDEf5AfrnuDMerPVMdCEu7xOdhFvQ+UqfP2MGU9lxEy0JzccA==
 
-esbuild@^0.8.50:
-  version "0.8.54"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.54.tgz#2f32ff80e95c69a0f25b799d76a27c05e2857cdf"
-  integrity sha512-DJH38OiTgXJxFb/EhHrCrY8eGmtdkTtWymHpN9IYN9AF+4jykT0dQArr7wzFejpVbaB0TMIq2+vfNRWr3LXpvw==
+esbuild@^0.8.57:
+  version "0.8.57"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
+  integrity sha512-j02SFrUwFTRUqiY0Kjplwjm1psuzO1d6AjaXKuOR9hrY0HuPsT6sV42B6myW34h1q4CRy+Y3g4RU/cGJeI/nNA==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -9403,6 +9400,11 @@ json5@^2.1.2:
   integrity sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
   dependencies:
     minimist "^1.2.5"
+
+jsonc-parser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
+  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -13754,7 +13756,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.17, source-map-support@^0.5.19, source-map-support@^0.5.6, source-map-support@~0.5.12, source-map-support@~0.5.19:
+source-map-support@^0.5.17, source-map-support@^0.5.6, source-map-support@~0.5.12, source-map-support@~0.5.19:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
@@ -15523,20 +15525,21 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.1.0.tgz#a950193d5ca23311b46fc5954a276ebe1e57fbca"
-  integrity sha512-FpKo6JJHKQVc2RwJgt7/44uITBjdG3eWT02mkXIWDLtmW08lY+a2FpbGaaLMble8wRe3Afe6XTKXZHLsSs+LjQ==
+windicss-webpack-plugin@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.1.9.tgz#f1f9af838d7b7fc10a4f8ac6b7dab8e5164ba516"
+  integrity sha512-yZXTI5QBp1c/0YCF4m+vOHBfRUSiZN1uFjkNBCLsJLq5zPFIs3P03lWfzKMn9R7Zsu9d1h9Ut7u4y76s0R1/iQ==
   dependencies:
-    "@windicss/plugin-utils" "0.5.0"
+    "@windicss/plugin-utils" "0.7.2"
     loader-utils "^2.0.0"
+    magic-string "^0.25.7"
     webpack-virtual-modules "^0.4.2"
-    windicss "^2.2.0"
+    windicss "^2.3.1"
 
-windicss@^2.2.0:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.2.2.tgz#ca1f8907fb086ff5fd63f21b9a4a10b543027397"
-  integrity sha512-+yOlyx+j3/MJaoqhZb6BjjXnGMJcIdjaKs8cIYXkCr5t/wJLFBS35uDrqxo31IaSHOo/gtw+fcMyw8D+3oq6qg==
+windicss@^2.3.0, windicss@^2.3.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.4.1.tgz#12226a4cf1244747e3996cea44d7157daf702b03"
+  integrity sha512-+S0CUamG8uQD+BA4/+lnhoWdD5BaINgzQGjfEScjJaq4e9YIOukutRs2Cic8Xa8jkLbr9eyJsh0EsnZ+XwJwSw==
 
 windows-release@^4.0.0:
   version "4.0.0"
