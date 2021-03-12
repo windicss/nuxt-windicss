@@ -1781,7 +1781,32 @@
     get-port "^5.1.1"
     got "^11.8.2"
 
-"@nuxt/types@2.15.2", "@nuxt/types@^2.15.2":
+"@nuxt/types@2.15.3":
+  version "2.15.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.15.3.tgz#2c93829554ff261f488f41d7332aa1cc2e343ada"
+  integrity sha512-dOO5uSDOjeMxDtowRd3b1ZMMeoUQjVHsf/3rMjAgIDojESbIkLE+yN0zSPBzDomjh8KF82ZNYDeDrN34cadW5g==
+  dependencies:
+    "@types/autoprefixer" "^9.7.2"
+    "@types/babel__core" "^7.1.12"
+    "@types/compression" "^1.7.0"
+    "@types/connect" "^3.4.34"
+    "@types/etag" "^1.8.0"
+    "@types/file-loader" "^4.2.0"
+    "@types/html-minifier" "^4.0.0"
+    "@types/less" "^3.0.2"
+    "@types/node" "^12.20.5"
+    "@types/optimize-css-assets-webpack-plugin" "^5.0.2"
+    "@types/pug" "^2.0.4"
+    "@types/sass" "^1.16.0"
+    "@types/serve-static" "^1.13.9"
+    "@types/terser-webpack-plugin" "^4.2.0"
+    "@types/webpack" "^4.41.26"
+    "@types/webpack-bundle-analyzer" "^3.9.1"
+    "@types/webpack-dev-middleware" "^4.1.0"
+    "@types/webpack-hot-middleware" "^2.25.3"
+    sass-loader "^10.1.1"
+
+"@nuxt/types@^2.15.2":
   version "2.15.2"
   resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.15.2.tgz#040b2cf96b0fad86baccead95721b4e28444613f"
   integrity sha512-X7fZDhuSMhkhVt1XCODby1Pmog9Tf5LNzKGkFmQ/PxlK4lbJXivsosXWgOzmDkDW4TXxv6+LvXEbN1h8VQmzOQ==
@@ -1828,11 +1853,6 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@nuxt/ufo/-/ufo-0.0.3.tgz#7673a54b81c020e7aea3a9e01e09a58c494a1eca"
   integrity sha512-LQkuVafVNB9+ggRF7443AX1V1rEWRs32Frk7F2qnRLf8j/SzRzxEZ99jiZqxVho72zU7NcWQ6Jy62m4fkZC6Wg==
-
-"@nuxt/ufo@^0.5.2":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@nuxt/ufo/-/ufo-0.5.4.tgz#2e1428e2c947cc559d566c27786525bf0f40fbc8"
-  integrity sha512-JZOGDlt2BvLCBmLhrchhRJ6tP9PBfSWLdsHC+JVJ5Qp8/hT/2u61cSsLS30zUOwcPRaQ3y2oHNkEiKJ5v90iEQ==
 
 "@nuxt/utils-edge@2.16.0-26922275.d55864da":
   version "2.16.0-26922275.d55864da"
@@ -2031,19 +2051,19 @@
     url-loader "^4.1.0"
     vue-svg-loader "^0.16.0"
 
-"@nuxtjs/tailwindcss@^3.4.2":
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-3.4.2.tgz#2376877b7e3fff35c044e99828d5e7cacfec5621"
-  integrity sha512-Hv1b/4zYaffNc0JHss3jqKLZoPRQfG7upxGguP749Zx2VgMyFExeT3NMAxntLHctKvv/ohN+5kFGiewZGI5n2A==
+"@nuxtjs/tailwindcss@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-3.4.3.tgz#8239b11857d395000d9ff5df52b18644d631629d"
+  integrity sha512-W2FIB5zzvkPkNayQ3mTy7jcP0rTDwnrjv79v96/CRTptFbY5TxvZVJI7N0r8ova/IWPSdkgjdCb7wbzolzzgjg==
   dependencies:
-    "@nuxt/ufo" "^0.5.2"
     chalk "^4.1.0"
     clear-module "^4.1.1"
-    consola "^2.15.0"
+    consola "^2.15.3"
     defu "^3.2.2"
-    fs-extra "^9.0.1"
-    tailwind-config-viewer "^1.4.0"
+    fs-extra "^9.1.0"
+    tailwind-config-viewer "^1.5.0"
     tailwindcss "^1.9.6"
+    ufo "^0.6.9"
 
 "@nuxtjs/vuetify@^1.11.3":
   version "1.11.3"
@@ -2597,6 +2617,11 @@
   version "12.20.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.4.tgz#73687043dd00fcb6962c60fbf499553a24d6bdf2"
   integrity sha512-xRCgeE0Q4pT5UZ189TJ3SpYuX/QGl6QIAOAIeDSbAVAd2gX1NxSZup4jNVK7cxIeP8KDSbJgcckun495isP1jQ==
+
+"@types/node@^12.20.5":
+  version "12.20.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.5.tgz#4ca82a766f05c359fd6c77505007e5a272f4bb9b"
+  integrity sha512-5Oy7tYZnu3a4pnJ//d4yVvOImExl4Vtwf0D40iKUlU+XlUsyV9iyFWyCFlwy489b72FMAik/EFwRkNLjjOdSPg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -14850,7 +14875,7 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
-tailwind-config-viewer@^1.4.0:
+tailwind-config-viewer@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/tailwind-config-viewer/-/tailwind-config-viewer-1.5.0.tgz#b0a345a70f4282f305bf012fdb2d54e48a4e885f"
   integrity sha512-yiQjFh/Hv9MgCmqJgIzCp74TDfwhBSS3no3vwEa094DGSk1eoaAKbzJskFFma91a0IxI8oVFOPZ+HCPiSZR16A==
@@ -15972,8 +15997,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
@@ -16170,10 +16197,10 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.1.8.tgz#45c5e19bf4233d4e58e6065583af5fade403d02d"
-  integrity sha512-+euAP3ZYhZyEVgS5J0rqOD+W8Vci3dqAOKjWykbYKJ4De5QkPxetPdo58XW165IoEDCP1qjmeBnI0uhz/Y71Aw==
+windicss-webpack-plugin@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.1.9.tgz#f1f9af838d7b7fc10a4f8ac6b7dab8e5164ba516"
+  integrity sha512-yZXTI5QBp1c/0YCF4m+vOHBfRUSiZN1uFjkNBCLsJLq5zPFIs3P03lWfzKMn9R7Zsu9d1h9Ut7u4y76s0R1/iQ==
   dependencies:
     "@windicss/plugin-utils" "0.7.2"
     loader-utils "^2.0.0"

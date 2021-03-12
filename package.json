@@ -55,7 +55,7 @@
     "semver": "^7.3.4",
     "upath": "^2.0.1",
     "vite-plugin-windicss": "^0.7.2",
-    "windicss-webpack-plugin": "^0.1.8"
+    "windicss-webpack-plugin": "^0.1.9"
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.10",
@@ -63,7 +63,7 @@
     "@nuxt/content": "^1.14.0",
     "@nuxt/image": "^0.4.1",
     "@nuxt/test-utils": "0.2.0",
-    "@nuxt/types": "2.15.2",
+    "@nuxt/types": "2.15.3",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxt/typescript-runtime": "2.1.0",
     "@nuxtjs/auth": "^4.9.1",
@@ -72,7 +72,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/svg": "^0.1.12",
-    "@nuxtjs/tailwindcss": "^3.4.2",
+    "@nuxtjs/tailwindcss": "^3.4.3",
     "@nuxtjs/vuetify": "^1.11.3",
     "@tailwindcss/typography": "^0.4.0",
     "@types/jest": "latest",
