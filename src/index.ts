@@ -17,6 +17,8 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     scan: {
       dirs: ['./'],
       exclude: [
+        'node_modules',
+        '.git',
         '.nuxt/**/*',
         '*.template.html',
         'app.html'
@@ -56,11 +58,11 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     this.extendBuild((config: WebpackConfig,) => {
       if (! config.plugins) { config.plugins = [] }
       config.plugins.push(
-        // push our webpack plugin
-        new WindiCSSWebpackPlugin(options)
-        )
-      })
+          // push our webpack plugin
+          new WindiCSSWebpackPlugin(options)
+      )
     })
+  })
 
 
   nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {

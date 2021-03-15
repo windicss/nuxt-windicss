@@ -3234,17 +3234,6 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@windicss/plugin-utils@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.7.2.tgz#c43c89a2f51110eb6f49da565dc235fb2af30269"
-  integrity sha512-4znRERKhhStIOFy1/eB0rJXnXs+NyumBREjh0GZVMoHVmUB9up08tNUpbbq3tlJC96t27VsD4vdfv00T+It/IA==
-  dependencies:
-    esbuild "^0.8.57"
-    esbuild-register "^2.2.0"
-    fast-glob "^3.2.5"
-    micromatch "^4.0.2"
-    windicss "^2.3.0"
-
 "@windicss/plugin-utils@0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.8.2.tgz#032b21a79ff5af5031bf29bc3faeb0efcce73afb"
@@ -6682,14 +6671,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-register@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/esbuild-register/-/esbuild-register-2.2.0.tgz#1c68af6e8e6c4a23af01825224e71bcbd3c85d83"
-  integrity sha512-27039YMtpC3lI8yYGGm78SAQBtBo/4IPMReWVsNh4++VtvozmasBd1a2HiTdk0297iuA2pMzrzvL5cZJqQCKxQ==
-  dependencies:
-    jsonc-parser "^3.0.0"
-
-esbuild@^0.8.52, esbuild@^0.8.56, esbuild@^0.8.57:
+esbuild@^0.8.52, esbuild@^0.8.56:
   version "0.8.57"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
   integrity sha512-j02SFrUwFTRUqiY0Kjplwjm1psuzO1d6AjaXKuOR9hrY0HuPsT6sV42B6myW34h1q4CRy+Y3g4RU/cGJeI/nNA==
@@ -9709,11 +9691,6 @@ json5@^2.1.2:
   integrity sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
   dependencies:
     minimist "^1.2.5"
-
-jsonc-parser@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
-  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -15854,13 +15831,13 @@ vite-plugin-vue2@^1.3.2:
     vue "^2.6.11"
     vue-template-compiler "^2.6.11"
 
-vite-plugin-windicss@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.7.2.tgz#1647ee3765edb0f993b81206f35310a63b25c1f9"
-  integrity sha512-U6N8ljy7meqLkq8aENb3VXKr93Vzp1pU5zwhJr7HmGi+42Wv4i8r7+7BW6WRS4Ght4SAMzFuzIGq9RLPzoZ2Jg==
+vite-plugin-windicss@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.8.2.tgz#cb7a4e03ed218007425be60e54cd4f21cca836d1"
+  integrity sha512-eeHmCAbmeKg1k0r5moPEQrVPFebfsCCGkKUSb8MYWkglLfpcBZfCHyTTdpn/PONy/JcvWrdpbND2/tsy30it3g==
   dependencies:
-    "@windicss/plugin-utils" "0.7.2"
-    windicss "^2.3.0"
+    "@windicss/plugin-utils" "0.8.2"
+    windicss "^2.4.0"
 
 vite@^2.0.5:
   version "2.0.5"
@@ -16255,11 +16232,6 @@ windicss-webpack-plugin@^0.2.0:
     magic-string "^0.25.7"
     webpack-virtual-modules "^0.4.2"
     windicss "^2.4.4"
-
-windicss@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.3.0.tgz#76f10017169df195d95042b7101d2e2586e8ebd1"
-  integrity sha512-OR/ULZmcVhtEJDIFnkz4S4v4efpZ8DuvDtzBwXNgbtiPQIxN0Zhpo59q0rfF0i3tfwjKw2KCQXNxL5E98bMuVA==
 
 windicss@^2.4.0, windicss@^2.4.4:
   version "2.4.4"

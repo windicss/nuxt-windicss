@@ -1,6 +1,6 @@
 <template>
 <div class="bg-red-200 h-full">
-  <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-800">
+  <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-600">
     Hello World
     <span>test</span>
   </h1>
@@ -18,7 +18,7 @@
 h1 {
   @apply bg-red-400;
   span {
-    color: red;
+    @apply text-green-400;
   }
 }
 </style>
