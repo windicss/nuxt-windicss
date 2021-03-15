@@ -92,9 +92,12 @@ windicss: {
 
 _nuxt.config.js_
 ```js
+export default {
+  // ...
   windicss: {
     preflight: false
-  }
+  },
+}  
 ```
 
 ## Hooks
