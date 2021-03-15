@@ -86,6 +86,17 @@ windicss: {
 
 - See [options.ts](https://github.com/windicss/vite-plugin-windicss/blob/main/packages/plugin-utils/src/options.ts) for configuration reference.
 
+### Examples
+
+#### Disable Preflight
+
+_nuxt.config.js_
+```js
+  windicss: {
+    preflight: false
+  }
+```
+
 ## Hooks
 
 You can use the following nuxt hooks to modify the behaviour of the code.
