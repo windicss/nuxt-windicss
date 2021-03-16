@@ -54,8 +54,8 @@
     "rimraf": "^3.0.2",
     "semver": "^7.3.4",
     "upath": "^2.0.1",
-    "vite-plugin-windicss": "^0.8.2",
-    "windicss-webpack-plugin": "^0.2.0"
+    "vite-plugin-windicss": "^0.8.3",
+    "windicss-webpack-plugin": "^0.2.1"
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.10",
