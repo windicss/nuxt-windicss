@@ -45,10 +45,6 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     // allow users to override the windicss config
     // if they decided to return false - disabling windicss
     await nuxt.callHook('windicss:config', options)
-    if (!options) {
-      logger.info('Windi CSS has been disabled via the `windicss:config` hook.')
-      return
-    }
 
     logger.debug('Post hook options', options)
 
