@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "build": "siroc build",
-    "build:basic": "export NODE_ENV=production && nuxt build test/fixtures/basic",
+    "build:basic": "yarn build && export DEBUG=windicss-webpack-plugin && nuxt build test/fixtures/basic",
     "build:preset": "export NODE_ENV=production && nuxt build test/fixtures/preset",
     "build:static": "export NODE_ENV=production && nuxt build test/fixtures/static",
     "build:vuetify": "export NODE_ENV=development && nuxt build test/fixtures/vuetify",
@@ -55,7 +55,7 @@
     "semver": "^7.3.4",
     "upath": "^2.0.1",
     "vite-plugin-windicss": "^0.9.2",
-    "windicss-webpack-plugin": "^0.2.3"
+    "windicss-webpack-plugin": "^0.2.4"
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.10",
