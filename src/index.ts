@@ -4,7 +4,9 @@ import { requireNuxtVersion } from './compatibility'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import WindiCSSVitePlugin from 'vite-plugin-windicss'
 import { resolve } from 'upath'
+import { existsSync } from 'fs'
 import logger from './logger'
+import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
 
@@ -12,17 +14,26 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
-  const windicssOptions : UserOptions = {
+  // Prevent if wront version of using tailwind module
+  requireNuxtVersion(nuxt.constructor.version, '2.10')
+  if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
+    logger.error('Cannot use Windi CSS with tailwindcss. Please remove the `@nuxtjs/tailwindcss` module.')
+    return
+  }
+
+  const defaultConfig : UserOptions = {
+    config: '~/windi.config.js',
     root: nuxtOptions.rootDir,
     scan: {
       dirs: ['./'],
       exclude: [
         'node_modules',
         '.git',
-        '.nuxt/**/*',
+        '.nuxt',
         '*.template.html',
         'app.html'
-      ]
+      ],
+      include: []
     },
     transformCSS: 'pre',
     preflight: {
@@ -32,39 +43,48 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       }
     }
   }
-  const options = defu.arrayFn(moduleOptions, nuxt.options.tailwindcss, nuxt.options.windicss, windicssOptions) as UserOptions
 
-  requireNuxtVersion(nuxt.constructor.version, '2.10')
+  const config = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
 
-  if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
-    logger.error('Cannot use Windi CSS with tailwindcss. Please remove the `@nuxtjs/tailwindcss` module.')
-    return
+  if (typeof config.config === 'string') {
+    const configPath = nuxt.resolver.resolveAlias(config.config)
+    if (existsSync(configPath)) {
+      clearModule(configPath)
+      logger.info(`Reading Windi config from ~/windi.config.js`)
+      config.config = nuxt.resolver.requireModule(configPath)
+      // Restart Nuxt if windi file updates (for modules using windicss:config hook)
+      if (nuxt.options.dev) {
+        nuxt.options.watch.push(configPath)
+      }
+    }
+  } else {
+    logger.info('Reading Windi config from Nuxt config `windicss.config` property')
   }
 
   nuxt.hook('build:before', async () => {
     // allow users to override the windicss config
     // if they decided to return false - disabling windicss
-    await nuxt.callHook('windicss:config', options)
+    await nuxt.callHook('windicss:config', config)
 
-    logger.debug('Post hook options', options)
+    logger.debug('Post hook windicss:config', config)
 
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
-    this.extendBuild((config: WebpackConfig,) => {
-      if (! config.plugins) { config.plugins = [] }
-      config.plugins.push(
-          // push our webpack plugin
-          new WindiCSSWebpackPlugin(options)
+    this.extendBuild((webpackConfig: WebpackConfig,) => {
+      webpackConfig.plugins = webpackConfig.plugins || []
+      // push our webpack plugin
+      webpackConfig.plugins.push(
+        new WindiCSSWebpackPlugin(config)
       )
     })
   })
 
 
-  nuxt.hook('vite:extend', ({config, nuxt}: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
-    nuxt.options.alias['windi.css'] = 'virtual:windi.css'
+  nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }, config: { plugins: any[] } }) => {
+    vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
     // @ts-ignore
-    config.plugins.push(WindiCSSVitePlugin(options))
+    vite.config.plugins.push(WindiCSSVitePlugin(config))
   })
 
 }
