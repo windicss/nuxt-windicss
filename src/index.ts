@@ -50,12 +50,14 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
     const configPath = nuxt.resolver.resolveAlias(config.config)
     if (existsSync(configPath)) {
       clearModule(configPath)
-      logger.info(`Reading Windi config from ~/windi.config.js`)
+      logger.info(`Reading Windi config from ${config.config}`)
       config.config = nuxt.resolver.requireModule(configPath)
       // Restart Nuxt if windi file updates (for modules using windicss:config hook)
       if (nuxt.options.dev) {
         nuxt.options.watch.push(configPath)
       }
+    } else {
+      config.config = {}
     }
   } else {
     logger.info('Reading Windi config from Nuxt config `windicss.config` property')
