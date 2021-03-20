@@ -47,7 +47,8 @@
     "start:preset": "export NODE_ENV=production && nuxt start test/fixtures/preset",
     "start:static": "export NODE_ENV=production && nuxt start test/fixtures/static",
     "start:vuetify": "export NODE_ENV=production && nuxt start test/fixtures/vuetify",
-    "test": "yarn lint && jest --verbose --detectOpenHandles"
+    "test": "yarn lint && jest --verbose --detectOpenHandles",
+    "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
   },
   "dependencies": {
     "clear-module": "^4.1.1",
@@ -81,6 +82,7 @@
     "@types/lodash": "latest",
     "@types/rimraf": "^3.0.0",
     "@types/semver": "latest",
+    "auto-changelog": "^2.2.1",
     "bootstrap-vue": "^2.21.2",
     "cheerio": "^1.0.0-rc.5",
     "dotenv-cli": "^4.0.0",
