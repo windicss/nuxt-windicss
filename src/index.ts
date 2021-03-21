@@ -22,7 +22,6 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   }
 
   const defaultConfig : UserOptions = {
-    config: '~/windi.config.js',
     root: nuxtOptions.rootDir,
     scan: {
       dirs: ['./'],
@@ -40,27 +39,35 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       alias: {
         // add nuxt aliases
         'nuxt-link': 'a',
+        // @nuxt/image module
+        'nuxt-img': 'img',
       }
     }
   }
 
   const config = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
 
-  if (typeof config.config === 'string') {
-    const configPath = nuxt.resolver.resolveAlias(config.config)
+  /*
+   * If a config isn't preset then check for windi.config.js and setup the nuxt watcher on it otherwise the config may
+   * be using one of the following:
+   * - windi.config.ts
+   * - windi.config.js
+   * - tailwind.config.ts
+   * - tailwind.config.js
+   *
+   * Note: we should let the @windi/util package resolve the config if it's different
+   */
+  if (typeof config.config === 'undefined') {
+    const preferredConfigPath = '~/windi.config.js'
+    const configPath = nuxt.resolver.resolveAlias(preferredConfigPath)
     if (existsSync(configPath)) {
       clearModule(configPath)
-      logger.info(`Reading Windi config from ${config.config}`)
-      config.config = nuxt.resolver.requireModule(configPath)
+      logger.info(`Reading Windi config from ${preferredConfigPath}`)
       // Restart Nuxt if windi file updates (for modules using windicss:config hook)
       if (nuxt.options.dev) {
         nuxt.options.watch.push(configPath)
       }
-    } else {
-      config.config = {}
     }
-  } else {
-    logger.info('Reading Windi config from Nuxt config `windicss.config` property')
   }
 
   nuxt.hook('build:before', async () => {

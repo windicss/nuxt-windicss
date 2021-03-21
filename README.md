@@ -53,9 +53,9 @@ buildModules: [
 ],
 ```
 
-If you have a `tailwind.config.js`, please rename it to `windi.config.js`.
+If you have a `tailwind.config.js`, please rename it to `windi.config.js` or `windi.config.ts`.
 
-This module will read from `windi.config.js` config if present. See [here](https://windicss.netlify.app/guide/configuration.html) for details.
+See [here](https://windicss.netlify.app/guide/configuration.html) for configuration details.
 
 
 ## Migrating
@@ -66,21 +66,28 @@ If you were previously using `@nuxtjs/tailwindcss`, please consult the [document
 
 - Default:
 ```js
-windicss: {
-  scan: {
-    dirs: ['./'],
+export default {
+  // ...
+  windicss: {
+    scan: {
+      dirs: [ './' ],
       exclude: [
+        'node_modules',
+        '.git',
         '.nuxt/**/*',
         '*.template.html',
-        // Any classes added in app.html (that have not previously been referenced) will need to be added to the safelist
         'app.html'
-      ]
-  },
-  transformCSS: 'pre',
-  preflight: {
-    alias: {
-      // add nuxt aliases
-      'nuxt-link': 'a',
+      ],
+      include: []
+    },
+    transformCSS: 'pre',
+    preflight: {
+      alias: {
+        // add nuxt aliases
+        'nuxt-link': 'a',
+        // @nuxt/image module
+        'nuxt-img': 'img',
+      }
     }
   }
 }
