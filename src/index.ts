@@ -29,7 +29,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       exclude: [
         'node_modules',
         '.git',
-        '.nuxt',
+        '.nuxt/**/*',
         '*.template.html',
         'app.html'
       ],
