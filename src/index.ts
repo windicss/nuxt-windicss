@@ -62,17 +62,21 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const ctxOnConfigResolved = config.onConfigResolved
   let passed = false
   config.onConfigResolved = (windiConfig: Config, configFilePath?: string) => {
-    // this hook is ran twice for some reason
-    if (configFilePath && !passed) {
-      clearModule(configFilePath)
+    if (!passed) {
       const version = require('windicss/package.json').version
-      logger.info(`windicss@${version} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
-      // Restart Nuxt if windi file updates (for modules using windicss:config hook)
-      if (nuxt.options.dev) {
-        nuxt.options.watch.push(configFilePath)
+      // this hook is ran twice for some reason
+      if (configFilePath) {
+        clearModule(configFilePath)
+        logger.info(`windicss@${version} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
+        // Restart Nuxt if windi file updates (for modules using windicss:config hook)
+        if (nuxt.options.dev) {
+          nuxt.options.watch.push(configFilePath)
+        }
+      } else {
+        logger.info(`windicss@${version} running with inline config.\``)
       }
+      passed = true
     }
-    passed = true
     if (ctxOnConfigResolved) {
       const result = ctxOnConfigResolved(windiConfig, configFilePath)
       return typeof result === 'object' ? result : windiConfig
