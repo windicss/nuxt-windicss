@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 data-testid="title bg-red-400 p-5 block">
+    <h1 class="title bg-red-600 p-5 block text-white">
       Hello Static
     </h1>
   </div>

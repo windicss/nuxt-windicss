@@ -2,13 +2,13 @@ import type { Module, NuxtOptions } from '@nuxt/types'
 import type { Configuration as WebpackConfig } from 'webpack'
 import { requireNuxtVersion } from './compatibility'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
-import WindiCSSVitePlugin from 'vite-plugin-windicss'
-import { resolve } from 'upath'
-import { existsSync } from 'fs'
+import WindiCSSVitePlugin, {ResolvedOptions} from 'vite-plugin-windicss'
+import { resolve, relative } from 'upath'
 import logger from './logger'
 import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
+import { Config } from 'windicss/types/interfaces'
 
 const windicssModule: Module<UserOptions> = function (moduleOptions) {
   const nuxt = this.nuxt
@@ -47,36 +47,42 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
 
   const config = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
 
-  /*
-   * If a config isn't preset then check for windi.config.js and setup the nuxt watcher on it otherwise the config may
-   * be using one of the following:
-   * - windi.config.ts
-   * - windi.config.js
-   * - tailwind.config.ts
-   * - tailwind.config.js
-   *
-   * Note: we should let the @windi/util package resolve the config if it's different
-   */
-  if (typeof config.config === 'undefined') {
-    const preferredConfigPath = '~/windi.config.js'
-    const configPath = nuxt.resolver.resolveAlias(preferredConfigPath)
-    if (existsSync(configPath)) {
-      clearModule(configPath)
-      logger.info(`Reading Windi config from ${preferredConfigPath}`)
+  // allow user to override the
+  const ctxOnOptionsResolved = config.onOptionsResolved
+  config.onOptionsResolved = (options: ResolvedOptions) => {
+    if (ctxOnOptionsResolved) {
+      const result = ctxOnOptionsResolved(options)
+      return typeof result === 'object' ? result : options
+    }
+    const result = nuxt.callHook('windicss:options', options)
+    logger.debug('Post hook windicss:options', result)
+    return typeof result === 'object' ? result : options
+  }
+
+  const ctxOnConfigResolved = config.onConfigResolved
+  let passed = false
+  config.onConfigResolved = (windiConfig: Config, configFilePath?: string) => {
+    // this hook is ran twice for some reason
+    if (configFilePath && !passed) {
+      clearModule(configFilePath)
+      const version = require('windicss/package.json').version
+      logger.info(`windicss@${version} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
       // Restart Nuxt if windi file updates (for modules using windicss:config hook)
       if (nuxt.options.dev) {
-        nuxt.options.watch.push(configPath)
+        nuxt.options.watch.push(configFilePath)
       }
     }
+    passed = true
+    if (ctxOnConfigResolved) {
+      const result = ctxOnConfigResolved(windiConfig, configFilePath)
+      return typeof result === 'object' ? result : windiConfig
+    }
+    const result = nuxt.callHook('windicss:config', windiConfig)
+    logger.debug('Post hook windicss:config', result)
+    return typeof result === 'object' ? result : windiConfig
   }
 
   nuxt.hook('build:before', async () => {
-    // allow users to override the windicss config
-    // if they decided to return false - disabling windicss
-    await nuxt.callHook('windicss:config', config)
-
-    logger.debug('Post hook windicss:config', config)
-
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
@@ -84,7 +90,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       webpackConfig.plugins = webpackConfig.plugins || []
       // push our webpack plugin
       webpackConfig.plugins.push(
-        new WindiCSSWebpackPlugin(config)
+          new WindiCSSWebpackPlugin(config)
       )
     })
   })
