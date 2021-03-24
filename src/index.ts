@@ -54,9 +54,9 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       const result = ctxOnOptionsResolved(options)
       return typeof result === 'object' ? result : options
     }
-    const result = nuxt.callHook('windicss:options', options)
-    logger.debug('Post hook windicss:options', result)
-    return typeof result === 'object' ? result : options
+    nuxt.callHook('windicss:options', options)
+    logger.debug('Post hook windicss:options', options)
+    return options
   }
 
   const ctxOnConfigResolved = config.onConfigResolved
@@ -73,7 +73,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
           nuxt.options.watch.push(configFilePath)
         }
       } else {
-        logger.info(`windicss@${version} running with inline config.\``)
+        logger.info(`windicss@${version} running with inline config.`)
       }
       passed = true
     }
@@ -81,9 +81,9 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       const result = ctxOnConfigResolved(windiConfig, configFilePath)
       return typeof result === 'object' ? result : windiConfig
     }
-    const result = nuxt.callHook('windicss:config', windiConfig)
-    logger.debug('Post hook windicss:config', result)
-    return typeof result === 'object' ? result : windiConfig
+    nuxt.callHook('windicss:config', windiConfig)
+    logger.debug('Post hook windicss:config', windiConfig)
+    return windiConfig
   }
 
   nuxt.hook('build:before', async () => {
