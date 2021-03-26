@@ -40,6 +40,6 @@ describe('Production test', () => {
     // @ts-ignore
     const { html } = await getNuxt().server.renderRoute('/')
     const $ = cheerio.load(html)
-    expect($('style').first().html()).toMatchSnapshot()
+    expect($('style').eq(1).html()).toMatchSnapshot()
   })
 })
