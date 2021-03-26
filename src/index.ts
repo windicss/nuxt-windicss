@@ -7,7 +7,6 @@ import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
 import { Config } from 'windicss/types/interfaces'
-import { version as windiVersion } from 'windicss/package.json'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 
@@ -66,16 +65,17 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   // @ts-ignore
   config.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
     if (!passed) {
+      const { version } = nuxt.resolver.requireModule('windicss/package.json')
       // this hook is ran twice for some reason
       if (configFilePath) {
         clearModule(configFilePath)
-        logger.info(`windicss@${windiVersion} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
+        logger.info(`windicss@${version} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
         // Restart Nuxt if windi file updates (for modules using windicss:config hook)
         if (nuxt.options.dev)
           nuxt.options.watch.push(configFilePath)
       }
       else {
-        logger.info(`windicss@${windiVersion} running with inline config.`)
+        logger.info(`windicss@${version} running with inline config.`)
       }
       passed = true
     }

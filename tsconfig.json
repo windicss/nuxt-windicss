@@ -14,10 +14,8 @@
     "resolveJsonModule": true,
     "types": [
       "@types/node",
-      "@types/jest",
-      "@types/mocha",
-      "@nuxt/jest",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@types/jest"
     ]
   },
   "include": [
