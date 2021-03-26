@@ -49,19 +49,21 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
 
   // allow user to override the
   const ctxOnOptionsResolved = config.onOptionsResolved
-  config.onOptionsResolved = (options: ResolvedOptions) => {
+  // @ts-ignore
+  config.onOptionsResolved = async (options: ResolvedOptions) => {
     if (ctxOnOptionsResolved) {
       const result = ctxOnOptionsResolved(options)
       return typeof result === 'object' ? result : options
     }
-    nuxt.callHook('windicss:options', options)
+    await nuxt.callHook('windicss:options', options)
     logger.debug('Post hook windicss:options', options)
     return options
   }
 
   const ctxOnConfigResolved = config.onConfigResolved
   let passed = false
-  config.onConfigResolved = (windiConfig: Config, configFilePath?: string) => {
+  // @ts-ignore
+  config.onConfigResolved = async (windiConfig: Config, configFilePath?: string) => {
     if (!passed) {
       const version = require('windicss/package.json').version
       // this hook is ran twice for some reason
@@ -81,7 +83,7 @@ const windicssModule: Module<UserOptions> = function (moduleOptions) {
       const result = ctxOnConfigResolved(windiConfig, configFilePath)
       return typeof result === 'object' ? result : windiConfig
     }
-    nuxt.callHook('windicss:config', windiConfig)
+    await nuxt.callHook('windicss:config', windiConfig)
     logger.debug('Post hook windicss:config', windiConfig)
     return windiConfig
   }

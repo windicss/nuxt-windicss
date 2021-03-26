@@ -13,7 +13,9 @@ export default function () {
   })
 
   hook('windicss:config', function (config) {
-    config = defu.arrayFn(config || {}, defaultWindiConfig)
+    Object.assign(config, defaultWindiConfig)
+
+    config.darkMode = false
 
     // Workaround for typography plugin not being a function supporting theme
     if (typeof config.theme.extend.typography === 'function') {
