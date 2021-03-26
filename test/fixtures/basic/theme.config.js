@@ -2,17 +2,17 @@ import { resolve } from 'path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
 
-export default function () {
+export default function() {
   const nuxt = this.nuxt
   const { hook, options } = nuxt
 
-  hook('windicss:options', function (resolvedOptions) {
+  hook('windicss:options', (resolvedOptions) => {
     // include user content directory in scan process
     resolvedOptions.scanOptions.dirs.push(resolve(options.srcDir, 'components'))
     return resolvedOptions
   })
 
-  hook('windicss:config', function (config) {
+  hook('windicss:config', (config) => {
     Object.assign(config, defaultWindiConfig)
 
     config.darkMode = false

@@ -1,19 +1,19 @@
 import { NuxtConfig } from '@nuxt/types'
 import windicssModule from '../../../src'
 
-const config : NuxtConfig = {
+const config: NuxtConfig = {
   modules: [
     '@nuxtjs/auth',
     'bootstrap-vue/nuxt',
     '@nuxtjs/sitemap',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   buildModules: [
     '@nuxt/typescript-build',
-    windicssModule
+    windicssModule,
   ],
 
-  components: true
+  components: true,
 }
 
 export default config

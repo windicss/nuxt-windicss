@@ -7,9 +7,11 @@
         <svg-logo />
         <img :src="require('../image/small.svg?data')" class="bg-red-400">
         <img :src="require('../image/small.svg')" class="bg-green-500">
-        <div v-html="require('../image/small.svg?raw')" class="bg-red-600 rounded-full inline-block"/>
+        <div class="bg-red-600 rounded-full inline-block" v-html="require('../image/small.svg?raw')" />
       </h1>
-      <nuxt-link to="/pug" class="block underline">Pug</nuxt-link>
+      <nuxt-link to="/pug" class="block underline">
+        Pug
+      </nuxt-link>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -37,8 +39,8 @@ import SvgLogo from '../image/small.svg?inline'
 
 export default {
   components: {
-    SvgLogo
-  }
+    SvgLogo,
+  },
 }
 </script>
 

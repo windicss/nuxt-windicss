@@ -8,11 +8,11 @@
     "windicss",
     "tailwindcss"
   ],
-  "homepage": "https://github.com/loonpwn/nuxt-windicss-module",
-  "bugs": "https://github.com/loonpwn/nuxt-windicss-module/issues",
+  "homepage": "https://github.com/windicss/nuxt-windicss-module",
+  "bugs": "https://github.com/windicss/nuxt-windicss-module/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/loonpwn/nuxt-windicss-module"
+    "url": "https://github.com/windicss/nuxt-windicss-module"
   },
   "license": "MIT",
   "exports": {
@@ -54,13 +54,14 @@
     "clear-module": "^4.1.1",
     "defu": "^3.2.2",
     "rimraf": "^3.0.2",
-    "semver": "^7.3.4",
+    "semver": "^7.3.5",
     "upath": "^2.0.1",
-    "vite-plugin-windicss": "^0.9.11",
-    "windicss-webpack-plugin": "^0.2.7"
+    "vite-plugin-windicss": "^0.10.1",
+    "windicss-webpack-plugin": "^0.2.8"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.13.10",
+    "@antfu/eslint-config": "^0.6.2",
+    "@babel/preset-env": "7.13.12",
     "@babel/preset-typescript": "7.13.0",
     "@nuxt/content": "^1.14.0",
     "@nuxt/image": "^0.4.1",
@@ -74,12 +75,13 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/svg": "^0.1.12",
-    "@nuxtjs/tailwindcss": "^4.0.1",
+    "@nuxtjs/tailwindcss": "^4.0.2",
     "@nuxtjs/vuetify": "^1.11.3",
     "@tailwindcss/typography": "^0.4.0",
-    "@types/jest": "26.0.21",
-    "@types/loader-utils": "latest",
+    "@types/jest": "^26.0.22",
+    "@types/loader-utils": "2.0.2",
     "@types/lodash": "latest",
+    "@types/mocha": "^8.2.2",
     "@types/rimraf": "^3.0.0",
     "@types/semver": "latest",
     "auto-changelog": "^2.2.1",
@@ -88,10 +90,10 @@
     "dotenv-cli": "^4.0.0",
     "element-ui": "^2.15.1",
     "eslint": "7.22.0",
-    "eslint-webpack-plugin": "^2.5.2",
+    "eslint-webpack-plugin": "^2.5.3",
     "jest": "latest",
     "loader-utils": "latest",
-    "nuxt-edge": "2.16.0-26938120.9247190c",
+    "nuxt-edge": "2.16.0-26945301.a6fc5da5",
     "nuxt-vite": "^0.0.36",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",

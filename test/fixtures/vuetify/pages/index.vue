@@ -72,7 +72,9 @@
                     <v-list-item-avatar class="bg-blue-600" />
 
                     <v-list-item-content>
-                      <v-list-item-title class="text-xl font-light border-b-2 border-gray-500 inline bg-yellow-100 text-yellow-900">Message {{ n }}</v-list-item-title>
+                      <v-list-item-title class="text-xl font-light border-b-2 border-gray-500 inline bg-yellow-100 text-yellow-900">
+                        Message {{ n }}
+                      </v-list-item-title>
 
                       <v-list-item-subtitle class="text-lg md:text-xs">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique
@@ -107,8 +109,8 @@ export default {
       ['mdi-inbox-arrow-down', 'Inbox'],
       ['mdi-send', 'Send'],
       ['mdi-delete', 'Trash'],
-      ['mdi-alert-octagon', 'Spam']
-    ]
-  })
+      ['mdi-alert-octagon', 'Spam'],
+    ],
+  }),
 }
 </script>

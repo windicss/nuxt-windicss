@@ -132,5 +132,5 @@ Modify the windicss configuration before it is passed to the webpack plugin.
 
 ## License
 
-MIT License © 2021 [Harlan Wilton](https://github.com/loonpwn)
+MIT License © 2021 [Harlan Wilton](https://github.com/harlan-zw)
 
