@@ -47,7 +47,7 @@
     "start:preset": "export NODE_ENV=production && nuxt start test/fixtures/preset",
     "start:static": "export NODE_ENV=production && nuxt start test/fixtures/static",
     "start:vuetify": "export NODE_ENV=production && nuxt start test/fixtures/vuetify",
-    "test": "yarn lint && jest --verbose --detectOpenHandles",
+    "test": "yarn lint && jest --verbose ",
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
   },
   "dependencies": {
@@ -82,9 +82,11 @@
     "@types/loader-utils": "2.0.2",
     "@types/lodash": "latest",
     "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.36",
     "@types/rimraf": "^3.0.0",
     "@types/semver": "latest",
     "auto-changelog": "^2.2.1",
+    "babel-jest": "^26.6.3",
     "bootstrap-vue": "^2.21.2",
     "cheerio": "^1.0.0-rc.5",
     "dotenv-cli": "^4.0.0",
@@ -100,6 +102,7 @@
     "release-it": "^14.5.0",
     "siroc": "0.8.0",
     "standard-version": "9.1.1",
-    "tailwindcss-dark-mode": "^1.1.7"
+    "tailwindcss-dark-mode": "^1.1.7",
+    "ts-jest": "^26.5.4"
   }
 }

@@ -16,6 +16,7 @@ describe('Dev test', () => {
   })
 
   test('renders index route', async() => {
+    // @ts-ignore
     const { html } = await getNuxt().server.renderRoute('/')
     const $ = cheerio.load(html)
     expect($('style').first().html()).toMatchSnapshot()
@@ -36,6 +37,7 @@ describe('Production test', () => {
   })
 
   test('renders index route', async() => {
+    // @ts-ignore
     const { html } = await getNuxt().server.renderRoute('/')
     const $ = cheerio.load(html)
     expect($('style').first().html()).toMatchSnapshot()

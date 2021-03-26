@@ -4,5 +4,8 @@
     "jest": true
   },
   "extends": "@antfu",
-  "plugins": ["jest"]
+  "plugins": ["jest"],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off"
+  }
 }
