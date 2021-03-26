@@ -1,10 +1,8 @@
-// @ts-nocheck nuxt internals not typed!
 import { setupTest, getNuxt } from '@nuxt/test-utils'
 
 const cheerio = require('cheerio')
 
 describe('Dev test', () => {
-  console.warn = jest.fn() // eslint-disable-line no-console
 
   // @ts-ignore
   setupTest({
@@ -13,32 +11,19 @@ describe('Dev test', () => {
     configFile: 'nuxt.config.ts',
     build: true,
     config: {
-      dev: true
-    }
+      dev: true,
+    },
   })
 
-  test('renders index route', async () => {
+  test('renders index route', async() => {
     const { html } = await getNuxt().server.renderRoute('/')
     const $ = cheerio.load(html)
-    expect($('[data-testid="title"]').text().trim()).toEqual('Hello World')
-    expect($('[data-testid="smallImg"]').attr('src')).toEqual('/_nuxt/test/fixtures/basic/image/small.svg')
-    expect($('[data-testid="bigImg"]').attr('src')).toEqual('/_nuxt/test/fixtures/basic/image/big.jpg')
+    expect($('style').first().html()).toMatchSnapshot()
   })
 
-  test('nuxt options are updated', async () => {
-    const options = await getNuxt().options
-    expect(options.build.cache).toBeTruthy()
-    expect(options.build.hardSource).toBeFalsy()
-    expect(options.build.parallel).toBeFalsy()
-
-    expect(options.features.layouts).toBeFalsy()
-    expect(options.features.store).toBeFalsy()
-  })
 })
 
 describe('Production test', () => {
-  console.warn = jest.fn() // eslint-disable-line no-console
-
   // @ts-ignore
   setupTest({
     testDir: __dirname,
@@ -46,15 +31,13 @@ describe('Production test', () => {
     configFile: 'nuxt.config.ts',
     build: true,
     config: {
-      dev: false
-    }
+      dev: false,
+    },
   })
 
-  test('renders index route', async () => {
+  test('renders index route', async() => {
     const { html } = await getNuxt().server.renderRoute('/')
     const $ = cheerio.load(html)
-    expect($('[data-testid="title"]').text().trim()).toEqual('Hello World')
-    expect($('[data-testid="smallImg"]').attr('src')).toContain('data:image/svg+xml;base64,')
-    expect($('[data-testid="bigImg"]').attr('src')).toContain('/_nuxt/img/big')
+    expect($('style').first().html()).toMatchSnapshot()
   })
 })

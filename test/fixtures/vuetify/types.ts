@@ -9,16 +9,16 @@ export interface ChatMessageAttributes extends Object {
 }
 
 export default class ChatMessage {
-  system: boolean = false
+  system = false
   id = String(Math.random())
   sent = false
   disabled = false
   actions: ChatMessageAction[] = []
   contentUrl: Promise<string> | false = false
-  filename: string = ''
-  isImage: boolean = false
+  filename = ''
+  isImage = false
 
-  constructor (data: any) {
+  constructor(data: any) {
     Object.assign(this, data)
   }
 }

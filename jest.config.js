@@ -1,7 +1,7 @@
 module.exports = {
   preset: '@nuxt/test-utils',
   transformIgnorePatterns: [
-    'node_modules/(?!@nuxtjs\\/vuetify)'
+    'node_modules/(?!@nuxtjs\\/vuetify)',
   ],
-  testTimeout: 10000
+  testTimeout: 10000,
 }

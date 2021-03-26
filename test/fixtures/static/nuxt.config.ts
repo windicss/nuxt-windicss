@@ -1,12 +1,12 @@
 import { NuxtConfig } from '@nuxt/types'
 import nuxtWindicssModule from '../../../src'
 
-const config : NuxtConfig = {
+const config: NuxtConfig = {
   target: 'static',
   modern: 'client',
   buildModules: [
-    nuxtWindicssModule
-  ]
+    nuxtWindicssModule,
+  ],
 }
 
 export default config

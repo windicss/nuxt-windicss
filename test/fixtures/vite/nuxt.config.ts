@@ -1,11 +1,11 @@
 import { NuxtConfig } from '@nuxt/types'
 import windicssModule from '../../../dist'
 
-const config : NuxtConfig = {
+const config: NuxtConfig = {
   buildModules: [
     'nuxt-vite',
-    windicssModule
-  ]
+    windicssModule,
+  ],
 }
 
 export default config

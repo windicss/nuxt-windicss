@@ -1,16 +1,16 @@
 import { NuxtConfig } from '@nuxt/types'
 import windicss from '../../../src'
 
-const config : NuxtConfig = {
+const config: NuxtConfig = {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/vuetify',
-    windicss
+    windicss,
   ],
 
   windicss: {
-    viewer: true
-  }
+    viewer: true,
+  },
 }
 
 export default config

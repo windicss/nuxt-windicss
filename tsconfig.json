@@ -10,9 +10,18 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "stripInternal": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "types": [
+      "@types/node",
+      "@types/jest",
+      "@types/mocha",
+      "@nuxt/jest",
+      "@nuxt/types"
+    ]
   },
   "include": [
-    "src"
+    "src",
+    "test"
   ]
 }

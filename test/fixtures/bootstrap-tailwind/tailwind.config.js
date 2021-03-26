@@ -16,17 +16,17 @@ module.exports = {
         primary: '#d8002d',
         secondary: '#333',
         dark: '#091a28',
-        elevated: '#dfe8ef'
+        elevated: '#dfe8ef',
       },
       margin: {
-        'top-bar': '100px'
+        'top-bar': '100px',
       },
       fontFamily: {
-        Saira: ['Saira']
+        Saira: ['Saira'],
       },
       maxWidth: {
-        '1/4': '25%'
-      }
-    }
+        '1/4': '25%',
+      },
+    },
   },
 }
