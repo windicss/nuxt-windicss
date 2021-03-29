@@ -28,11 +28,11 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       exclude: [
         'node_modules',
         '.git',
+        '.github',
         '.nuxt/**/*',
         '*.template.html',
         'app.html',
       ],
-      include: [],
     },
     transformCSS: 'pre',
     preflight: {
@@ -50,19 +50,18 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   // allow user to override the
   const ctxOnOptionsResolved = config.onOptionsResolved
   // @ts-ignore
-  config.onOptionsResolved = (options: ResolvedOptions) => {
+  config.onOptionsResolved = async (options: ResolvedOptions) => {
     if (ctxOnOptionsResolved) {
       const result = ctxOnOptionsResolved(options)
       return typeof result === 'object' ? result : options
     }
-    nuxt.callHook('windicss:options', options)
+    await nuxt.callHook('windicss:options', options)
     logger.debug('Post hook windicss:options', options)
     return options
   }
 
   const ctxOnConfigResolved = config.onConfigResolved
   let passed = false
-  // @ts-ignore
   config.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
     if (!passed) {
       const { version } = nuxt.resolver.requireModule('windicss/package.json')
