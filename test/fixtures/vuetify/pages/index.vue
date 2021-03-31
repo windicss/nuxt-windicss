@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-system-bar app>
-      <v-btn data-testid="button text-green-400 text-6xl">
+      <v-btn data-testid="button tw-text-green-400 tw-text-6xl">
         Hello Windi 2
       </v-btn>
       <v-spacer />
@@ -27,7 +27,7 @@
           size="64"
         />
 
-        <div>john@vuetifyjs.com</div>
+        <div class="tw-bg-green-500 tw-text-white tw-p-3">john@vuetifyjs.com</div>
       </v-sheet>
 
       <v-divider />
