@@ -69,14 +69,14 @@
 
                     :key="n"
                   >
-                    <v-list-item-avatar class="bg-blue-600" />
+                    <v-list-item-avatar class="tw-bg-blue-300" />
 
                     <v-list-item-content>
-                      <v-list-item-title class="text-xl font-light border-b-2 border-gray-500 inline bg-yellow-100 text-yellow-900">
+                      <v-list-item-title class="tw-text-xl tw-font-light tw-border-b-2 tw-border-gray-500 tw-inline tw-bg-yellow-100 tw-text-yellow-900">
                         Message {{ n }}
                       </v-list-item-title>
 
-                      <v-list-item-subtitle class="text-lg md:text-xs">
+                      <v-list-item-subtitle class="tw-text-lg md:tw-text-xs">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique
                       </v-list-item-subtitle>
                     </v-list-item-content>
