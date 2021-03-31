@@ -70,15 +70,15 @@ export default {
   // ...
   windicss: {
     scan: {
-      dirs: [ './' ],
+      dirs: ['./'],
       exclude: [
         'node_modules',
         '.git',
+        '.github',
         '.nuxt/**/*',
         '*.template.html',
-        'app.html'
+        'app.html',
       ],
-      include: []
     },
     transformCSS: 'pre',
     preflight: {
@@ -87,8 +87,8 @@ export default {
         'nuxt-link': 'a',
         // @nuxt/image module
         'nuxt-img': 'img',
-      }
-    }
+      },
+    },
   }
 }
 ```  
@@ -114,9 +114,19 @@ export default {
 You can use the following nuxt hooks to modify the behaviour of the code.
 
 `windicss:config`
+- Arguments: FullConfig
+
+Modify the Windi CSS configuration before it is passed to the webpack plugin.
+
+Useful for making runtime style changes.
+
+`windicss:options`
 - Arguments: options
 
-Modify the windicss configuration before it is passed to the webpack plugin.
+Modify the Windi CSS options before they are passed to the webpack plugin. 
+
+Useful for adding runtime directories to the scan path.
+
 
 ## Caveats
 
