@@ -102,7 +102,7 @@
     "pug-plain-loader": "^1.1.0",
     "release-it": "^14.5.0",
     "siroc": "0.8.0",
-    "standard-version": "9.1.1",
+    "standard-version": "9.2.0",
     "tailwindcss-dark-mode": "^1.1.7",
     "ts-jest": "^26.5.4"
   }
