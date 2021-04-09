@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 h1 {
   @apply bg-blue-800;
   span {

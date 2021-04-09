@@ -561,9 +561,9 @@ img {
 .prose-xl > :last-child {
   margin-bottom: 0;
 }
-.bg-red-200 {
+.bg-red-50 {
   --tw-bg-opacity: 1;
-  background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
+  background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
 }
 .rounded-full {
   border-radius: 9999px;
@@ -583,6 +583,10 @@ img {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 .mx-auto {
   margin-left: auto;
@@ -651,4 +655,4 @@ img {
 }"
 `;
 
-exports[`Production test renders index route 1`] = `"h1[data-v-15b669b6]{--tw-bg-opacity:1;background-color:rgba(7,89,133,var(--tw-bg-opacity))}h1 span[data-v-15b669b6]{--tw-text-opacity:1;color:rgba(52,211,153,var(--tw-text-opacity))}"`;
+exports[`Production test renders index route 1`] = `"h1{--tw-bg-opacity:1;background-color:rgba(7,89,133,var(--tw-bg-opacity))}h1 span{--tw-text-opacity:1;color:rgba(52,211,153,var(--tw-text-opacity))}"`;
