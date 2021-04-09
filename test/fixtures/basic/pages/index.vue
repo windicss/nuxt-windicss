@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-red-200 h-full">
+  <div class="bg-red-50 h-full">
     <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-50">
       Nuxt WindiCSS Module
       <span>test</span>
     </h1>
-    <div class="text-center">
+    <div class="text-center my-5">
       <nuxt-link to="/page2" class="underline text-red-900 mx-auto pb-5 block">
         Test link
       </nuxt-link>
@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 h1 {
   @apply bg-blue-800;
   span {

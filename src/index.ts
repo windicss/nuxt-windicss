@@ -1,5 +1,4 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
-import type { Configuration as WebpackConfig } from 'webpack'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import WindiCSSVitePlugin, { ResolvedOptions } from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
@@ -7,6 +6,7 @@ import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
 import { Config } from 'windicss/types/interfaces'
+import { Configuration as WebpackConfiguration } from 'webpack'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 
@@ -45,12 +45,12 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     },
   }
 
-  const config = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
+  const windiConfig = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
 
   // allow user to override the
-  const ctxOnOptionsResolved = config.onOptionsResolved
+  const ctxOnOptionsResolved = windiConfig.onOptionsResolved
   // @ts-ignore
-  config.onOptionsResolved = async (options: ResolvedOptions) => {
+  windiConfig.onOptionsResolved = async(options: ResolvedOptions) => {
     if (ctxOnOptionsResolved) {
       const result = ctxOnOptionsResolved(options)
       return typeof result === 'object' ? result : options
@@ -60,9 +60,9 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     return options
   }
 
-  const ctxOnConfigResolved = config.onConfigResolved
+  const ctxOnConfigResolved = windiConfig.onConfigResolved
   let passed = false
-  config.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
+  windiConfig.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
     if (!passed) {
       const { version } = nuxt.resolver.requireModule('windicss/package.json')
       // this hook is ran twice for some reason
@@ -91,11 +91,12 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
-    this.extendBuild((webpackConfig: WebpackConfig) => {
-      webpackConfig.plugins = webpackConfig.plugins || []
+    // @ts-ignore
+    this.extendBuild((config: WebpackConfiguration) => {
+      config.plugins = config.plugins || []
       // push our webpack plugin
-      webpackConfig.plugins.push(
-        new WindiCSSWebpackPlugin(config),
+      config.plugins.push(
+        new WindiCSSWebpackPlugin(windiConfig),
       )
     })
   })
@@ -103,7 +104,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }; config: { plugins: any[] } }) => {
     vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
     // @ts-ignore
-    vite.config.plugins.push(WindiCSSVitePlugin(config))
+    vite.config.plugins.push(WindiCSSVitePlugin(windiConfig))
   })
 }
 
