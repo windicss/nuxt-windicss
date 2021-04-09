@@ -1,5 +1,4 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
-import type { Configuration as WebpackConfig } from 'webpack'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import WindiCSSVitePlugin, { ResolvedOptions } from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
