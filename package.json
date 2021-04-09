@@ -65,7 +65,7 @@
     "@babel/preset-typescript": "7.13.0",
     "@nuxt/content": "^1.14.0",
     "@nuxt/image": "^0.4.1",
-    "@nuxt/test-utils": "0.2.0",
+    "@nuxt/test-utils": "0.2.2",
     "@nuxt/types": "2.15.3",
     "@nuxt/typescript-build": "2.1.0",
     "@nuxt/typescript-runtime": "2.1.0",
