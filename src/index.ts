@@ -9,7 +9,6 @@ import { Config } from 'windicss/types/interfaces'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 import {Configuration as WebpackConfiguration} from 'webpack'
-import {ExtendFunctionContext} from '@nuxt/types/config/module'
 
 const windicssModule: Module<UserOptions> = function(moduleOptions) {
   const nuxt = this.nuxt
@@ -93,7 +92,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
     // @ts-ignore
-    this.extendBuild((config: WebpackConfiguration, ctx: ExtendFunctionContext) => {
+    this.extendBuild((config: WebpackConfiguration) => {
       config.plugins = config.plugins || []
       // push our webpack plugin
       config.plugins.push(
