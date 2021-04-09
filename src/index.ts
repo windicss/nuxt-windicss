@@ -9,8 +9,6 @@ import { Config } from 'windicss/types/interfaces'
 import { Configuration as WebpackConfiguration } from 'webpack'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
-import {Configuration as WebpackConfiguration} from 'webpack'
-import {ExtendFunctionContext} from '@nuxt/types/config/module'
 
 const windicssModule: Module<UserOptions> = function(moduleOptions) {
   const nuxt = this.nuxt
