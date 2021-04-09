@@ -1,5 +1,4 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
-import type { Configuration as WebpackConfig } from 'webpack'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import WindiCSSVitePlugin, { ResolvedOptions } from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
@@ -7,6 +6,7 @@ import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions } from '@windicss/plugin-utils'
 import { Config } from 'windicss/types/interfaces'
+import { Configuration as WebpackConfiguration } from 'webpack'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 import {Configuration as WebpackConfiguration} from 'webpack'
@@ -52,7 +52,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   // allow user to override the
   const ctxOnOptionsResolved = windiConfig.onOptionsResolved
   // @ts-ignore
-  windiConfig.onOptionsResolved = async (options: ResolvedOptions) => {
+  windiConfig.onOptionsResolved = async(options: ResolvedOptions) => {
     if (ctxOnOptionsResolved) {
       const result = ctxOnOptionsResolved(options)
       return typeof result === 'object' ? result : options
@@ -94,7 +94,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
     // @ts-ignore
-    this.extendBuild((config: WebpackConfiguration, ctx: ExtendFunctionContext) => {
+    this.extendBuild((config: WebpackConfiguration) => {
       config.plugins = config.plugins || []
       // push our webpack plugin
       config.plugins.push(
