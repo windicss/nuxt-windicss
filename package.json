@@ -91,7 +91,7 @@
     "cheerio": "^1.0.0-rc.5",
     "dotenv-cli": "^4.0.0",
     "element-ui": "^2.15.1",
-    "eslint": "7.22.0",
+    "eslint": "7.24.0",
     "eslint-webpack-plugin": "^2.5.3",
     "jest": "latest",
     "loader-utils": "latest",
