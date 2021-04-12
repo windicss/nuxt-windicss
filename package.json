@@ -96,7 +96,7 @@
     "jest": "latest",
     "loader-utils": "latest",
     "minify-css-string": "^1.0.0",
-    "nuxt-edge": "2.16.0-26945301.a6fc5da5",
+    "nuxt-edge": "2.16.0-26969781.9212d34e",
     "nuxt-vite": "^0.0.36",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
