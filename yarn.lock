@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@antfu/eslint-config-basic@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-basic/-/eslint-config-basic-0.6.2.tgz#87e2d19b62ec9149ef7da071c4acd32f505f68b6"
-  integrity sha512-dEzfh2Kmze50nBVw9tSU9f+srqRiSI6cjW0haAFrvHWJdP0WksS3A5Yqtrfq/vHcqBxZSxKMXJ3nVicuhWGgPQ==
+"@antfu/eslint-config-basic@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-basic/-/eslint-config-basic-0.6.3.tgz#4783a793e0e7b59edeb2e263e23578748b43d3c8"
+  integrity sha512-q2smt6kuoXGX228qesTEuL0hQQX1SvGLScnjVIIG2i5JJbd6Ka9Cyfo29BTjJxRwVFQJhVI/6PDTxmbnTHfNfQ==
   dependencies:
     eslint-config-standard "^16.0.2"
     eslint-plugin-eslint-comments "^3.2.0"
@@ -19,38 +19,38 @@
     jsonc-eslint-parser "^1.0.1"
     yaml-eslint-parser "^0.3.2"
 
-"@antfu/eslint-config-react@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-react/-/eslint-config-react-0.6.2.tgz#019a9e17ecd7936e311b0de682c56f30247ca945"
-  integrity sha512-amhnxl5daKk3LOF7jD7CZTCndYLXzcjYxjCl0t2SyKaRvm+PthVh9NxI4IW9fnEJbX8wke3KUI3gxbI+NYZlfA==
+"@antfu/eslint-config-react@^0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-react/-/eslint-config-react-0.6.4.tgz#1aa2c9ba3dde881870ea8ea46eb91038dae65a1c"
+  integrity sha512-b2lMEA+7zh/15w8fjujGFa4Y09lV+/XY7ezcfHfY+Bz+BqPyhEenS03oWYibLXAehbzyU6DPIsWEUCYX71fdWQ==
   dependencies:
-    "@antfu/eslint-config-ts" "^0.6.2"
+    "@antfu/eslint-config-ts" "^0.6.4"
     eslint-plugin-react "^7.22.0"
 
-"@antfu/eslint-config-ts@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-ts/-/eslint-config-ts-0.6.2.tgz#ad8cfc9800f2d729c0bfca9fc0d7856f4cc88cef"
-  integrity sha512-XvSTICtkaeK4CbgfliHqoD35mxzaijpY5FWmgyx80E9sx3nOKwu2Kh34P+4SD3lsKF9U9cLUivWnfN+9skqkcQ==
+"@antfu/eslint-config-ts@^0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-ts/-/eslint-config-ts-0.6.4.tgz#4017f6488bcc4017ea464c681f605a0d9630d9e5"
+  integrity sha512-BpTca8xadoP/5peuHpr5Oz+vsmBoVuDb+/SnDWZW8ECD4zBPmUKy6pG77TP2A72K+zK3uWAqISKjS3LMDopOUA==
   dependencies:
-    "@antfu/eslint-config-basic" "^0.6.2"
+    "@antfu/eslint-config-basic" "^0.6.3"
     "@typescript-eslint/eslint-plugin" "^4.17.0"
     "@typescript-eslint/parser" "^4.17.0"
 
-"@antfu/eslint-config-vue@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-vue/-/eslint-config-vue-0.6.2.tgz#ff72aed4f8ab3be976dc6b184185d7c1c3ec0338"
-  integrity sha512-QZ5pdLtKej+OjwrZWpb+mdIwfEFz1zj/oM/V4QRfWsQyRfZzJfNRnt2V4zNNH8IybR7HXUxp3uXtk+4EsYtyZA==
+"@antfu/eslint-config-vue@^0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config-vue/-/eslint-config-vue-0.6.4.tgz#a9c0cda872554d8be38af04f13532bcc2bd4be16"
+  integrity sha512-D9VgKAxVuHEFuS8rAyxXYtd4CMTR8u2vJ5X2XrBRl5nWo0LTFAWLOrRjB6cGgSMaYfiFDfXx8sjfobcWav4GzQ==
   dependencies:
-    "@antfu/eslint-config-ts" "^0.6.2"
+    "@antfu/eslint-config-ts" "^0.6.4"
     eslint-plugin-vue "7.7.0"
 
 "@antfu/eslint-config@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@antfu/eslint-config/-/eslint-config-0.6.2.tgz#013295227244a2b0e1a473dd9456393bf972b4b7"
-  integrity sha512-p/XlphbkWxrKDj011Uv6gcuX0Obzn3ar6ykOslF8+bqMSbu23lrw6gCHz8VXW0uDiotGVz+EpNTsy86StS1Jiw==
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@antfu/eslint-config/-/eslint-config-0.6.4.tgz#72964eadee3b71e48cfa415c0e6cb5b80f21b0eb"
+  integrity sha512-+/WGzSHwqB9PoNF80uwl/ctfE2cyjIU7fngcjMC1uxtUBLhyjNRKx6DY96l5zpxYubeXM14Q04Ol96sHRQw5zA==
   dependencies:
-    "@antfu/eslint-config-react" "^0.6.2"
-    "@antfu/eslint-config-vue" "^0.6.2"
+    "@antfu/eslint-config-react" "^0.6.4"
+    "@antfu/eslint-config-vue" "^0.6.4"
 
 "@babel/code-frame@7.12.11", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.11", "@babel/code-frame@^7.8.3":
   version "7.12.11"
@@ -16915,10 +16915,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
