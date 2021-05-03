@@ -2,6 +2,7 @@
 
 exports[`Dev test renders index route 1`] = `
 "/* windicss(boot) */
+/* windicss layer base */
 *, ::before, ::after {
   box-sizing: border-box;
   border-width: 0;
@@ -78,6 +79,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* windicss layer components */
 .prose {
   color: #3f3f46;
   max-width: 65ch;
@@ -561,6 +563,13 @@ img {
 .prose-xl > :last-child {
   margin-bottom: 0;
 }
+.light-img {
+  display: block;
+}
+.dark-img {
+  display: none;
+}
+/* windicss layer utilities */
 .bg-red-50 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
@@ -570,6 +579,9 @@ img {
 }
 .block {
   display: block;
+}
+.hidden {
+  display: none;
 }
 .font-bold {
   font-weight: 700;
