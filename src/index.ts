@@ -96,6 +96,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       config.plugins = config.plugins || []
       // push our webpack plugin
       config.plugins.push(
+        // @ts-ignore
         new WindiCSSWebpackPlugin(windiConfig),
       )
     })
