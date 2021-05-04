@@ -105,6 +105,34 @@ export default {
 }  
 ```
 
+#### Scan classes from a node_modules package
+
+Out-of-the-box this module ignores any files in node_modules, this is to simplify
+the scanning for the majority for users.
+
+To opt-in to this scanning you will need to setup the scan options yourself.
+
+_nuxt.config.js_
+````js
+export default {
+  // ...
+  hooks: {
+    windicss: {
+      options(options) {
+        options.scanOptions.exclude = [ '.git', '.github', '.nuxt/**/*' ]
+        options.scanOptions.dirs = [
+          './node_modules/vue-tailwind-color-picker/src',
+          './components',
+          './pages',
+          './layouts',
+        ]
+        return options
+      }
+    }
+  }
+}
+````
+
 ## Hooks
 
 You can use the following nuxt hooks to modify the behaviour of the code.
@@ -122,9 +150,6 @@ Useful for making runtime style changes.
 Modify the Windi CSS options before they are passed to the webpack plugin. 
 
 Useful for adding runtime directories to the scan path.
-
-
-## Caveats
 
 ## Credits
 
