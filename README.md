@@ -22,7 +22,7 @@
 - ⚡️ **It's FAST** - 20~100x times faster than [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module)
 - 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
 - 🍃 Load configurations from `tailwind.config.js`
-- 📄 CSS `@apply` / `@screen` directives transforms
+- 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 - 🧑‍🤝‍🧑 Compatible with [nuxt-vite](https://github.com/nuxt/vite)
 
@@ -32,8 +32,6 @@
 yarn add nuxt-windicss -D
 # npm i nuxt-windicss -D
 ```
-
-:warning: This module is a pre-release, please report any [issues](https://github.com/windicss/nuxt-windicss-module/issues) you find.
 
 ## Usage
 
@@ -76,12 +74,9 @@ export default {
         'node_modules',
         '.git',
         '.github',
-        '.nuxt/**/*',
-        '*.template.html',
-        'app.html',
+        '.nuxt/**/*'
       ],
     },
-    transformCSS: 'pre',
     preflight: {
       alias: {
         // add nuxt aliases
@@ -130,10 +125,6 @@ Useful for adding runtime directories to the scan path.
 
 
 ## Caveats
-
-### Scoped Style
-
-`@media` directive with scoped style can **only work** with `css` `postcss` `scss` but not `sass`, `less` nor `stylus`
 
 ## Credits
 
