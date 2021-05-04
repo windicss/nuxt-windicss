@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-red-50 h-full">
+  <div class="h-full">
     <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-50">
       Nuxt WindiCSS Module
       <span>test</span>
@@ -18,6 +18,12 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dicta eos et eum eveniet exercitationem in iste itaque nam necessitatibus nemo porro, quam quo soluta ullam velit voluptatibus. Tempore, vitae!</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dicta mollitia reiciendis soluta! A aliquam aliquid aperiam, assumenda, culpa esse, facilis iste maxime nam non provident sint? Ad, debitis soluta.</p>
     </div>
+    <PostcssScoped />
+    <ScssScoped />
+    <SassScoped />
+    <StylusScoped />
+    <LessScoped />
+    <CssScoped />
   </div>
 </template>
 

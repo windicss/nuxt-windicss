@@ -30,11 +30,8 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
         '.git',
         '.github',
         '.nuxt/**/*',
-        '*.template.html',
-        'app.html',
       ],
     },
-    transformCSS: 'pre',
     preflight: {
       alias: {
         // add nuxt aliases

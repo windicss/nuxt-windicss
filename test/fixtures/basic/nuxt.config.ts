@@ -9,6 +9,7 @@ const config: NuxtConfig = {
     nuxtWindicssModule,
     themeModule,
   ],
+  components: true,
 }
 
 export default config
