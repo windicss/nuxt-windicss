@@ -18,6 +18,9 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dicta eos et eum eveniet exercitationem in iste itaque nam necessitatibus nemo porro, quam quo soluta ullam velit voluptatibus. Tempore, vitae!</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dicta mollitia reiciendis soluta! A aliquam aliquid aperiam, assumenda, culpa esse, facilis iste maxime nam non provident sint? Ad, debitis soluta.</p>
     </div>
+    <div class="scss-global">
+      <h2>SCSS global</h2>
+    </div>
     <PostcssScoped />
     <ScssScoped />
     <SassScoped />

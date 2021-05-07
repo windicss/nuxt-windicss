@@ -9,6 +9,9 @@ const config: NuxtConfig = {
     nuxtWindicssModule,
     themeModule,
   ],
+  css: [
+    '@/css/main.scss',
+  ],
   components: true,
 }
 
