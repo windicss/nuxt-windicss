@@ -3,17 +3,22 @@
  **
  ** Docs: https://next.windicss.org/guide/configuration.html
  */
-const colors = require('windicss/colors')
-const defaultTheme = require('windicss/defaultTheme')
-const typography = require('windicss/plugin/typography')
-const aspectRatio = require('windicss/plugin/aspect-ratio')
+import type { Plugin } from 'windicss/types/interfaces'
+import { defineConfig } from 'windicss/helpers'
+import colors from 'windicss/colors'
+import defaultTheme from  'windicss/defaultTheme'
+import typography from 'windicss/plugin/typography'
+import aspectRatio from  'windicss/plugin/aspect-ratio'
 
-module.exports = {
+const plugins : Plugin[] = [
+  typography as Plugin,
+  aspectRatio as Plugin,
+]
+
+export default defineConfig({
   darkMode: 'class',
-  plugins: [
-    typography,
-    aspectRatio,
-  ],
+  plugins,
+  attributify: true,
   theme: {
     colors: {
       transparent: 'transparent',
@@ -44,4 +49,4 @@ module.exports = {
     'light-img': 'block dark:hidden',
     'dark-img': 'hidden dark:block',
   },
-}
+})
