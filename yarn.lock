@@ -17311,10 +17311,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
@@ -17527,10 +17525,10 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.5.0.tgz#5b68b344a98f1bc8a5b01739a9fb2cf3c6d4eada"
-  integrity sha512-drmiLe0wd4VTTv2owIHxyjna8YjrrZWrD74m6MZQj9lwgM5baMa6taKkSm8sIlWvhHMqW9+Ai8lK7MdGcb9xyg==
+windicss-webpack-plugin@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.5.2.tgz#22c10efec0db551fe43b76131963f61e55088380"
+  integrity sha512-Ioqn9pmCkuUeX7EirQHR1NO+OJJ72Axn9qNg2BBStVgHYAV/SkW3KEGHD1S7gvO+3PQfjHiG/WI+aJUtCntSXw==
   dependencies:
     "@windicss/plugin-utils" "0.15.10"
     debug "^4.3.1"
