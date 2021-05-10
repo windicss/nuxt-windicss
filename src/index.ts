@@ -34,7 +34,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
         // testing files & folders
         'coverage',
         '__snapshots__',
-        '*.test.js'
+        '*.test.js',
       ],
     },
     preflight: {
