@@ -33,7 +33,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
         '.nuxt',
         // testing files & folders
         'coverage',
-        '__snapshots__',
+        '**/__snapshots__',
         '*.test.js',
       ],
     },

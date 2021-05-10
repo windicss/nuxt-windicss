@@ -2,7 +2,7 @@
 
 <h1 align='center'>nuxt-windicss</h1>
 
-<p align='center'><a href="https://github.com/windicss/windicss">Windi CSS</a> for Nuxt.js, it's fast! ⚡️<br>
+<p align='center'><a href="https://windicss.org/">Windi CSS</a> for Nuxt.js! ⚡️<br>
 <sup><em>a.k.a On-demand Tailwind CSS</em></sup>
 </p>
 
@@ -13,9 +13,6 @@
 </a>
 </p>
 
-<p align='center'>
-<a href='https://twitter.com/antfu7/status/1361398324587163648'>⚡️ See speed comparison with Tailwind</a>
-</p>
 
 ## Features
 
@@ -72,9 +69,14 @@ export default {
       dirs: ['./'],
       exclude: [
         'node_modules',
+        'dist',
         '.git',
         '.github',
-        '.nuxt/**/*'
+        '.nuxt',
+        // testing files & folders
+        'coverage',
+        '**/__snapshots__',
+        '*.test.js',
       ],
     },
     preflight: {
