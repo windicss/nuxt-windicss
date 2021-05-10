@@ -27,9 +27,14 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       dirs: ['./'],
       exclude: [
         'node_modules',
+        'dist',
         '.git',
         '.github',
-        '.nuxt/**/*',
+        '.nuxt',
+        // testing files & folders
+        'coverage',
+        '__snapshots__',
+        '*.test.js',
       ],
     },
     preflight: {

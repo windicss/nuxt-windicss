@@ -18,19 +18,10 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dicta eos et eum eveniet exercitationem in iste itaque nam necessitatibus nemo porro, quam quo soluta ullam velit voluptatibus. Tempore, vitae!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto dicta mollitia reiciendis soluta! A aliquam aliquid aperiam, assumenda, culpa esse, facilis iste maxime nam non provident sint? Ad, debitis soluta.</p>
   </div>
-  <div class="flex items-center flex-col">
+  <div class="w-733px mx-auto flex">
     <div class="scss-global">
       <h2>SCSS global</h2>
     </div>
-    <button
-        bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
-        text="sm white"
-        font="mono light"
-        p="y-2 x-4"
-        border="2 rounded blue-200"
-    >
-      Button
-    </button>
     <PostcssScoped />
     <ScssScoped />
     <SassScoped />
