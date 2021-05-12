@@ -4,9 +4,9 @@ exports[`Dev test renders index route 1`] = `
 ".scss-global {
   --tw-bg-opacity: 1;
   background-color: rgba(52, 211, 153, var(--tw-bg-opacity));
+  padding: 1rem;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
-  padding: 1rem;
   width: 25%;
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
