@@ -13,6 +13,8 @@
 </a>
 </p>
 
+<details>
+<summary>Features</summary>
 
 ## Features
 
@@ -22,6 +24,7 @@
 - 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 - 🧑‍🤝‍🧑 Compatible with [nuxt-vite](https://github.com/nuxt/vite)
+</details>
 
 ## Install
 
@@ -57,6 +60,11 @@ See [here](https://windicss.netlify.app/guide/configuration.html) for configurat
 ## Migrating
 
 If you were previously using `@nuxtjs/tailwindcss`, please consult the [documentation](https://windicss.netlify.app/guide/migration.html) on migrating.
+
+## Documentation
+
+Read the [documentation](https://windicss.org/integrations/nuxt.html) for more details.
+
 
 ## Configuration
 

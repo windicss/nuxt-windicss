@@ -3640,17 +3640,17 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@windicss/plugin-utils@0.16.0-beta.14", "@windicss/plugin-utils@next":
-  version "0.16.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.16.0-beta.14.tgz#10f47e6cbe916394890850ea867de76b3703930f"
-  integrity sha512-Hg/+wS7W80HXJ6XKcIE/kQl9g1SjBA/4+n5vHj2BjExC9Tje3A66vOcu/QgFgiTQVY2/aYnf6NTn0Wmuh9+AFQ==
+"@windicss/plugin-utils@0.16.0-beta.15":
+  version "0.16.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.16.0-beta.15.tgz#30f5c4c61cbb145e4b1dd0e7b69dffb9176976be"
+  integrity sha512-TkODlo3LSn7p0dQxRFSl4HfO6MBSvPdQqf+d602GiOvcAylaPgJns3piOLEgFgfBpxXGNM+WO4Ll8ocOOKk2VA==
   dependencies:
     debug "^4.3.2"
     fast-glob "^3.2.5"
-    jiti "^1.9.1"
+    jiti "^1.9.2"
     magic-string "^0.25.7"
     micromatch "^4.0.4"
-    windicss "^3.0.0-beta.5"
+    windicss "^3.0.0-beta.13"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -10429,6 +10429,11 @@ jiti@^1.9.1:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.9.1.tgz#d9e267fa050ddc52191f17d8af815d49a38ebafd"
   integrity sha512-AhYrAxJ/IW2257nHkJasUjtxHhmYIUEHEjsofJtGYsPWk8pTjqjbPFlJfOwfY+WX8YBiKHM1l0ViDC/mye2SWg==
 
+jiti@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.9.2.tgz#2ee44830883dbb1b2e222adc053c3052d0bf3b61"
+  integrity sha512-wymUBR/YGGVNVRAxX52yvFoZdUAYKEGjk0sYrz6gXLCvMblnRvJAmDUnMvQiH4tUHDBtbKHnZ4GT3R+m3Hc39A==
+
 joycon@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/joycon/-/joycon-3.0.1.tgz#9074c9b08ccf37a6726ff74a18485f85efcaddaf"
@@ -17075,15 +17080,15 @@ vite-plugin-vue2@^1.4.4:
     vue-template-compiler "^2.6.11"
     vue-template-es2015-compiler "^1.9.1"
 
-vite-plugin-windicss@next:
-  version "0.16.0-beta.14"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.16.0-beta.14.tgz#5ddf905105a617c9f94b2280d2ebca5a0587d582"
-  integrity sha512-AA6Zv2AKo7mmq9EkaMKevgjvwBwUo0xja6susni/+QpHVjxfpY8aNJlKjkPzBNzdZWS48uRURUhzW7vGi/PDNg==
+vite-plugin-windicss@0.16.0-beta.15:
+  version "0.16.0-beta.15"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.16.0-beta.15.tgz#d4af6be3f735ac5f9339a4943e447fa99b13a823"
+  integrity sha512-hGoetT+QsJ5GXbiu8U2fSQFagvM1e702x8R7i2567k9t9G2dlVXw9lTIYzPF1S5/TAF6ObxOrKxz+DS0kfmo0A==
   dependencies:
-    "@windicss/plugin-utils" "0.16.0-beta.14"
+    "@windicss/plugin-utils" "0.16.0-beta.15"
     chalk "^4.1.1"
     debug "^4.3.2"
-    windicss "^3.0.0-beta.5"
+    windicss "^3.0.0-beta.13"
 
 vite@^2.2.1:
   version "2.2.3"
@@ -17484,23 +17489,23 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@next:
-  version "0.6.0-1"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.6.0-1.tgz#e954ed85ca6c36c70a22e700c0bd46736fee0851"
-  integrity sha512-mg2nQuqyCaVM8hUvFX7gJry4+/JEpvgMpZLW3xltNIdiI+/YTw0X9Pb7u+HfjJsTpZaFDmEdakFy8aMMU8sLig==
+windicss-webpack-plugin@0.6.0-3:
+  version "0.6.0-3"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.6.0-3.tgz#4cc0c8c11587b7bbe85a2fc3e10abcfd96a58e9d"
+  integrity sha512-y+SC6dJ3NXyIozEQkQYBLNC7kzoiDJ17qOJMmE5R9TZtKWbcG1T6ljgXDw+8ugINSA0gHIAlWg9Ds5vzRM0xDQ==
   dependencies:
-    "@windicss/plugin-utils" next
+    "@windicss/plugin-utils" "0.16.0-beta.15"
     debug "^4.3.1"
     loader-utils "^2.0.0"
     magic-string "^0.25.7"
     upath "^2.0.1"
     webpack-virtual-modules "^0.4.2"
-    windicss next
+    windicss "3.0.0-beta.13"
 
-windicss@^3.0.0-beta.5, windicss@next:
-  version "3.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.0.0-beta.10.tgz#d65c70f49ea1302078f6c97924db511f13872538"
-  integrity sha512-VuJVVXc05IFzANRmCMQpXBTNRVwKQvBMYjNpLTa4AKKZ+WVLvjO8IPgL2UGiVP7T+T+G/0KiU9w8IWXQD+8VgQ==
+windicss@3.0.0-beta.13, windicss@^3.0.0-beta.13:
+  version "3.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.0.0-beta.13.tgz#1eb74e3220623ea8b68603d2f0a9c8053110c3ec"
+  integrity sha512-F33D3QM7nrH3TvxoML1d8WIG5x8rZyevbP86pZro5k/8lllWhWQ8g3XYrUnzPK+oXAiOvOnTHc9YFJjqEA6vYA==
 
 windows-release@^4.0.0:
   version "4.0.0"
