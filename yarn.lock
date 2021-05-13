@@ -17525,10 +17525,10 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.5.2.tgz#22c10efec0db551fe43b76131963f61e55088380"
-  integrity sha512-Ioqn9pmCkuUeX7EirQHR1NO+OJJ72Axn9qNg2BBStVgHYAV/SkW3KEGHD1S7gvO+3PQfjHiG/WI+aJUtCntSXw==
+windicss-webpack-plugin@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.5.3.tgz#c071d0e447625fb96aad4a018b45db67b3c0c62d"
+  integrity sha512-YIODnX8wVc+vQO8YUf1+SgeYW3JJtmcU2THXlgLVSv2n5N7d5rvBychZIVueBMNyNFEhmn0O6rQSDlrhpYkxtg==
   dependencies:
     "@windicss/plugin-utils" "0.15.10"
     debug "^4.3.1"
