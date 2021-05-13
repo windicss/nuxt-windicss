@@ -36,7 +36,7 @@
     "build:static": "export NODE_ENV=production && nuxt build test/fixtures/static",
     "build:vuetify": "export NODE_ENV=development && nuxt build test/fixtures/vuetify",
     "dev:basic": "nuxt test/fixtures/basic",
-    "dev:vite": "npm run build && export DEBUG=windicss*; nuxt test/fixtures/vite",
+    "dev:vite": "npm run build && nuxt test/fixtures/vite",
     "dev:bootstrap": "nuxt test/fixtures/bootstrap-tailwind",
     "dev:preset": "nuxt test/fixtures/preset",
     "dev:static": "nuxt test/fixtures/static",

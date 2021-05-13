@@ -7,10 +7,6 @@ const config: NuxtConfig = {
     windicssModule,
   ],
   components: true,
-  // @ts-ignore
-  windicss: {
-    config: __dirname + '/windi.config.js'
-  }
 }
 
 export default config
