@@ -17,8 +17,9 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
 
   // Prevent if wront version of using tailwind module
   requireNuxtVersion(nuxt.constructor.version, '2.10')
+  // Make sure they're not using tailwind
   if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
-    logger.error('Cannot use Windi CSS with tailwindcss. Please remove the `@nuxtjs/tailwindcss` module.')
+    logger.error('Sorry, you can\'t use Windi CSS with Tailwind CSS. Please remove the `@nuxtjs/tailwindcss` module.')
     return
   }
 
