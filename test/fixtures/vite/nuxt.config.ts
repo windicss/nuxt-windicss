@@ -6,6 +6,7 @@ const config: NuxtConfig = {
     'nuxt-vite',
     windicssModule,
   ],
+  components: true,
 }
 
 export default config

@@ -3,7 +3,7 @@
 <h1 align='center'>nuxt-windicss</h1>
 
 <p align='center'><a href="https://windicss.org/">Windi CSS</a> for Nuxt.js! ⚡️<br>
-<sup><em>a.k.a On-demand Tailwind CSS</em></sup>
+<sup><em>Next generation utility-first CSS framework.</em></sup>
 </p>
 
 <p align='center'>
@@ -12,6 +12,7 @@
 <img src='https://github.com/windicss/nuxt-windicss-module/actions/workflows/test.yml/badge.svg' >
 </a>
 </p>
+
 
 <details>
 <summary>Features</summary>

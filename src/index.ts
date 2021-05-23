@@ -1,6 +1,6 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
-import WindiCSSVitePlugin, { ResolvedOptions } from 'vite-plugin-windicss'
+import VitePluginWindicss, { ResolvedOptions } from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
 import clearModule from 'clear-module'
 import defu from 'defu'
@@ -107,7 +107,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }; config: { plugins: any[] } }) => {
     vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
     // @ts-ignore
-    vite.config.plugins.push(WindiCSSVitePlugin(windiConfig))
+    vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root }))
   })
 }
 
