@@ -30,8 +30,8 @@
 ## Install
 
 ```bash
-yarn add nuxt-windicss -D
-# npm i nuxt-windicss -D
+yarn add nuxt-windicss@next -D
+# npm i nuxt-windicss@next -D
 ```
 
 ## Usage
