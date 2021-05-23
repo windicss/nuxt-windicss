@@ -4,9 +4,10 @@ import VitePluginWindicss, { ResolvedOptions } from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
 import clearModule from 'clear-module'
 import defu from 'defu'
-import { UserOptions } from '@windicss/plugin-utils'
+import { UserOptions, createUtils } from '@windicss/plugin-utils'
 import { Config } from 'windicss/types/interfaces'
 import { Configuration as WebpackConfiguration } from 'webpack'
+import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 
@@ -16,8 +17,9 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
 
   // Prevent if wront version of using tailwind module
   requireNuxtVersion(nuxt.constructor.version, '2.10')
+  // Make sure they're not using tailwind
   if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
-    logger.error('Cannot use Windi CSS with tailwindcss. Please remove the `@nuxtjs/tailwindcss` module.')
+    logger.error('Sorry, you can\'t use Windi CSS with Tailwind CSS. Please remove the `@nuxtjs/tailwindcss` module.')
     return
   }
 
@@ -109,6 +111,23 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     // @ts-ignore
     vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root }))
   })
+
+  if (nuxtOptions.dev) {
+    // @nuxt/content support, only required in dev
+    nuxt.hook('content:file:beforeParse', async(md: File) => {
+      // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
+      const utils = createUtils({
+        ...windiConfig,
+        preflight: false,
+        scan: false,
+      }, { root: windiConfig.root })
+      await utils.init()
+      await utils.extractFile(md.data, md.path, true)
+      const css = await utils.generateCSS()
+      // add to the end of the file
+      md.data += `<style>${css}</style>`
+    })
+  }
 }
 
 // @ts-ignore
