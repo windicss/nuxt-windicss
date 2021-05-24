@@ -10,7 +10,7 @@
 export default {
   async asyncData ({ error,$content }) {
     try {
-      const article = await $content('hello').fetch()
+      const article = await $content('slowly-yeni-koye-eski-adet').fetch()
       return {
         article
       }
