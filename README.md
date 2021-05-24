@@ -21,7 +21,7 @@
 - 🍃 Load configurations from `tailwind.config.js`
 - 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
-- 🧑‍🤝‍🧑 Compatible with [nuxt-vite](https://github.com/nuxt/vite)
+- 🧑‍🤝‍🧑 Works with [@nuxt/vite](https://github.com/nuxt/vite) & [@nuxt/content](https://content.nuxtjs.org/)
 
 ## Install
 
