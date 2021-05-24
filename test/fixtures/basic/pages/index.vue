@@ -4,8 +4,8 @@
     Nuxt WindiCSS Module
     <span>test</span>
   </h1>
-  <div class="text-center my-5">
-    <nuxt-link to="/page2" class="underline text-red-900 mx-auto pb-5 block">
+  <div class="text-center my-10">
+    <nuxt-link to="/page2" class=" text-red-900 mx-auto text-sm font-bold p-5 inline rounded-full mb-5 bg-purple-100 transition hover:(bg-purple-800 text-red-100)">
       Test link
     </nuxt-link>
   </div>

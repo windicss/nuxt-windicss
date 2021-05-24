@@ -108,7 +108,6 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
 
   nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }; config: { plugins: any[] } }) => {
     vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
-    // @ts-ignore
     vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root }))
   })
 

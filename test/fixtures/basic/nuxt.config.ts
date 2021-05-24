@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
-import nuxtWindicssModule from '../../../src'
+import nuxtWindicssModule from '../../../dist'
 // @ts-ignore
 import themeModule from './theme.config.js'
 

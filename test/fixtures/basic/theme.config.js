@@ -15,8 +15,6 @@ export default function() {
   hook('windicss:config', (config) => {
     Object.assign(config, defaultWindiConfig)
 
-    config.darkMode = false
-
     // Workaround for typography plugin not being a function supporting theme
     if (typeof config.theme.extend.typography === 'function') {
       const defaultTheme = nuxt.resolver.requireModule('windicss/defaultTheme')
