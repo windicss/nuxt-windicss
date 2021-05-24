@@ -124,7 +124,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       await utils.extractFile(md.data, md.path, true)
       const css = await utils.generateCSS()
       // add to the end of the file
-      md.data += `<style>${css}</style>`
+      md.data += `\n\n<style>${css}</style>`
     })
   }
 }
