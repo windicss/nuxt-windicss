@@ -114,6 +114,9 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   if (nuxtOptions.dev) {
     // @nuxt/content support, only required in dev
     nuxt.hook('content:file:beforeParse', async(md: File) => {
+      // only applies to .md files
+      if (md.extension !== '.md') return
+      
       // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
       const utils = createUtils({
         ...windiConfig,
