@@ -60,8 +60,8 @@
     "rimraf": "^3.0.2",
     "semver": "^7.3.5",
     "upath": "^2.0.1",
-    "vite-plugin-windicss": "0.16.0",
-    "windicss-webpack-plugin": "0.6.1"
+    "vite-plugin-windicss": "0.16.7",
+    "windicss-webpack-plugin": "0.6.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.4",
