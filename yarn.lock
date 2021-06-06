@@ -3645,18 +3645,18 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@windicss/plugin-utils@0.16.7":
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.16.7.tgz#54cd31841515e849f116a6d89e625da368f7de23"
-  integrity sha512-mxgTj/MkemN8JlyfaS20OAJ0BqTUoUlDT9wD/m5U+nUa5SN/r0kPlg1IW9SbmRTrYjNXWEENf9F0Fjb/X4zn6g==
+"@windicss/plugin-utils@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-1.0.1.tgz#f6281c91a37be5ea48eb4573cb511ccb82cce16a"
+  integrity sha512-EHsGC9LGHC/3rWNiOHzkgkexwgmxfHsqvxBoh0hLJv1MPPhEsKv8dQbt34pVZgRsS/rAjiVe4bRRM5NLTy8cWA==
   dependencies:
     "@antfu/utils" "^0.1.6"
     debug "^4.3.2"
     fast-glob "^3.2.5"
-    jiti "^1.9.2"
+    jiti "^1.10.1"
     magic-string "^0.25.7"
     micromatch "^4.0.4"
-    windicss "^3.0.12"
+    windicss "^3.1.0"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -10425,6 +10425,11 @@ jimp-compact@^0.16.1:
   resolved "https://registry.yarnpkg.com/jimp-compact/-/jimp-compact-0.16.1.tgz#9582aea06548a2c1e04dd148d7c3ab92075aefa3"
   integrity sha512-dZ6Ra7u1G8c4Letq/B5EzAxj4tLFHL+cGtdpR+PVm4yzPDj+lCk+AbivWt1eOM+ikzkowtyV7qSqX6qr3t71Ww==
 
+jiti@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.10.1.tgz#bc2a175b9435274dc8659d3d9a121a91c6b3a1af"
+  integrity sha512-qux9juDtAC8HlZxAk/fku73ak4TWNLigRFTNzFShE/kw4bXVFsVu538vLXAxvNyPszXgpX4YxkXfwTYEi+zf5A==
+
 jiti@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.3.0.tgz#9c6b8bde5744f732f33c1aa27108fd03b9a49d0d"
@@ -10439,11 +10444,6 @@ jiti@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.9.1.tgz#d9e267fa050ddc52191f17d8af815d49a38ebafd"
   integrity sha512-AhYrAxJ/IW2257nHkJasUjtxHhmYIUEHEjsofJtGYsPWk8pTjqjbPFlJfOwfY+WX8YBiKHM1l0ViDC/mye2SWg==
-
-jiti@^1.9.2:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.9.2.tgz#2ee44830883dbb1b2e222adc053c3052d0bf3b61"
-  integrity sha512-wymUBR/YGGVNVRAxX52yvFoZdUAYKEGjk0sYrz6gXLCvMblnRvJAmDUnMvQiH4tUHDBtbKHnZ4GT3R+m3Hc39A==
 
 joycon@^3.0.0, joycon@^3.0.1:
   version "3.0.1"
@@ -17170,15 +17170,15 @@ vite-plugin-vue2@^1.4.4:
     vue-template-compiler "^2.6.11"
     vue-template-es2015-compiler "^1.9.1"
 
-vite-plugin-windicss@0.16.7:
-  version "0.16.7"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.16.7.tgz#5e6b849a607139ce769f7a757cc3b56b9d5349df"
-  integrity sha512-fNBLO2EBdQsJNU3IyehSmqPdrHc6Ve+hPYDaf5SrW8nGd9Wbd8ZVh6cX/1blRcjMw0qOjgcx7GM8pRWBjhzt3Q==
+vite-plugin-windicss@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-1.0.1.tgz#6e455228b6c1cb7ad52ed8fb9408b39888d572c0"
+  integrity sha512-+6iFKUC00G9xkR967xqbbAquaWAmgYT1rlBP7Bp6XCd9ire3b7tJTETtwSPAPAIp38OA/Xbp1MSaHhbl2LRxJg==
   dependencies:
-    "@windicss/plugin-utils" "0.16.7"
+    "@windicss/plugin-utils" "1.0.1"
     chalk "^4.1.1"
     debug "^4.3.2"
-    windicss "^3.0.12"
+    windicss "^3.1.0"
 
 vite@^2.2.1:
   version "2.2.3"
@@ -17579,23 +17579,23 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.6.2.tgz#0cd30658ce42248c73679eca1e96fce15d1c4024"
-  integrity sha512-yixhIx2VotjU4YzPwEWTL6zv1NezLrxxRuaPR3sqGWqXYbd8oSwJr0BkQv7Ro2pEAH0QRx2HzNyZOqVkHWX4dg==
+windicss-webpack-plugin@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-1.0.0.tgz#0b4c0031401278fe98703c8dea83377786603d40"
+  integrity sha512-JhaHdDPbw09fM2cipMsW92OGDucXYqBSSiockBElrePR/KQmw71Se9Rsw/QJq+LP52cfhli2mcpKuEMNL01Lkg==
   dependencies:
-    "@windicss/plugin-utils" "0.16.7"
+    "@windicss/plugin-utils" "1.0.1"
     debug "^4.3.1"
     loader-utils "^2.0.0"
     magic-string "^0.25.7"
     upath "^2.0.1"
     webpack-virtual-modules "^0.4.3"
-    windicss "3.0.12"
+    windicss "3.1.1"
 
-windicss@3.0.12, windicss@^3.0.12:
-  version "3.0.12"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.0.12.tgz#4354aaa48faaac6fd02f3119a62587da2c46b018"
-  integrity sha512-pDxtFLN0xmL7bnGtnEfu9z7B5279UM2EP8wWlPH+FYb5gjHyONxRtyWtR5QIn1FRx6h1UXpm+I19GgTx5Y4TyA==
+windicss@3.1.1, windicss@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.1.1.tgz#f879661df4f3db92cc45c6214779f6c5efa4f95c"
+  integrity sha512-vLtydYOqqLwb3Jg02QYqCnna1jONLt6GuDyAtRokQY81uA8BiOyN2y3ED9QGX28CIL5Zi7bpnkBL1f1g4CHuXQ==
 
 windows-release@^4.0.0:
   version "4.0.0"
