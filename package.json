@@ -30,7 +30,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts && mkdist --src src/template --dist dist/template",
+    "build": "rm -rf dist && tsup src/index.ts --format esm --dts && mkdist --src src/template --dist dist/template",
     "build:basic": "yarn build && export DEBUG=windicss-webpack-plugin && nuxt build test/fixtures/basic",
     "build:preset": "export NODE_ENV=production && nuxt build test/fixtures/preset",
     "build:static": "export NODE_ENV=production && nuxt build test/fixtures/static",
