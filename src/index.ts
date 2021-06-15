@@ -1,10 +1,10 @@
 import type { Module, NuxtOptions } from '@nuxt/types'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
-import VitePluginWindicss, { ResolvedOptions } from 'vite-plugin-windicss'
+import VitePluginWindicss from 'vite-plugin-windicss'
 import { resolve, relative } from 'upath'
 import clearModule from 'clear-module'
 import defu from 'defu'
-import { UserOptions, createUtils } from '@windicss/plugin-utils'
+import { UserOptions, createUtils, ResolvedOptions } from '@windicss/plugin-utils'
 import { Config } from 'windicss/types/interfaces'
 import { Configuration as WebpackConfiguration } from 'webpack'
 import type { File } from '@nuxt/content/types/content'
@@ -108,6 +108,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
 
   nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }; config: { plugins: any[] } }) => {
     vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
+    // @ts-ignore
     vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root }))
   })
 
@@ -116,7 +117,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     nuxt.hook('content:file:beforeParse', async(md: File) => {
       // only applies to .md files
       if (md.extension !== '.md') return
-      
+
       // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
       const utils = createUtils({
         ...windiConfig,
