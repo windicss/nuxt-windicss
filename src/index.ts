@@ -30,6 +30,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       exclude: [
         'node_modules',
         'node_modules_dev',
+        'node_modules_prod',
         'dist',
         '.git',
         '.github',
