@@ -1,6 +1,6 @@
 {
   "name": "nuxt-windicss",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Windi CSS for Nuxt.js",
   "keywords": [
     "nuxt",
@@ -30,7 +30,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts && mkdist --src src/template --dist dist/template",
+    "build": "rm -rf dist && tsup src/index.ts --dts && mkdist --src src/template --dist dist/template",
     "build:basic": "yarn build && export DEBUG=windicss-webpack-plugin && nuxt build test/fixtures/basic",
     "build:preset": "export NODE_ENV=production && nuxt build test/fixtures/preset",
     "build:static": "export NODE_ENV=production && nuxt build test/fixtures/static",
@@ -60,8 +60,8 @@
     "rimraf": "^3.0.2",
     "semver": "^7.3.5",
     "upath": "^2.0.1",
-    "vite-plugin-windicss": "1.0.1",
-    "windicss-webpack-plugin": "1.0.0"
+    "vite-plugin-windicss": "1.0.4",
+    "windicss-webpack-plugin": "1.1.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.4",
