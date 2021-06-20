@@ -29,6 +29,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       dirs: ['./'],
       exclude: [
         'node_modules',
+        'node_modules_dev',
         'dist',
         '.git',
         '.github',
@@ -100,8 +101,8 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       config.plugins = config.plugins || []
       // push our webpack plugin
       config.plugins.push(
-        // @ts-ignore
-        new WindiCSSWebpackPlugin(windiConfig),
+          // @ts-ignore
+          new WindiCSSWebpackPlugin(windiConfig),
       )
     })
   })
@@ -116,7 +117,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     nuxt.hook('content:file:beforeParse', async(md: File) => {
       // only applies to .md files
       if (md.extension !== '.md') return
-      
+
       // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
       const utils = createUtils({
         ...windiConfig,
