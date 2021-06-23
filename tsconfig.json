@@ -12,6 +12,7 @@
     "stripInternal": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "types": [
       "@types/node",
       "@nuxt/types",
