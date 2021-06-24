@@ -10,8 +10,15 @@ const config: NuxtConfig = {
     themeModule,
   ],
   css: [
-    '@/css/main.scss',
+    '@/css/main.css',
   ],
+  build: {
+    loaders: {
+      css: {
+        importLoaders: 3,
+      }
+    }
+  },
   components: true,
 }
 

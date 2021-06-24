@@ -9,6 +9,9 @@
       Test link
     </nuxt-link>
   </div>
+  <div class="test-apply">
+    test apply
+  </div>
   <img data-testid="smallImg" :src="require('../image/small.svg')" alt="small svg" class="w-20 absolute left-1/2 top-45 z-20">
   <img data-testid="bigImg" :src="require('../image/big.jpg')" alt="big jpg" class="filter grayscale blur-sm w-120 h-120 transform transition-transform rounded-full mx-auto hover:(rotate-45)">
   <div class="prose prose-xl mx-auto py-10">
