@@ -11,7 +11,9 @@ import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
 
-const windicssModule: Module<UserOptions> = function(moduleOptions) {
+const readCache = require('read-cache')
+
+const windicssModule: Module<UserOptions> = async function(moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
@@ -93,9 +95,27 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     return windiConfig
   }
 
+  const utils = createUtils({
+    ...windiConfig,
+    preflight: false,
+    scan: false,
+  }, { root: windiConfig.root })
+  await utils.init()
+
   nuxt.hook('build:before', () => {
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
+
+    // make the postcss-import apply the windi @apply's
+    if (!nuxt.options.build.postcss.plugins)
+      nuxt.options.build.postcss.plugins = {}
+
+    nuxt.options.build.postcss.plugins['postcss-import'] = {
+      async load(filename: string) {
+        const file = (await readCache(filename, 'utf-8')) as string
+        return utils.transformCSS(file, filename)
+      },
+    }
 
     // @ts-ignore
     this.extendBuild((config: WebpackConfiguration) => {
@@ -121,12 +141,6 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
       if (md.extension !== '.md') return
 
       // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
-      const utils = createUtils({
-        ...windiConfig,
-        preflight: false,
-        scan: false,
-      }, { root: windiConfig.root })
-      await utils.init()
       await utils.extractFile(md.data, md.path, true)
       const css = await utils.generateCSS()
       // add to the end of the file
