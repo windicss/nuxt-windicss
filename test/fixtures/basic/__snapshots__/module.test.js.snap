@@ -1,7 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dev test renders index route 1`] = `
-".scss-global {
+".test-apply {
+  --tw-bg-opacity: 1;
+  background-color: rgba(6, 78, 59, var(--tw-bg-opacity));
+  padding: 5rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  width: 25%;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.test-apply:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(6, 78, 59, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(224, 242, 254, var(--tw-text-opacity));
+}
+.scss-global {
   --tw-bg-opacity: 1;
   background-color: rgba(52, 211, 153, var(--tw-bg-opacity));
   padding: 1rem;
@@ -14,14 +33,12 @@ exports[`Dev test renders index route 1`] = `
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-
 .scss-global:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(6, 78, 59, var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgba(224, 242, 254, var(--tw-text-opacity));
 }
-
 .scss-global h2 {
   font-weight: 700;
   font-size: 0.875rem;
