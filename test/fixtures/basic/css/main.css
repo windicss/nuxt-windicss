@@ -1,6 +1,9 @@
+@import './import.css';
+
 .scss-global {
   @apply bg-green-400 text-white p-4 w-1/4 transition hover:(bg-green-900 text-blue-100);
-  h2 {
-    @apply font-bold text-sm;
-  }
+}
+
+.scss-global h2 {
+  @apply font-bold text-sm;
 }
