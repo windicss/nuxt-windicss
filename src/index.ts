@@ -100,6 +100,7 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
     preflight: false,
     scan: false,
   }, { root: windiConfig.root })
+  nuxt.callHook('windicss:utils', utils)
   await utils.init()
 
   nuxt.hook('build:before', () => {
