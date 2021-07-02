@@ -13,7 +13,7 @@ import { requireNuxtVersion } from './compatibility'
 
 const readCache = require('read-cache')
 
-const windicssModule: Module<UserOptions> = async function(moduleOptions) {
+const windicssModule: Module<UserOptions> = function(moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
@@ -100,8 +100,9 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
     preflight: false,
     scan: false,
   }, { root: windiConfig.root })
-  nuxt.callHook('windicss:utils', utils)
-  await utils.init()
+
+  utils.init()
+    .then(() => nuxt.callHook('windicss:utils', utils))
 
   nuxt.hook('build:before', () => {
     // add plugin to import windi.css
@@ -113,6 +114,7 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
 
     nuxt.options.build.postcss.plugins['postcss-import'] = {
       async load(filename: string) {
+        await utils.ensureInit()
         const file = (await readCache(filename, 'utf-8')) as string
         return utils.transformCSS(file, filename)
       },
@@ -124,7 +126,7 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
       // push our webpack plugin
       config.plugins.push(
         // @ts-ignore
-        new WindiCSSWebpackPlugin(windiConfig),
+        new WindiCSSWebpackPlugin({ ...windiConfig, utils }),
       )
     })
   })
@@ -132,7 +134,7 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
   nuxt.hook('vite:extend', (vite: { nuxt: { options: NuxtOptions }; config: { plugins: any[] } }) => {
     vite.nuxt.options.alias['windi.css'] = 'virtual:windi.css'
     // @ts-ignore
-    vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root }))
+    vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root, utils }))
   })
 
   if (nuxtOptions.dev) {
@@ -141,6 +143,7 @@ const windicssModule: Module<UserOptions> = async function(moduleOptions) {
       // only applies to .md files
       if (md.extension !== '.md') return
 
+      await utils.ensureInit()
       // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
       await utils.extractFile(md.data, md.path, true)
       const css = await utils.generateCSS()
