@@ -120,7 +120,8 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
             return utils.transformCSS(file, filename)
           },
         }
-      } catch(e) {
+      }
+      catch (e) {
         // do nothing, the app isn't using postcss so no changes are needed
       }
     }
