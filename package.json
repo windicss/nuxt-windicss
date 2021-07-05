@@ -62,7 +62,7 @@
     "semver": "^7.3.5",
     "upath": "^2.0.1",
     "vite-plugin-windicss": "1.2.0",
-    "windicss-webpack-plugin": "1.2.2"
+    "windicss-webpack-plugin": "1.2.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.4",
