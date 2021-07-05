@@ -104,16 +104,25 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     // add plugin to import windi.css
     nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
 
-    // make the postcss-import apply the windi @apply's
-    if (!nuxt.options.build.postcss.plugins)
-      nuxt.options.build.postcss.plugins = {}
-
-    nuxt.options.build.postcss.plugins['postcss-import'] = {
-      async load(filename: string) {
-        await utils.ensureInit()
-        const file = (await readCache(filename, 'utf-8')) as string
-        return utils.transformCSS(file, filename)
-      },
+    // only if they have postcss enabled
+    if (nuxt.options.build.postcss) {
+      try {
+        // this will throw an error if they don't have postcss installed
+        require('postcss-import')
+        // make sure the plugin object isn't undefined booted
+        if (!nuxt.options.build.postcss.plugins)
+          nuxt.options.build.postcss.plugins = {}
+        // make the postcss-import apply the windi @apply's
+        nuxt.options.build.postcss.plugins['postcss-import'] = {
+          async load(filename: string) {
+            await utils.ensureInit()
+            const file = (await readCache(filename, 'utf-8')) as string
+            return utils.transformCSS(file, filename)
+          },
+        }
+      } catch(e) {
+        // do nothing, the app isn't using postcss so no changes are needed
+      }
     }
 
     // @ts-ignore
