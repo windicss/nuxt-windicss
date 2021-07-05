@@ -95,11 +95,7 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     return windiConfig
   }
 
-  const utils = createUtils({
-    ...windiConfig,
-    preflight: false,
-    scan: false,
-  }, { root: windiConfig.root })
+  const utils = createUtils(windiConfig, { root: windiConfig.root })
 
   utils.init()
     .then(() => nuxt.callHook('windicss:utils', utils))
