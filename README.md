@@ -43,11 +43,13 @@ export default {
 }
 ```
 
-### Ordering
+### Ordering (optional)
 
-By default, Windi will load layers together, before your other css files. To change the layout ordering you can manually include the Windi modules.
+By default, this module will load all of the windi layers togethor beyond your CSS.
 
-If, for example, you had a `main.css` which had `h1 { margin-bottom: 30px; }`, you might do something like this:
+If you'd like to change the layout ordering you can manually include the layers where you want them. 
+
+For example, you had a `main.css` which had `h1 { margin-bottom: 30px; }`, you might do something like this:
 
 ```js
 // nuxt.config.js
