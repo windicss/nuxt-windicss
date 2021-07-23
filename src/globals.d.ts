@@ -1,8 +1,8 @@
-import type { Options } from 'windicss-webpack-plugin/dist/interfaces'
+import { NuxtWindiOptions } from './interfaces'
 
 declare module '@nuxt/types' {
   interface NuxtConfig {
-    windicss?: Options
+    windicss?: NuxtWindiOptions
   }
 }
 

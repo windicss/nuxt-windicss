@@ -4,3 +4,5 @@ dist
 test
 docus
 coverage
+nuxt.js
+src/template/App.js

@@ -1,7 +1,8 @@
+import fs from 'fs'
 import type { Module, NuxtOptions } from '@nuxt/types'
 import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
 import VitePluginWindicss from 'vite-plugin-windicss'
-import { resolve, relative } from 'upath'
+import { relative, join } from 'upath'
 import clearModule from 'clear-module'
 import defu from 'defu'
 import { UserOptions, createUtils, ResolvedOptions } from '@windicss/plugin-utils'
@@ -10,10 +11,11 @@ import { Configuration as WebpackConfiguration } from 'webpack'
 import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
 import { requireNuxtVersion } from './compatibility'
+import type { NuxtWindiOptions } from './interfaces'
 
 const readCache = require('read-cache')
 
-const windicssModule: Module<UserOptions> = function(moduleOptions) {
+const windicssModule: Module<NuxtWindiOptions> = function(moduleOptions) {
   const nuxt = this.nuxt
   const nuxtOptions = this.nuxt.options as NuxtOptions
 
@@ -53,11 +55,10 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
     },
   }
 
-  const windiConfig = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as UserOptions
+  const windiConfig = defu.arrayFn(moduleOptions, nuxt.options.windicss, defaultConfig) as NuxtWindiOptions
 
   // allow user to override the
   const ctxOnOptionsResolved = windiConfig.onOptionsResolved
-  // @ts-ignore
   windiConfig.onOptionsResolved = async(options: ResolvedOptions) => {
     if (ctxOnOptionsResolved) {
       const result = ctxOnOptionsResolved(options)
@@ -100,10 +101,57 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
   utils.init()
     .then(() => nuxt.callHook('windicss:utils', utils))
 
-  nuxt.hook('build:before', () => {
-    // add plugin to import windi.css
-    nuxt.options.plugins.push(resolve(__dirname, 'template', 'windicss.js'))
+  /**
+   * Hook into the template builder, inject the Windi CSS imports.
+   *
+   * Because we want our windi styles to come before users custom styles, we need to inject them as part of the css config.
+   * However, the css config does not let us handle the virtual modules without throwing an error.
+   *
+   * What we need to do is normalise the windi imports and then modify the App.js template to import explicitly for virtual
+   * modules.
+   */
+  nuxt.hook('build:templates', (
+    { templateVars, templatesFiles }:
+    { templateVars: { css: ({ src: string; virtual: boolean }|string)[] }; templatesFiles: { src: string }[]},
+  ) => {
+    const windiImports = templateVars.css.filter(
+      css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
+    )
+    // if there is no windi paths configured, then load all of windi in as the first css file
+    if (!windiImports.length)
+      templateVars.css.unshift('virtual:windi.css')
 
+    // normalise the virtual windi imports
+    templateVars.css = templateVars.css.map((css) => {
+      const src = typeof css === 'string' ? css : css.src
+      if (src.includes('virtual:windi')) {
+        return {
+          src,
+          virtual: true,
+        }
+      }
+      return css
+    })
+    // replace the contents of App.js
+    templatesFiles
+      .map((template) => {
+        if (!template.src.endsWith('App.js'))
+          return template
+
+        // we need to replace the App.js template..
+        const file = fs.readFileSync(template.src, { encoding: 'utf-8' })
+        // regex replace the css loader
+        const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
+        const subst = '$1c.virtual ? c.src : $2$3'
+        const appTemplate = file.replace(regex, subst)
+        const newPath = join(__dirname, 'template', 'App.js')
+        fs.writeFileSync(newPath, appTemplate)
+        template.src = newPath
+        return template
+      })
+  })
+
+  nuxt.hook('build:before', () => {
     // only if they have postcss enabled
     if (nuxt.options.build.postcss) {
       try {
@@ -125,7 +173,6 @@ const windicssModule: Module<UserOptions> = function(moduleOptions) {
         // do nothing, the app isn't using postcss so no changes are needed
       }
     }
-
     // @ts-ignore
     this.extendBuild((config: WebpackConfiguration) => {
       config.plugins = config.plugins || []

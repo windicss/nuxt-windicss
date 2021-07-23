@@ -7,3 +7,7 @@
 .scss-global h2 {
   @apply font-bold text-sm;
 }
+
+h1 {
+  margin-bottom: 20px;
+}

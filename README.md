@@ -43,6 +43,30 @@ export default {
 }
 ```
 
+### Ordering
+
+By default, Windi will load layers together, before your other css files. To change the layout ordering you can manually include the Windi modules.
+
+If, for example, you had a `main.css` which had `h1 { margin-bottom: 30px; }`, you might do something like this:
+
+```js
+// nuxt.config.js
+export default {
+  // ...
+  css: [
+    // windi preflight
+    'virtual:windi-base.css',
+    // your stylesheets which overrides the preflight
+    '@/css/main.css', 
+    // windi extras
+    'virtual:windi-components.css',
+    'virtual:windi-utilities.css',
+  ],
+}
+```
+
+Note: if you're adding any of the virtual modules yourself, it will disable all the automatic imports.
+
 ## Migrating from tailwind
 
 This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.

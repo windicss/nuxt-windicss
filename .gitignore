@@ -32,3 +32,5 @@ coverage
 .env
 
 docus
+
+src/template/*.js
