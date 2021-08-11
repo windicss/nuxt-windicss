@@ -55,10 +55,10 @@
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
   },
   "dependencies": {
+    "@nuxt/kit": "^0.6.4",
     "clear-module": "^4.1.1",
     "defu": "^4.0.1",
     "read-cache": "^1.0.0",
-    "rimraf": "^3.0.2",
     "semver": "^7.3.5",
     "upath": "^2.0.1",
     "vite-plugin-windicss": "1.2.5",
@@ -89,7 +89,6 @@
     "@types/lodash": "latest",
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.0.1",
-    "@types/rimraf": "^3.0.0",
     "@types/semver": "7.3.5",
     "auto-changelog": "^2.2.1",
     "babel-jest": "^26.6.3",
