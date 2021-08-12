@@ -1,11 +1,8 @@
 import fs from 'fs'
-import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
-import VitePluginWindicss from 'vite-plugin-windicss'
 import { relative, join } from 'upath'
 import clearModule from 'clear-module'
 import { createUtils, ResolvedOptions } from '@windicss/plugin-utils'
-import { Config } from 'windicss/types/interfaces'
-import { Configuration as WebpackConfiguration } from 'webpack'
+import type { Config } from 'windicss/types/interfaces'
 import type { File } from '@nuxt/content/types/content'
 import { defineNuxtModule, extendBuild } from '@nuxt/kit'
 import logger from './logger'
@@ -91,7 +88,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       return windiConfig
     }
 
-    const utils = createUtils(windiConfig, { root: windiConfig.root })
+    const utils = createUtils(windiConfig, { root: windiConfig.root, name: 'nuxt-windicss' })
 
     const ensureInit = utils.init()
       .then(() => nuxt.callHook('windicss:utils', utils))
@@ -172,19 +169,22 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       }
     })
 
-    extendBuild((config: WebpackConfiguration) => {
+    // install webpack plugin
+    extendBuild((config: any) => {
+      const WindiCSSWebpackPlugin = require('windicss-webpack-plugin').default
       config.plugins = config.plugins || []
-      // push our webpack plugin
-      config.plugins.push(
-        // @ts-ignore
-        new WindiCSSWebpackPlugin({ ...windiConfig, utils }),
-      )
+      // skip if already installed
+      if (config.plugins.find((i: any) => i instanceof WindiCSSWebpackPlugin))
+        return
+      const plugin = new WindiCSSWebpackPlugin({ ...windiConfig, utils })
+      config.plugins.push(plugin)
     })
 
-    nuxt.hook('vite:extend', (vite: { config: { plugins: any[] } }) => {
+    // install vite plugin
+    nuxt.hook('vite:extend', async(vite: { config: { plugins: any[] } }) => {
+      const VitePluginWindicss = (await import('vite-plugin-windicss')).default
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
-      // @ts-ignore
-      vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root, utils }))
+      vite.config.plugins.push(VitePluginWindicss(windiConfig, { root: windiConfig.root, utils, name: 'nuxt-windicss' }))
     })
 
     if (nuxtOptions.dev) {
