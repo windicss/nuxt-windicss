@@ -1,6 +1,6 @@
 {
   "name": "nuxt-windicss",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Windi CSS for Nuxt.js",
   "keywords": [
     "nuxt",
@@ -35,11 +35,12 @@
     "build:preset": "export NODE_ENV=production && nuxt build test/fixtures/preset",
     "build:static": "export NODE_ENV=production && nuxt build test/fixtures/static",
     "build:vuetify": "export NODE_ENV=development && nuxt build test/fixtures/vuetify",
+    "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
     "dev:basic": "nuxt test/fixtures/basic",
-    "dev:vite": "npm run build && nuxt test/fixtures/vite",
     "dev:bootstrap": "nuxt test/fixtures/bootstrap-tailwind",
     "dev:preset": "nuxt test/fixtures/preset",
     "dev:static": "nuxt test/fixtures/static",
+    "dev:vite": "npm run build && nuxt test/fixtures/vite",
     "dev:vuetify": "yarn build && export DEBUG=windicss-webpack-plugin && nuxt test/fixtures/vuetify",
     "dev:xs": "NODE_ENV=dev nuxt test/fixtures/xs --spa",
     "generate:static": "export NODE_ENV=production && nuxt generate test/fixtures/static",
@@ -51,18 +52,16 @@
     "start:preset": "export NODE_ENV=production && nuxt start test/fixtures/preset",
     "start:static": "export NODE_ENV=production && nuxt start test/fixtures/static",
     "start:vuetify": "export NODE_ENV=production && nuxt start test/fixtures/vuetify",
-    "test": "yarn lint && jest --verbose ",
-    "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
+    "test": "yarn lint && jest --verbose "
   },
   "dependencies": {
     "@nuxt/kit": "^0.6.4",
     "clear-module": "^4.1.1",
-    "defu": "^4.0.1",
     "read-cache": "^1.0.0",
     "semver": "^7.3.5",
     "upath": "^2.0.1",
-    "vite-plugin-windicss": "1.2.5",
-    "windicss-webpack-plugin": "1.4.1"
+    "vite-plugin-windicss": "1.2.7",
+    "windicss-webpack-plugin": "1.4.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.6.6",
@@ -94,6 +93,7 @@
     "babel-jest": "^26.6.3",
     "bootstrap-vue": "^2.21.2",
     "cheerio": "^1.0.0-rc.10",
+    "defu": "^4.0.1",
     "dotenv-cli": "^4.0.0",
     "element-ui": "^2.15.5",
     "eslint": "7.25.0",
