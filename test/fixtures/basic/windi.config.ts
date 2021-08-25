@@ -33,6 +33,7 @@ export default defineConfig({
       rose: colors.rose,
       yellow: colors.amber,
       gray: colors.warmGray,
+      pink: colors.pink
     },
     extend: {
       fontFamily: {

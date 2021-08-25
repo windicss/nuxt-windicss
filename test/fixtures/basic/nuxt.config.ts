@@ -11,6 +11,7 @@ const config: NuxtConfig = {
   ],
   css: [
     '@/css/main.css',
+    '@/css/global.sass'
   ],
   build: {
     loaders: {
