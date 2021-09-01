@@ -104,6 +104,7 @@
     "loader-utils": "latest",
     "minify-css-string": "^1.0.0",
     "nuxt-edge": "2.16.0-27001452.1676b861",
+    "nuxt-tailvue": "^1.0.91",
     "nuxt-vite": "^0.0.37",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
