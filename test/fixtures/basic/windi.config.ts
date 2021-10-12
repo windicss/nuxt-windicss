@@ -25,7 +25,7 @@ export default defineConfig({
       current: 'currentColor',
       black: '#000',
       white: '#fff',
-      blue: colors.lightBlue,
+      blue: colors.sky,
       green: colors.emerald,
       orange: colors.orange,
       purple: colors.purple,
