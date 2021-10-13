@@ -1,6 +1,9 @@
 {
+  "npm": {
+    "tag": "next"
+  },
   "github": {
-    "release": true
+    "preRelease": true
   },
   "git": {
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
