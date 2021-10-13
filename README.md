@@ -69,6 +69,23 @@ export default {
 
 Note: if you're adding any of the virtual modules yourself, it will disable all the automatic imports.
 
+### Nuxt 3
+
+CSS auto importing is currently not supported on Nuxt 3 beta. You have to add it yourself.
+
+```js
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  buildModules: [
+    'nuxt-windicss',
+  ],
+  css: [
+    'virtual:windi.css'
+  ]
+})
+```
+
 ## Migrating from tailwind
 
 This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
