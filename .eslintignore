@@ -2,7 +2,8 @@ node_modules
 dist
 *.snap
 test
-docus
 coverage
 nuxt.js
 src/template/App.js
+packages
+playground
