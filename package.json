@@ -8,6 +8,8 @@
     "windicss",
     "tailwindcss"
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "homepage": "https://github.com/windicss/nuxt-windicss-module",
   "bugs": "https://github.com/windicss/nuxt-windicss-module/issues",
