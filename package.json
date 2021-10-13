@@ -42,8 +42,10 @@
     "@nuxt/content": "^1.14.0",
     "@nuxt/types": "^2.15.8",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.32.0",
     "nuxt": "^2.15.8",
+    "release-it": "^14.11.6",
     "unbuild": "^0.5.6"
   }
 }
