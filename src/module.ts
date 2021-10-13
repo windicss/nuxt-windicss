@@ -10,8 +10,10 @@ import {
   isNuxt2,
   clearRequireCache,
   importModule,
-  requireModulePkg, requireModule,
+  requireModulePkg,
+  requireModule,
 } from '@nuxt/kit'
+import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
@@ -23,7 +25,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     root: nuxt.options.rootDir,
     ...defaultWindiOptions,
   },
-  setup(windiConfig: NuxtWindiOptions) {
+  setup(nuxtWindiOptions: NuxtWindiOptions) {
     const nuxtOptions = nuxt.options
 
     // Make sure they're not using tailwind
@@ -34,8 +36,8 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     }
 
     // allow user to override the options with hooks
-    const ctxOnOptionsResolved = windiConfig.onOptionsResolved
-    windiConfig.onOptionsResolved = async(options: ResolvedOptions) => {
+    const ctxOnOptionsResolved = nuxtWindiOptions.onOptionsResolved
+    nuxtWindiOptions.onOptionsResolved = async(options: ResolvedOptions) => {
       if (ctxOnOptionsResolved) {
         const result = ctxOnOptionsResolved(options)
         return typeof result === 'object' ? result : options
@@ -45,9 +47,9 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       return options
     }
 
-    const ctxOnConfigResolved = windiConfig.onConfigResolved
+    const ctxOnConfigResolved = nuxtWindiOptions.onConfigResolved
     let passed = false
-    windiConfig.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
+    nuxtWindiOptions.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
       if (!passed) {
         // Note: jiti issues when using requireModulePkg
         const { version } = requireModulePkg('windicss')
@@ -73,7 +75,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       return windiConfig
     }
 
-    const utils = createUtils(windiConfig, { root: windiConfig.root, name: NAME })
+    const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: NAME })
 
     const ensureInit = utils.init()
       .then(() => nuxt.callHook('windicss:utils', utils))
@@ -96,7 +98,6 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        * What we need to do is normalize the windi imports and then modify the App.js template to import explicitly for virtual
        * modules.
        */
-      // @ts-expect-error nuxt 2 only
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
         { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
@@ -164,7 +165,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     // webpack 4/5
     extendWebpackConfig(async(config) => {
       const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin').default
-      const plugin = new WindiCSSWebpackPlugin({ ...windiConfig, utils })
+      const plugin = new WindiCSSWebpackPlugin({ ...nuxtWindiOptions, utils })
       config.plugins = config.plugins || []
       config.plugins.push(plugin)
     })
@@ -172,7 +173,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     // Vite
     extendViteConfig(async(config) => {
       const VitePluginWindicss = await importModule('vite-plugin-windicss')
-      const plugin = VitePluginWindicss(windiConfig, { root: windiConfig.root, utils, name: NAME })
+      const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
       config.plugins = config.plugins || []
@@ -182,7 +183,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     if (nuxtOptions.dev) {
       // @nuxt/content support
       // We need to compile md files on the fly and inject the transformed CSS
-      nuxt.hook('content:file:beforeParse', async(file) => {
+      nuxt.hook('content:file:beforeParse', async(file: File) => {
         // only applies to .md files
         if (file.extension !== '.md') return
 

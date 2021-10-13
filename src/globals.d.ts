@@ -1,9 +1,7 @@
-import { ResolvedOptions } from '@windicss/plugin-utils'
-import { Config } from 'windicss/types/interfaces'
-import { File } from '@nuxt/content/types/content'
-import { HookResult } from '@nuxt/kit'
-import { WindiPluginUtils } from 'vite-plugin-windicss'
-import { NuxtWindiOptions } from './interfaces'
+import type { ResolvedOptions, WindiPluginUtils } from '@windicss/plugin-utils'
+import type { Config } from 'windicss/types/interfaces'
+import type { File } from '@nuxt/content/types/content'
+import type { NuxtWindiOptions } from './interfaces'
 
 // pollyfill @todo nuxt/kit export
 type NuxtHookResult = Promise<void> | void
@@ -21,6 +19,6 @@ declare module '@nuxt/kit' {
     'windicss:utils': (utils: WindiPluginUtils) => NuxtHookResult
 
     // pollyfill for @nuxt/content
-    'content:file:beforeParse': (md: File) => HookResult
+    'content:file:beforeParse': (md: File) => NuxtHookResult
   }
 }

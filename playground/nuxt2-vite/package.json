@@ -1,8 +1,6 @@
 {
   "name": "nuxt2-webpack",
-  "main": "index.js",
   "private": true,
-  "license": "MIT",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
