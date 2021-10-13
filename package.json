@@ -55,7 +55,7 @@
     "test": "yarn lint && jest --verbose "
   },
   "dependencies": {
-    "@nuxt/kit": "^0.6.4",
+    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "clear-module": "^4.1.1",
     "read-cache": "^1.0.0",
     "semver": "^7.3.5",
