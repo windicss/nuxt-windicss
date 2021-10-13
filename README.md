@@ -16,12 +16,11 @@
 
 ## Features
 
-- ⚡️ **It's FAST** - 20~100x times faster than [@nuxtjs/tailwindcss](https://github.com/nuxt-community/tailwindcss-module)
 - 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
 - 🍃 Load configurations from `tailwind.config.js`
 - 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
-- 🧑‍🤝‍🧑 Works with [@nuxt/vite](https://github.com/nuxt/vite) & [@nuxt/content](https://content.nuxtjs.org/)
+- 🧑‍🤝‍🧑 Plays nicely with Nuxt v3, Nuxt v2, [@nuxt/vite](https://github.com/nuxt/vite) and [@nuxt/content](https://content.nuxtjs.org/)
 
 ## Install
 
@@ -29,6 +28,7 @@
 yarn add nuxt-windicss -D
 # npm i nuxt-windicss -D
 ```
+
 
 ## Usage
 
@@ -43,13 +43,40 @@ export default {
 }
 ```
 
+### Nuxt 3
+
+```js
+import { defineNuxtConfig } from 'nuxt3'
+
+export default defineNuxtConfig({
+  buildModules: [
+    'nuxt-windicss',
+  ],
+})
+```
+
+### Migrating from tailwind
+
+This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
+
+```diff
+buildModules: [
+-  '@nuxtjs/tailwindcss',
+],
+```
+
+If you have a `tailwind.config.js`, please rename it to `windi.config.js` or `windi.config.ts`.
+
+Follow the [migration guide](https://windicss.org/guide/migration.html) for other change details.
+
+
 ### Ordering (optional)
 
-By default, this module will load all of the windi layers togethor beyond your CSS.
+By default, this all windi layers will be automatically imported for you.
 
-If you'd like to change the layout ordering you can manually include the layers where you want them. 
+If you'd like to change the layout ordering you can include the layers in any order you like. 
 
-For example, you had a `main.css` which had `h1 { margin-bottom: 30px; }`, you might do something like this:
+For example, if you had a `main.css` which had `h1 { margin-bottom: 30px; }`, you might do something like this:
 
 ```js
 // nuxt.config.js
@@ -66,39 +93,6 @@ export default {
   ],
 }
 ```
-
-Note: if you're adding any of the virtual modules yourself, it will disable all the automatic imports.
-
-### Nuxt 3
-
-CSS auto importing is currently not supported on Nuxt 3 beta. You have to add it yourself.
-
-```js
-import { defineNuxtConfig } from 'nuxt3'
-
-export default defineNuxtConfig({
-  buildModules: [
-    'nuxt-windicss',
-  ],
-  css: [
-    'virtual:windi.css'
-  ]
-})
-```
-
-## Migrating from tailwind
-
-This module won't work with `@nuxtjs/tailwindcss`, you will need to remove it.
-
-```diff
-buildModules: [
--  '@nuxtjs/tailwindcss',
-],
-```
-
-If you have a `tailwind.config.js`, please rename it to `windi.config.js` or `windi.config.ts`.
-
-Follow the [migration guide](https://windicss.org/guide/migration.html) for other change details.
 
 
 ## Documentation
