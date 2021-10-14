@@ -52,18 +52,22 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     nuxtWindiOptions.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
       if (!passed) {
         // Note: jiti issues when using requireModulePkg
-        const { version } = requireModulePkg('windicss')
+        let configType = 'inline'
         // this hook is ran twice for some reason
         if (configFilePath) {
           clearRequireCache(configFilePath)
-          logger.info(`windicss@${version} running with config: \`${relative(nuxtOptions.rootDir, configFilePath)}\``)
+          configType = relative(nuxtOptions.rootDir, configFilePath)
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
           if (nuxt.options.dev)
             nuxt.options.watch.push(configFilePath)
         }
-        else {
-          logger.info(`windicss@${version} running with inline config.`)
+
+        // avoid being too verbose
+        if (nuxt.options.dev && !nuxt.options.build) {
+          const { version } = requireModulePkg('windicss')
+          logger.info(`windicss@${version} running with config: ${configType}.`)
         }
+
         passed = true
       }
       if (ctxOnConfigResolved) {
