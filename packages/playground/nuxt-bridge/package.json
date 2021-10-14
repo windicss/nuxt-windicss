@@ -8,13 +8,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.8"
+    "nuxt-edge": "latest"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27235989.d52b1e8",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
-    "nuxt-vite": "^0.3.5",
     "postcss-import": "^14.0.2",
     "pug": "^3.0.2",
     "sass": "^1.42.1",

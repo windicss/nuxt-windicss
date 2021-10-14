@@ -1,5 +1,4 @@
 import { NuxtConfig } from '@nuxt/types'
-import nuxtWindiCSSModule from '../../dist'
 // @ts-ignore
 import themeModule from './theme.config.js'
 
@@ -7,7 +6,7 @@ const config: NuxtConfig = {
   target: 'static',
   buildModules: [
     '@nuxt/typescript-build',
-    nuxtWindiCSSModule,
+    'nuxt-windicss',
     themeModule,
   ],
   css: [

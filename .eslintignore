@@ -5,5 +5,4 @@ test
 coverage
 nuxt.js
 src/template/App.js
-packages
-playground
+packages/playground

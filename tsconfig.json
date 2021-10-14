@@ -17,8 +17,9 @@
       "@nuxt/types",
     ]
   },
-  "include": [
-    "src",
-    "test"
-  ]
+  "exclude": [
+    "**/dist/**",
+    "**/.output/**",
+    "playground/**"
+  ],
 }

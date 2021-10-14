@@ -33,6 +33,5 @@ coverage
 
 src/template/*.js
 
-packages
-
 .output
+packages/nuxt-windicss/README.md

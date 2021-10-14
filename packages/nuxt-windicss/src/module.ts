@@ -25,7 +25,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     root: nuxt.options.rootDir,
     ...defaultWindiOptions,
   },
-  setup(nuxtWindiOptions: NuxtWindiOptions) {
+  async setup(nuxtWindiOptions: NuxtWindiOptions) {
     const nuxtOptions = nuxt.options
 
     // Make sure they're not using tailwind
@@ -102,6 +102,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        * What we need to do is normalize the windi imports and then modify the App.js template to import explicitly for virtual
        * modules.
        */
+      // @ts-ignore
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
         { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
@@ -198,6 +199,12 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // add to the end of the file
         file.data += `\n\n<style>${css}</style>`
       })
+
+      if (nuxtWindiOptions.analyze) {
+        const { startServer } = await requireModule('windicss-analysis')
+
+        startServer({ root: nuxt.options.rootDir })
+      }
     }
   },
 }))

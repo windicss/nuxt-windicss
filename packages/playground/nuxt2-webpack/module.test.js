@@ -3,7 +3,7 @@ const execa = require('execa');
 const fs = require('fs')
 const path = require('pathe')
 
-describe('nuxt2-vite',  () => {
+describe('nuxt2-webpack',  () => {
 
   test('index html transformed correctly', async() => {
     // Note: this is a hacky solution
