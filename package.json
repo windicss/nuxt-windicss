@@ -17,6 +17,7 @@
     "@nuxt/test-utils": "^0.2.2",
     "@nuxt/types": "^2.15.8",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/visitor-keys": "^5.0.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv-cli": "^4.0.0",
     "esbuild": "^0.13.5",

@@ -1,6 +1,6 @@
 module.exports = {
   preset: '@nuxt/test-utils',
-  testTimeout: 50000,
+  testTimeout: 100000,
   transform: {
     '^.+\\.jsx?$': 'esbuild-jest',
     '^.+\\.mjs$': 'esbuild-jest',
