@@ -9,6 +9,9 @@ const config: NuxtConfig = {
     'nuxt-windicss',
     themeModule,
   ],
+  windicss: {
+    analyze: true
+  },
   css: [
     '@/css/main.css',
     '@/css/global.sass',
