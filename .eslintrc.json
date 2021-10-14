@@ -1,8 +1,10 @@
 {
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": "@antfu",
+  "plugins": ["jest"],
   "rules": {
     "@typescript-eslint/no-var-requires": "off"
   }
