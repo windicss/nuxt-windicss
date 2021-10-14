@@ -23,6 +23,7 @@
 - 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 - 🧑‍🤝‍🧑 Plays nicely with Nuxt v3, Nuxt v2, [@nuxt/vite](https://github.com/nuxt/vite) and [@nuxt/content](https://content.nuxtjs.org/)
+- 🔎 Integrated with [windicss-analysis](https://github.com/windicss/windicss-analysis)
 
 ## Install
 
@@ -56,6 +57,26 @@ export default defineNuxtConfig({
   ],
 })
 ```
+
+### Windi Analyzer 
+
+> An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browse your utilities usages, have an overview of your design system, identify "bad practices", and more!
+
+![](https://user-images.githubusercontent.com/11247099/113150805-0c43f880-9267-11eb-85a6-ec1a2f1eed37.png)
+
+You can enable Windi Analzyer by enabling the flag for it. Will only work in development.
+
+```js
+export default defineNuxtConfig({
+  buildModules: [
+    'nuxt-windicss',
+  ],
+  windicss: {
+    analyze: true
+  }
+})
+```
+
 
 ### Migrating from tailwind
 
