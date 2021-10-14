@@ -1,0 +1,24 @@
+{
+  "name": "nuxt2-webpack",
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "nuxi start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt-edge": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27235989.d52b1e8",
+    "less": "^4.1.2",
+    "less-loader": "^7.3.0",
+    "postcss-import": "^14.0.2",
+    "pug": "^3.0.2",
+    "sass": "^1.42.1",
+    "sass-loader": "^10.2.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2"
+  }
+}

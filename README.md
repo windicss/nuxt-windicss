@@ -10,6 +10,9 @@
 <a href='https://www.npmjs.com/package/nuxt-windicss'>
 <img src='https://img.shields.io/npm/v/nuxt-windicss?color=0EA5E9&label='>
 </a>
+<a href='https://github.com/windicss/nuxt-windicss-module/actions/workflows/test.yml'>
+<img src='https://github.com/windicss/nuxt-windicss-module/actions/workflows/test.yml/badge.svg' >
+</a>
 </p>
 
 

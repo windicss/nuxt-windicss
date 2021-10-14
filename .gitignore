@@ -34,3 +34,5 @@ coverage
 src/template/*.js
 
 packages
+
+.output
