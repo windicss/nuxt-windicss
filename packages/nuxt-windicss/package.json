@@ -25,7 +25,8 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "unbuild"
+    "prepack": "unbuild",
+    "release": "release-it "
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxt/types": "^2.15.8",
-    "unbuild": "^0.5.6"
+    "unbuild": "^0.5.6",
+    "release-it": "^14.11.6"
   }
 }

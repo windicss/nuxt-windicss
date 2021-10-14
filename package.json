@@ -8,7 +8,7 @@
     "prepack": "cp README.md packages/nuxt-windicss && cd packages/nuxt-windicss && yarn prepack",
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
     "lint": "eslint --fix --ext .ts,.js,.vue .",
-    "release": "dotenv release-it --",
+    "release": "cd packages/nuxt-windicss && npm run release",
     "release:beta": "dotenv release-it --preReleaseId=beta --npm.tag=beta --github.preRelease",
     "test": "jest --verbose --maxWorkers=4"
   },
@@ -22,14 +22,6 @@
     "esbuild": "^0.13.5",
     "esbuild-jest": "^0.5.0",
     "eslint": "^7.32.0",
-    "jest": "^27.2.5",
-    "release-it": "^14.11.6",
-    "release-it-yarn-workspaces": "^2.0.1"
-  },
-  "release-it": {
-    "plugins": {
-      "release-it-yarn-workspaces": true
-    },
-    "npm": false
+    "jest": "^27.2.5"
   }
 }
