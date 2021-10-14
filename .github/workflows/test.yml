@@ -26,15 +26,27 @@ jobs:
           path: "node_modules"
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install core dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: pnpm i
 
-      - name: Build ts
-        run: yarn build
+      - name: Pack
+        run: pnpm run prepack
 
+      # Playground Dependencies
+      - name: Install nuxt-bridge dependencies
+        run: cd playground/nuxt-bridge && yarn install
+
+      - name: Install nuxt2-vite dependencies
+        run: cd playground/nuxt2-vite && yarn install
+
+      - name: Install nuxt2-webpack dependencies
+        run: cd playground/nuxt2-webpack && yarn install
+
+      - name: Install nuxt3 dependencies
+        run: cd playground/nuxt3 && yarn install
+
+      - name: Run linter
+        run: pnpm run lint
       - name: Run tests
-        run: yarn test
-
-      - name: Coverage
-        uses: codecov/codecov-action@v1
+        run: pnpm run test
