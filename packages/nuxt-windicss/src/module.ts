@@ -207,17 +207,11 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        * This is hosted in its own server via listhen.
        */
       if (nuxtWindiOptions.analyze) {
-        let analyzeInited = false
-        nuxt.hook('listen', () => {
-          if (!analyzeInited) {
-            analyzeInited = true
-            analyze({
-              windiOptions: nuxtWindiOptions,
-              utils,
-            }).then((url) => {
-              nuxt.options.cli.badgeMessages.push(`WindCSS Analysis: ${url}`)
-            })
-          }
+        analyze({
+          windiOptions: nuxtWindiOptions,
+          utils,
+        }).then((url) => {
+          nuxt.options.cli.badgeMessages.push(`WindCSS Analysis: ${url}`)
         })
       }
     }
