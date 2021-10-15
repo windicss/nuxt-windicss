@@ -84,11 +84,11 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: NAME })
 
     const ensureInit = utils.init()
-        .then(() => nuxt.callHook('windicss:utils', utils))
+      .then(() => nuxt.callHook('windicss:utils', utils))
 
     // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
     const windiImports = nuxt.options.css.filter(
-        css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
+      css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
       nuxt.options.css.unshift('virtual:windi.css')
@@ -106,8 +106,8 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        */
       // @ts-ignore
       nuxt.hook('build:templates', (
-          { templateVars, templatesFiles }:
-              { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
+        { templateVars, templatesFiles }:
+        { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
       ) => {
         // normalise the virtual windi imports
         templateVars.css = templateVars.css.map((css) => {
@@ -122,21 +122,21 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         })
         // replace the contents of App.js
         templatesFiles
-            .map((template) => {
-              if (!template.src.endsWith('App.js'))
-                return template
-
-              // we need to replace the App.js template..
-              const file = readFileSync(template.src, { encoding: 'utf-8' })
-              // regex replace the css loader
-              const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
-              const subst = '$1c.virtual ? c.src : $2$3'
-              const appTemplate = file.replace(regex, subst)
-              const newPath = join(__dirname, 'template', 'App.js')
-              writeFileSync(newPath, appTemplate)
-              template.src = newPath
+          .map((template) => {
+            if (!template.src.endsWith('App.js'))
               return template
-            })
+
+            // we need to replace the App.js template..
+            const file = readFileSync(template.src, { encoding: 'utf-8' })
+            // regex replace the css loader
+            const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
+            const subst = '$1c.virtual ? c.src : $2$3'
+            const appTemplate = file.replace(regex, subst)
+            const newPath = join(__dirname, 'template', 'App.js')
+            writeFileSync(newPath, appTemplate)
+            template.src = newPath
+            return template
+          })
       })
     }
 
@@ -221,21 +221,21 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
           windiOptions: nuxtWindiOptions,
           utils,
         }, nuxtWindiOptions.analyze)
-            .then((server) => {
-              const message = `WindCSS Analysis: ${server.url}`
-              if (isNuxt3(nuxt)) {
+          .then((server) => {
+            const message = `WindCSS Analysis: ${server.url}`
+            if (isNuxt3(nuxt)) {
+              logger.info(message)
+            }
+            else if (serverStarted) {
+              nuxt.hook('build:done', () => {
+                serverStarted = true
                 logger.info(message)
-              }
-              else if (serverStarted) {
-                nuxt.hook('build:done', () => {
-                  serverStarted = true
-                  logger.info(message)
-                })
-              }
-              else {
-                nuxt.options.cli.badgeMessages.push(message)
-              }
-            })
+              })
+            }
+            else {
+              nuxt.options.cli.badgeMessages.push(message)
+            }
+          })
       }
     }
   },
