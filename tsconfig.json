@@ -14,13 +14,12 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "types": [
-      "@types/node",
       "@nuxt/types",
-      "@types/jest"
     ]
   },
-  "include": [
-    "src",
-    "test"
-  ]
+  "exclude": [
+    "**/dist/**",
+    "**/.output/**",
+    "playground/**"
+  ],
 }

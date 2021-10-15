@@ -1,0 +1,25 @@
+{
+  "name": "nuxt2-webpack",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.15.8",
+    "nuxt-vite": "^0.3.5"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^2.1.0",
+    "less": "^4.1.2",
+    "less-loader": "^7.3.0",
+    "postcss-import": "^14.0.2",
+    "pug": "^3.0.2",
+    "sass": "^1.42.1",
+    "sass-loader": "^10.2.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2"
+  }
+}

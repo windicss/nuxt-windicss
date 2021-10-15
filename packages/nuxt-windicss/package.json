@@ -1,0 +1,51 @@
+{
+  "name": "nuxt-windicss",
+  "version": "2.0.0-7",
+  "description": "Windi CSS for Nuxt.js",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "windicss",
+    "tailwindcss"
+  ],
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "homepage": "https://github.com/windicss/nuxt-windicss-module",
+  "bugs": "https://github.com/windicss/nuxt-windicss-module/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windicss/nuxt-windicss-module"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Harlan Wilton",
+    "email": "harlan@harlanzw.com"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "prepack": "unbuild",
+    "release": "release-it "
+  },
+  "dependencies": {
+    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
+    "defu": "^5.0.0",
+    "h3": "^0.3.1",
+    "listhen": "^0.2.4",
+    "pathe": "^0.2.0",
+    "read-cache": "^1.0.0",
+    "sirv": "^1.0.17",
+    "vite-plugin-windicss": "^1.4.11",
+    "windicss": "^3.1.9",
+    "windicss-analysis": "^0.3.4",
+    "windicss-webpack-plugin": "^1.4.9"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^1.14.0",
+    "@nuxt/types": "^2.15.8",
+    "release-it": "^14.11.6",
+    "unbuild": "^0.5.6"
+  }
+}

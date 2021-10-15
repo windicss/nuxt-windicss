@@ -31,6 +31,7 @@ coverage
 
 .env
 
-docus
-
 src/template/*.js
+
+.output
+packages/nuxt-windicss/README.md

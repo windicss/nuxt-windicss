@@ -1,3 +1,0 @@
-.test-apply {
-  @apply bg-green-900 text-white p-20 w-1/4 transition hover:(bg-green-900 text-blue-100);
-}
