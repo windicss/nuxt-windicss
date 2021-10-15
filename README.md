@@ -92,6 +92,22 @@ export default defineNuxtConfig({
 })
 ```
 
+Alternatively you can provide an object to control the analysis or the server.
+
+```js
+windicss: {
+  analyze: {
+    analysis: {
+      interpretUtilities: false,
+    }
+    // see https://github.com/unjs/listhen#options
+    server: {
+      port: 4444,
+      open: true,
+    }
+  }
+}
+```
 
 ### Migrating from tailwind
 
