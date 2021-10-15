@@ -4,7 +4,6 @@ import themeModule from './theme.config.js'
 
 const config: NuxtConfig = {
   target: 'static',
-  modern: true,
   buildModules: [
     '@nuxt/typescript-build',
     'nuxt-windicss',
