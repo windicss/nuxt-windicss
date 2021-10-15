@@ -58,13 +58,28 @@ export default defineNuxtConfig({
 })
 ```
 
+### Typescript
+
+For Nuxt config typescript support, add the module within your `tsconfig.json`.
+
+```json
+
+{
+  "compilerOptions": {
+    "types": [
+      "nuxt-windicss"
+    ]
+  }
+}
+```
+
 ### Windi Analyzer 
 
 > An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browse your utilities usages, have an overview of your design system, identify "bad practices", and more!
 
 ![](https://user-images.githubusercontent.com/11247099/113150805-0c43f880-9267-11eb-85a6-ec1a2f1eed37.png)
 
-You can enable Windi Analzyer by enabling the flag for it. Will only work in development.
+You can enable Windi Analzyer using the Nuxt config. The analyser is only available in development mode.
 
 ```js
 export default defineNuxtConfig({
