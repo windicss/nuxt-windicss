@@ -22,7 +22,8 @@
     "email": "harlan@harlanzw.com"
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "prepack": "unbuild",
