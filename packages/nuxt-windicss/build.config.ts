@@ -11,5 +11,6 @@ export default defineBuildConfig({
     '@windicss/plugin-utils',
     'consola',
     'pathe',
+    'defu'
   ],
 })

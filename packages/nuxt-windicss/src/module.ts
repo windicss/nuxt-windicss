@@ -12,6 +12,8 @@ import {
   importModule,
   requireModulePkg,
   requireModule,
+  tryRequireModule,
+  isNuxt3,
 } from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
@@ -206,16 +208,57 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        *
        * This is hosted in its own server via listhen.
        */
-      if (nuxtWindiOptions.analyze) {
+      if (nuxtWindiOptions.analyze !== false) {
+        // need to check if the server has already started to show a logger message rather than a cli badge
+        let serverStarted = false
+        nuxt.hook('listen', () => {
+          serverStarted = true
+        })
         analyze({
           windiOptions: nuxtWindiOptions,
           utils,
-        }).then((url) => {
-          nuxt.options.cli.badgeMessages.push(`WindCSS Analysis: ${url}`)
-        })
+        }, nuxtWindiOptions.analyze)
+          .then((server) => {
+            const message = `WindCSS Analysis: ${server.url}`
+            if (isNuxt3(nuxt)) {
+              logger.info(message)
+            }
+            else if (serverStarted) {
+              nuxt.hook('build:done', () => {
+                serverStarted = true
+                logger.info(message)
+              })
+            }
+            else {
+              nuxt.options.cli.badgeMessages.push(message)
+            }
+          })
       }
     }
   },
 }))
+
+/**
+ * Export package.json meta into the module
+ */
+export const defineModuleMeta = () => {
+  // __dirname by itself is CJS which we should avoid
+  const __dirname = new URL('.', import.meta.url).pathname
+
+  let meta = {
+    configKey: NUXT_CONFIG_KEY,
+  }
+  // it shouldn't fail but who knows
+  const pkg = tryRequireModule(`${__dirname}/../package.json`)
+  if (pkg) {
+    meta = {
+      ...meta,
+      ...pkg,
+    }
+  }
+  return meta
+}
+
+defineNuxtWindiCSSModule.meta = defineModuleMeta()
 
 export default defineNuxtWindiCSSModule
