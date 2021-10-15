@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     '@/css/main.css',
     '@/css/global.sass',
   ],
+  windicss: {
+    analyze: true
+  },
   build: {
     loaders: {
       css: {

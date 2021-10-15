@@ -13,6 +13,9 @@ const config: NuxtConfig = {
     '@/css/main.css',
     '@/css/global.scss',
   ],
+  windicss: {
+    analyze: true
+  },
   build: {
     loaders: {
       css: {
