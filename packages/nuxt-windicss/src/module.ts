@@ -91,7 +91,19 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
-      nuxt.options.css.unshift(join('@', 'virtual:windi.css'))
+      nuxt.options.css.unshift('virtual:windi.css')
+
+    // builds for webpack 5 don't support windi being resolved at the root for some reason
+    if (isNuxt3(nuxt) && nuxt.options.vite === false) {
+      nuxt.options.css = nuxt.options.css
+          // we need to remove the alias at the start for it to work
+          .map((css: string) => {
+            if (!css.includes('virtual:windi') || css.startsWith('@')) {
+              return css
+            }
+            return join('@', css)
+          })
+    }
 
     // Nuxt 3 supports virtual css modules
     if (isNuxt2(nuxt)) {
@@ -187,6 +199,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
+
       config.plugins = config.plugins || []
       config.plugins.push(plugin)
     })

@@ -138,12 +138,12 @@ export default {
   // ...
   css: [
     // windi preflight
-    '@/virtual:windi-base.css',
+    'virtual:windi-base.css',
     // your stylesheets which overrides the preflight
     '@/css/main.css', 
     // windi extras
-    '@/virtual:windi-components.css',
-    '@/virtual:windi-utilities.css',
+    'virtual:windi-components.css',
+    'virtual:windi-utilities.css',
   ],
 }
 ```
