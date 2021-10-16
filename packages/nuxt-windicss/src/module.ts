@@ -91,7 +91,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
-      nuxt.options.css.unshift('virtual:windi.css')
+      nuxt.options.css.unshift(join('@', 'virtual:windi.css'))
 
     // Nuxt 3 supports virtual css modules
     if (isNuxt2(nuxt)) {
