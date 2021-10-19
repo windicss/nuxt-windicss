@@ -3,6 +3,7 @@ import { NuxtWindiOptions } from './interfaces'
 export const NAME = 'nuxt-windicss'
 export const NUXT_CONFIG_KEY = 'windicss'
 export const defaultWindiOptions: Partial<NuxtWindiOptions> = {
+  analyze: false,
   scan: {
     dirs: ['./'],
     exclude: [
