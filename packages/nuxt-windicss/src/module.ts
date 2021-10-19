@@ -13,6 +13,7 @@ import {
   requireModule,
   tryRequireModule,
   isNuxt3,
+  extendWebpackConfig,
 } from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
@@ -182,15 +183,11 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     })
 
     // webpack 4/5
-    nuxt.hook('webpack:config', (configs) => {
-      // @todo use extendWebpackConfig once it supports modern build
+    extendWebpackConfig((config) => {
       const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin').default
       const plugin = new WindiCSSWebpackPlugin({ ...nuxtWindiOptions, utils })
-
-      configs.forEach((config) => {
-        config.plugins = config.plugins || []
-        config.plugins.push(plugin)
-      })
+      config.plugins = config.plugins || []
+      config.plugins.push(plugin)
     })
 
     // Vite
