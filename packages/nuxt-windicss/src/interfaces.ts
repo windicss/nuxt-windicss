@@ -14,6 +14,10 @@ export type NuxtWindiOptions = Options & {
   * Starts a server for Windi Analyze.
   */
   analyze?: AnalyzeOptions
+  /**
+   * Shows nuxt-windicss and windicss versions on build:before hook.
+   */
+  displayVersionInfo?: boolean
 }
 
 // pollyfill @todo nuxt/kit export

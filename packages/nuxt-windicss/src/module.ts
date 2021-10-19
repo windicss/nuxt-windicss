@@ -21,6 +21,27 @@ import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
 import { analyze } from '.'
 
+/**
+ * Export package.json meta into the module
+ */
+export const defineModuleMeta = (): Record<string, any> => {
+  // __dirname by itself is CJS which we should avoid
+  const __dirname = new URL('.', import.meta.url).pathname
+
+  let meta = {
+    configKey: NUXT_CONFIG_KEY,
+  }
+  // it shouldn't fail but who knows
+  const pkg = tryRequireModule(`${__dirname}/../package.json`)
+  if (pkg) {
+    meta = {
+      ...meta,
+      ...pkg,
+    }
+  }
+  return meta
+}
+
 const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
   name: NAME,
   configKey: NUXT_CONFIG_KEY,
@@ -59,16 +80,18 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // this hook is ran twice for some reason
         if (configFilePath) {
           clearRequireCache(configFilePath)
-          configType = relative(nuxtOptions.rootDir, configFilePath)
+          configType = `./${relative(nuxtOptions.rootDir, configFilePath)}`
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
           if (nuxt.options.dev)
             nuxt.options.watch.push(configFilePath)
         }
 
         // avoid being too verbose
-        if (nuxt.options.dev && !nuxt.options.build) {
-          const { version } = requireModulePkg('windicss')
-          logger.info(`windicss@${version} running with config: ${configType}.`)
+        if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
+          nuxt.hook('build:before', () => {
+            const { version } = requireModulePkg('windicss')
+            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` using \`windicss v${version}\` running with config: \`${configType}\`.`)
+          })
         }
 
         passed = true
@@ -250,27 +273,6 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     }
   },
 }))
-
-/**
- * Export package.json meta into the module
- */
-export const defineModuleMeta = () => {
-  // __dirname by itself is CJS which we should avoid
-  const __dirname = new URL('.', import.meta.url).pathname
-
-  let meta = {
-    configKey: NUXT_CONFIG_KEY,
-  }
-  // it shouldn't fail but who knows
-  const pkg = tryRequireModule(`${__dirname}/../package.json`)
-  if (pkg) {
-    meta = {
-      ...meta,
-      ...pkg,
-    }
-  }
-  return meta
-}
 
 defineNuxtWindiCSSModule.meta = defineModuleMeta()
 

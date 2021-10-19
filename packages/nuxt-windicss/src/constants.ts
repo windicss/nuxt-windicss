@@ -4,6 +4,7 @@ export const NAME = 'nuxt-windicss'
 export const NUXT_CONFIG_KEY = 'windicss'
 export const defaultWindiOptions: Partial<NuxtWindiOptions> = {
   analyze: false,
+  displayVersionInfo: true,
   scan: {
     dirs: ['./'],
     exclude: [
