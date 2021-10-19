@@ -8,13 +8,20 @@
     "windicss",
     "tailwindcss"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "homepage": "https://github.com/windicss/nuxt-windicss-module",
-  "bugs": "https://github.com/windicss/nuxt-windicss-module/issues",
+  "homepage": "https://github.com/windicss/nuxt-windicss",
+  "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/windicss/nuxt-windicss-module"
+    "url": "https://github.com/windicss/nuxt-windicss"
   },
   "license": "MIT",
   "author": {
