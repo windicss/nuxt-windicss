@@ -14,7 +14,7 @@ import {
   tryRequireModule,
   isNuxt3,
   extendWebpackConfig,
-} from '@nuxt/kit'
+} from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
 import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
