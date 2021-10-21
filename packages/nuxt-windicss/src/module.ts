@@ -11,39 +11,22 @@ import {
   importModule,
   requireModulePkg,
   requireModule,
-  tryRequireModule,
   isNuxt3,
   extendWebpackConfig,
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
+import { version } from '../package.json'
 import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
-import { analyze } from '.'
+import { analyze } from './analyze'
 
-/**
- * Export package.json meta into the module
- */
-export const defineModuleMeta = (): Record<string, any> => {
-  // __dirname by itself is CJS which we should avoid
-  const __dirname = new URL('.', import.meta.url).pathname
+// Should include types only
+export * from './interfaces'
 
-  let meta = {
-    configKey: NUXT_CONFIG_KEY,
-  }
-  // it shouldn't fail but who knows
-  const pkg = tryRequireModule(`${__dirname}/../package.json`)
-  if (pkg) {
-    meta = {
-      ...meta,
-      ...pkg,
-    }
-  }
-  return meta
-}
-
-const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
+export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
   name: NAME,
+  version,
   configKey: NUXT_CONFIG_KEY,
   defaults: {
     root: nuxt.options.rootDir,
@@ -89,8 +72,8 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // avoid being too verbose
         if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
-            const { version } = requireModulePkg('windicss')
-            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` using \`windicss v${version}\` running with config: \`${configType}\`.`)
+            const { version: windiVersion } = requireModulePkg('windicss')
+            logger.info(`\`nuxt-windicss v${version}\` using \`windicss v${windiVersion}\` running with config: \`${configType}\`.`)
           })
         }
 
@@ -254,7 +237,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
           windiOptions: nuxtWindiOptions,
           utils,
         }, nuxtWindiOptions.analyze)
-          .then((server) => {
+          .then((server: any) => {
             const message = `WindCSS Analysis: ${server.url}`
             if (isNuxt3(nuxt)) {
               logger.info(message)
@@ -273,7 +256,3 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     }
   },
 }))
-
-defineNuxtWindiCSSModule.meta = defineModuleMeta()
-
-export default defineNuxtWindiCSSModule
