@@ -71,7 +71,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // avoid being too verbose
         if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
-            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` running with config: \`${configType}\`.`)
+            logger.info(`\`nuxt-windicss v${version}\` running with config: \`${configType}\`.`)
           })
         }
 
