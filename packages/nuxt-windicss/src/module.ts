@@ -9,7 +9,6 @@ import {
   isNuxt2,
   clearRequireCache,
   importModule,
-  requireModulePkg,
   requireModule,
   tryRequireModule,
   isNuxt3,
@@ -89,8 +88,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // avoid being too verbose
         if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
-            const { version } = requireModulePkg('windicss')
-            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` using \`windicss v${version}\` running with config: \`${configType}\`.`)
+            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` running with config: \`${configType}\`.`)
           })
         }
 
