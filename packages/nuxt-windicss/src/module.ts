@@ -9,7 +9,6 @@ import {
   isNuxt2,
   clearRequireCache,
   importModule,
-  requireModulePkg,
   requireModule,
   isNuxt3,
   extendWebpackConfig,
@@ -72,8 +71,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // avoid being too verbose
         if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
-            const { version: windiVersion } = requireModulePkg('windicss')
-            logger.info(`\`nuxt-windicss v${version}\` using \`windicss v${windiVersion}\` running with config: \`${configType}\`.`)
+            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` running with config: \`${configType}\`.`)
           })
         }
 
