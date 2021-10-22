@@ -8,10 +8,11 @@ import {
   extendViteConfig,
   isNuxt2,
   clearRequireCache,
-  importModule,
-  requireModule,
   isNuxt3,
   extendWebpackConfig,
+  requireModule,
+  tryRequireModule,
+  importModule
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
 import { version } from '../package.json'
@@ -19,6 +20,7 @@ import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
 import { analyze } from './analyze'
+import { createCommonJS } from 'mlly'
 
 // Should include types only
 export * from './interfaces'
@@ -89,11 +91,11 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: NAME })
 
     const ensureInit = utils.init()
-      .then(() => nuxt.callHook('windicss:utils', utils))
+        .then(() => nuxt.callHook('windicss:utils', utils))
 
     // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
     const windiImports = nuxt.options.css.filter(
-      css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
+        css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
       nuxt.options.css.unshift('virtual:windi.css')
@@ -101,13 +103,13 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     // builds for webpack 5 don't support windi being resolved at the root for some reason
     if (isNuxt3(nuxt) && nuxt.options.vite === false) {
       nuxt.options.css = nuxt.options.css
-      // we need to remove the alias at the start for it to work
-        .map((css: string) => {
-          if (!css.includes('virtual:windi') || css.startsWith('@'))
-            return css
+          // we need to remove the alias at the start for it to work
+          .map((css: string) => {
+            if (!css.includes('virtual:windi') || css.startsWith('@'))
+              return css
 
-          return join('@', css)
-        })
+            return join('@', css)
+          })
     }
 
     // Nuxt 3 supports virtual css modules
@@ -123,8 +125,8 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
        */
       // @ts-ignore
       nuxt.hook('build:templates', (
-        { templateVars, templatesFiles }:
-        { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
+          { templateVars, templatesFiles }:
+              { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
       ) => {
         // normalise the virtual windi imports
         templateVars.css = templateVars.css.map((css) => {
@@ -139,54 +141,53 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         })
         // replace the contents of App.js
         templatesFiles
-          .map((template) => {
-            if (!template.src.endsWith('App.js'))
-              return template
+            .map((template) => {
+              if (!template.src.endsWith('App.js'))
+                return template
 
-            // we need to replace the App.js template..
-            const file = readFileSync(template.src, { encoding: 'utf-8' })
-            // regex replace the css loader
-            const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
-            const subst = '$1c.virtual ? c.src : $2$3'
-            const appTemplate = file.replace(regex, subst)
-            const newPath = join(__dirname, 'template', 'App.js')
-            writeFileSync(newPath, appTemplate)
-            template.src = newPath
-            return template
-          })
+              // we need to replace the App.js template..
+              const file = readFileSync(template.src, { encoding: 'utf-8' })
+              // regex replace the css loader
+              const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
+              const subst = '$1c.virtual ? c.src : $2$3'
+              const appTemplate = file.replace(regex, subst)
+              const { __dirname } = createCommonJS(import.meta.url)
+              const newPath = join(__dirname, 'template', 'App.js')
+              writeFileSync(newPath, appTemplate)
+              template.src = newPath
+              return template
+            })
       })
     }
 
     // import's in pcss files should run via windi's @apply's
-    nuxt.hook('build:before', () => {
+    nuxt.hook('build:before', async() => {
       // only if they have postcss enabled
       const postcssOptions: any = nuxt.options.build.postcss
-      if (postcssOptions) {
-        try {
-          // this will throw an error if they don't have postcss installed
-          requireModule('postcss-import')
-          // make sure the plugin object isn't undefined booted
-          if (!postcssOptions.plugins)
-            postcssOptions.plugins = {}
-          const readCache = require('read-cache')
-          // make the postcss-import apply the windi @apply's
-          postcssOptions.plugins['postcss-import'] = {
-            async load(filename: string) {
-              await ensureInit
+      if (!postcssOptions) {
+        return
+      }
+      // this will throw an error if they don't have postcss installed
+      const hasPostCSSImport = tryRequireModule('postcss-import')
+      if (!hasPostCSSImport) {
+        return
+      }
+      // make sure the plugin object isn't undefined booted
+      if (!postcssOptions.plugins)
+        postcssOptions.plugins = {}
+      const readCache = requireModule('read-cache')
+      // make the postcss-import apply the windi @apply's
+      postcssOptions.plugins['postcss-import'] = {
+        async load(filename: string) {
+          await ensureInit
 
-              const file = (await readCache(filename, 'utf-8')) as string
-              return utils.transformCSS(file, filename)
-            },
-          }
-        }
-        catch (e) {
-          logger.info(e)
-          // do nothing, the app isn't using postcss so no changes are needed
-        }
+          const file = (await readCache(filename, 'utf-8')) as string
+          return utils.transformCSS(file, filename)
+        },
       }
     })
 
-    // webpack 4/5
+// webpack 4/5
     extendWebpackConfig((config) => {
       const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin').default
       const plugin = new WindiCSSWebpackPlugin({ ...nuxtWindiOptions, utils })
@@ -194,9 +195,9 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       config.plugins.push(plugin)
     })
 
-    // Vite
+// Vite
     extendViteConfig(async(config) => {
-      const VitePluginWindicss = await importModule('vite-plugin-windicss')
+      const VitePluginWindicss = (await importModule('vite-plugin-windicss')).default
       const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
@@ -235,21 +236,21 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
           windiOptions: nuxtWindiOptions,
           utils,
         }, nuxtWindiOptions.analyze)
-          .then((server: any) => {
-            const message = `WindCSS Analysis: ${server.url}`
-            if (isNuxt3(nuxt)) {
-              logger.info(message)
-            }
-            else if (serverStarted) {
-              nuxt.hook('build:done', () => {
-                serverStarted = true
+            .then((server: any) => {
+              const message = `WindCSS Analysis: ${server.url}`
+              if (isNuxt3(nuxt)) {
                 logger.info(message)
-              })
-            }
-            else {
-              nuxt.options.cli.badgeMessages.push(message)
-            }
-          })
+              }
+              else if (serverStarted) {
+                nuxt.hook('build:done', () => {
+                  serverStarted = true
+                  logger.info(message)
+                })
+              }
+              else {
+                nuxt.options.cli.badgeMessages.push(message)
+              }
+            })
       }
     }
   },
