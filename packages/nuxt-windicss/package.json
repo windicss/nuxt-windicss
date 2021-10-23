@@ -9,14 +9,11 @@
     "tailwindcss"
   ],
   "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
-    }
+    "import": "./dist/module.mjs",
+    "require": "./module.cjs"
   },
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./module.cjs",
+  "types": "./dist/module.d.ts",
   "homepage": "https://github.com/windicss/nuxt-windicss",
   "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "repository": {
@@ -30,7 +27,7 @@
   },
   "files": [
     "dist",
-    "CHANGELOG.md"
+    "module.cjs"
   ],
   "scripts": {
     "prepack": "unbuild",
@@ -41,6 +38,7 @@
     "defu": "^5.0.0",
     "h3": "^0.3.1",
     "listhen": "^0.2.4",
+    "mlly": "^0.3.0",
     "pathe": "^0.2.0",
     "read-cache": "^1.0.0",
     "sirv": "^1.0.17",
@@ -53,6 +51,6 @@
     "@nuxt/content": "^1.14.0",
     "@nuxt/types": "^2.15.8",
     "release-it": "^14.11.6",
-    "unbuild": "^0.5.6"
+    "unbuild": "^0.5.9"
   }
 }

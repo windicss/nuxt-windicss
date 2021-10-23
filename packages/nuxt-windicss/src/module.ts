@@ -8,41 +8,26 @@ import {
   extendViteConfig,
   isNuxt2,
   clearRequireCache,
-  importModule,
-  requireModule,
-  tryRequireModule,
   isNuxt3,
   extendWebpackConfig,
+  requireModule,
+  tryRequireModule,
+  importModule,
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
+import { createCommonJS } from 'mlly'
+import { version } from '../package.json'
 import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
-import { analyze } from '.'
+import { analyze } from './analyze'
 
-/**
- * Export package.json meta into the module
- */
-export const defineModuleMeta = (): Record<string, any> => {
-  // __dirname by itself is CJS which we should avoid
-  const __dirname = new URL('.', import.meta.url).pathname
+// Should include types only
+export * from './interfaces'
 
-  let meta = {
-    configKey: NUXT_CONFIG_KEY,
-  }
-  // it shouldn't fail but who knows
-  const pkg = tryRequireModule(`${__dirname}/../package.json`)
-  if (pkg) {
-    meta = {
-      ...meta,
-      ...pkg,
-    }
-  }
-  return meta
-}
-
-const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
+export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
   name: NAME,
+  version,
   configKey: NUXT_CONFIG_KEY,
   defaults: {
     root: nuxt.options.rootDir,
@@ -88,7 +73,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         // avoid being too verbose
         if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
-            logger.info(`\`nuxt-windicss v${defineModuleMeta().version}\` running with config: \`${configType}\`.`)
+            logger.info(`\`nuxt-windicss v${version}\` running with config: \`${configType}\`.`)
           })
         }
 
@@ -166,6 +151,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
             const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
             const subst = '$1c.virtual ? c.src : $2$3'
             const appTemplate = file.replace(regex, subst)
+            const { __dirname } = createCommonJS(import.meta.url)
             const newPath = join(__dirname, 'template', 'App.js')
             writeFileSync(newPath, appTemplate)
             template.src = newPath
@@ -175,31 +161,29 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     }
 
     // import's in pcss files should run via windi's @apply's
-    nuxt.hook('build:before', () => {
+    nuxt.hook('build:before', async() => {
       // only if they have postcss enabled
       const postcssOptions: any = nuxt.options.build.postcss
-      if (postcssOptions) {
-        try {
-          // this will throw an error if they don't have postcss installed
-          requireModule('postcss-import')
-          // make sure the plugin object isn't undefined booted
-          if (!postcssOptions.plugins)
-            postcssOptions.plugins = {}
-          const readCache = require('read-cache')
-          // make the postcss-import apply the windi @apply's
-          postcssOptions.plugins['postcss-import'] = {
-            async load(filename: string) {
-              await ensureInit
+      if (!postcssOptions)
+        return
 
-              const file = (await readCache(filename, 'utf-8')) as string
-              return utils.transformCSS(file, filename)
-            },
-          }
-        }
-        catch (e) {
-          logger.info(e)
-          // do nothing, the app isn't using postcss so no changes are needed
-        }
+      // this will throw an error if they don't have postcss installed
+      const hasPostCSSImport = tryRequireModule('postcss-import')
+      if (!hasPostCSSImport)
+        return
+
+      // make sure the plugin object isn't undefined booted
+      if (!postcssOptions.plugins)
+        postcssOptions.plugins = {}
+      const readCache = requireModule('read-cache')
+      // make the postcss-import apply the windi @apply's
+      postcssOptions.plugins['postcss-import'] = {
+        async load(filename: string) {
+          await ensureInit
+
+          const file = (await readCache(filename, 'utf-8')) as string
+          return utils.transformCSS(file, filename)
+        },
       }
     })
 
@@ -213,7 +197,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
     // Vite
     extendViteConfig(async(config) => {
-      const VitePluginWindicss = await importModule('vite-plugin-windicss')
+      const VitePluginWindicss = (await importModule('vite-plugin-windicss')).default
       const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
@@ -252,7 +236,7 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
           windiOptions: nuxtWindiOptions,
           utils,
         }, nuxtWindiOptions.analyze)
-          .then((server) => {
+          .then((server: any) => {
             const message = `WindCSS Analysis: ${server.url}`
             if (isNuxt3(nuxt)) {
               logger.info(message)
@@ -271,7 +255,3 @@ const defineNuxtWindiCSSModule = defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     }
   },
 }))
-
-defineNuxtWindiCSSModule.meta = defineModuleMeta()
-
-export default defineNuxtWindiCSSModule

@@ -2,9 +2,9 @@ import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
   declaration: true,
-  emitCJS: true,
+  emitCJS: false,
   entries: [
-    'src/index',
+    'src/module',
     { input: 'src/template/', outDir: 'dist/template', format: 'esm', declaration: false },
   ],
   externals: [
