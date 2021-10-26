@@ -1,5 +1,4 @@
-import type { Options } from 'windicss-webpack-plugin/dist/interfaces'
-import type { ResolvedOptions, WindiPluginUtils } from '@windicss/plugin-utils'
+import type { ResolvedOptions, WindiPluginUtils, UserOptions } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import type { ListenOptions } from 'listhen'
 import type { AnalysisOptions } from 'windicss-analysis'
@@ -9,7 +8,18 @@ export type AnalyzeOptions = true|false|{
   server?: Partial<ListenOptions>
 }
 
-export type NuxtWindiOptions = Options & {
+export type NuxtWindiOptions = UserOptions & {
+  /**
+   * Reuse existing utils if exists
+   */
+  utils?: WindiPluginUtils
+  /**
+   * The path where the virtual module should be injected. By default this is the project root but for
+   * some projects (such as craco), specifying the directory is needed.
+   *
+   * Only applicable for webpack plugin.
+   */
+  virtualModulePath?: string
   /**
   * Starts a server for Windi Analyze.
   */

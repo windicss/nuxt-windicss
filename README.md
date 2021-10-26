@@ -19,8 +19,7 @@
 ## Features
 
 - 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
-- 🍃 Load configurations from `tailwind.config.js`
-- 📄 Use `@apply` / `@screen` directives in any file: Vue SFC, Less, SCSS, SASS, PostCSS, Stylus
+- 📄 Use [directives](https://windicss.org/features/directives.html) in any CSS (SCSS, LESS, etc) `@apply`, `@variants`, `@screen`, `@layer`, `theme()`, 
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 - 🧑‍🤝‍🧑 Plays nicely with Nuxt v3, Nuxt v2, [@nuxt/vite](https://github.com/nuxt/vite) and [@nuxt/content](https://content.nuxtjs.org/)
 - 🔎 Integrated with [windicss-analysis](https://github.com/windicss/windicss-analysis)

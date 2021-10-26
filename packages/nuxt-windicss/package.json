@@ -45,7 +45,7 @@
     "vite-plugin-windicss": "^1.4.11",
     "windicss": "^3.1.9",
     "windicss-analysis": "^0.3.4",
-    "windicss-webpack-plugin": "^1.4.9"
+    "windicss-webpack-plugin": "^1.5.1"
   },
   "devDependencies": {
     "@nuxt/content": "^1.14.0",

@@ -189,7 +189,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
     // webpack 4/5
     extendWebpackConfig((config) => {
-      const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin').default
+      const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin')
       const plugin = new WindiCSSWebpackPlugin({ ...nuxtWindiOptions, utils })
       config.plugins = config.plugins || []
       config.plugins.push(plugin)
