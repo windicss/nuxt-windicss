@@ -6,7 +6,7 @@
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs"
   },
   "hooks": {
-    "before:init": ["git pull origin master", "yarn prepack", "rm packages/nuxt-windicss/src/template/*.js || true","cd .. && yarn lint", "cd .. && yarn test"],
+    "before:init": ["git pull origin main", "yarn prepack", "rm packages/nuxt-windicss/src/template/*.js || true","cd .. && yarn lint", "cd .. && yarn test"],
     "after:bump": "npm run prepack && npx auto-changelog -p",
     "after:git:release": "echo After git push, before github release",
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
