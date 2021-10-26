@@ -8450,10 +8450,10 @@ windicss-analysis@^0.3.4:
     fs-extra "^10.0.0"
     sirv "^1.0.12"
 
-windicss-webpack-plugin@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-1.5.1.tgz#8d938e40d0d64399ceecc3807dde119abef33457"
-  integrity sha512-YRt/F/rH0HJ+i/i9ZISFba9uMYMs2m5PMp//SACBZwH/gCGpZpk3Om6Qfy3EJo+467Nqy4x+tXvAtpfGbJ9Qfw==
+windicss-webpack-plugin@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-1.5.3.tgz#b8932e03ae1c34ee3ec46185763a88b4ded5198f"
+  integrity sha512-Ra/a+lFHtwXW10AzBJU5mWDWMHoy9DBeEouHb8t4m5A1p3qeDhrv4DG4ldqNFsBTZhL94fFZBUpvUsN+3VUcPA==
   dependencies:
     "@windicss/plugin-utils" "^1.4.12"
     debug "^4.3.2"
