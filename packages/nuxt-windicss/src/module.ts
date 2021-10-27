@@ -183,7 +183,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         },
       }
 
-      if (isNuxt3(nuxt)) {
+      if (isNuxt3(nuxt) || typeof postcssOptions.postcssOptions !== 'undefined') {
         // make sure the plugin object isn't undefined booted
         if (!postcssOptions.postcssOptions.plugins)
           postcssOptions.postcssOptions.plugins = {}
