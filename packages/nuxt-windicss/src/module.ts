@@ -185,7 +185,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
       const { version: postcssLoaderVersion } = requireModulePkg('postcss-loader')
 
-      if (isNuxt3(nuxt) || Number.parseInt(postcssLoaderVersion.split('.')[0]) > 3) {
+      if (isNuxt3(nuxt) || Number.parseInt(postcssLoaderVersion.split('.')[0]) > 3 || nuxt.options.vite === false) {
         if (!nuxtPostcss.postcssOptions)
           nuxtPostcss.postcssOptions = {}
 
