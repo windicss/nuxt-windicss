@@ -172,18 +172,30 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       if (!hasPostCSSImport)
         return
 
-      // make sure the plugin object isn't undefined booted
-      if (!postcssOptions.plugins)
-        postcssOptions.plugins = {}
       const readCache = requireModule('read-cache')
-      // make the postcss-import apply the windi @apply's
-      postcssOptions.plugins['postcss-import'] = {
+
+      const updatedPostcssImport = {
         async load(filename: string) {
           await ensureInit
 
           const file = (await readCache(filename, 'utf-8')) as string
           return utils.transformCSS(file, filename)
         },
+      }
+
+      if (isNuxt3(nuxt)) {
+        // make sure the plugin object isn't undefined booted
+        if (!postcssOptions.postcssOptions.plugins)
+          postcssOptions.postcssOptions.plugins = {}
+        // make the postcss-import apply the windi @apply's
+        postcssOptions.postcssOptions.plugins['postcss-import'] = updatedPostcssImport
+      }
+      else {
+        // make sure the plugin object isn't undefined booted
+        if (!postcssOptions.plugins)
+          postcssOptions.plugins = {}
+        // make the postcss-import apply the windi @apply's
+        postcssOptions.plugins['postcss-import'] = updatedPostcssImport
       }
     })
 

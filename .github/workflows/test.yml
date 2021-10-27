@@ -46,6 +46,9 @@ jobs:
       - name: Install nuxt3 dependencies
         run: cd packages/playground/nuxt3 && yarn install
 
+      - name: Install nuxt3 dependencies
+        run: cd packages/playground/nuxt3-webpack && yarn install
+
       - name: Run linter
         run: yarn lint
       - name: Run tests
