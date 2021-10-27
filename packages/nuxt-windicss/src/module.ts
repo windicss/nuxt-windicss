@@ -12,7 +12,7 @@ import {
   extendWebpackConfig,
   requireModule,
   tryRequireModule,
-  importModule,
+  importModule, requireModulePkg,
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
 import { createCommonJS } from 'mlly'
@@ -163,8 +163,8 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
     // import's in pcss files should run via windi's @apply's
     nuxt.hook('build:before', async() => {
       // only if they have postcss enabled
-      const postcssOptions: any = nuxt.options.build.postcss
-      if (!postcssOptions)
+      const nuxtPostcss: any = nuxt.options.build.postcss
+      if (!nuxtPostcss)
         return
 
       // this will throw an error if they don't have postcss installed
@@ -183,19 +183,30 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         },
       }
 
-      if (isNuxt3(nuxt) || typeof postcssOptions.postcssOptions !== 'undefined') {
+      const { version: postcssLoaderVersion } = requireModulePkg('postcss-loader')
+
+      if (isNuxt3(nuxt) || Number.parseInt(postcssLoaderVersion.split('.')[0]) > 3) {
+        if (!nuxtPostcss.postcssOptions)
+          nuxtPostcss.postcssOptions = {}
+
         // make sure the plugin object isn't undefined booted
-        if (!postcssOptions.postcssOptions.plugins)
-          postcssOptions.postcssOptions.plugins = {}
+        if (!nuxtPostcss.postcssOptions.plugins)
+          nuxtPostcss.postcssOptions.plugins = {}
         // make the postcss-import apply the windi @apply's
-        postcssOptions.postcssOptions.plugins['postcss-import'] = updatedPostcssImport
+        nuxtPostcss.postcssOptions.plugins['postcss-import'] = {
+          ...nuxtPostcss.postcssOptions.plugins['postcss-import'],
+          ...updatedPostcssImport,
+        }
       }
       else {
         // make sure the plugin object isn't undefined booted
-        if (!postcssOptions.plugins)
-          postcssOptions.plugins = {}
+        if (!nuxtPostcss.plugins)
+          nuxtPostcss.plugins = {}
         // make the postcss-import apply the windi @apply's
-        postcssOptions.plugins['postcss-import'] = updatedPostcssImport
+        nuxtPostcss.plugins['postcss-import'] = {
+          ...nuxtPostcss.plugins['postcss-import'],
+          ...updatedPostcssImport,
+        }
       }
     })
 
