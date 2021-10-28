@@ -11,7 +11,7 @@
     "lint": "eslint --fix --ext .ts,.js,.vue .",
     "release": "cd packages/nuxt-windicss && npm run release",
     "release:beta": "dotenv release-it --preReleaseId=beta --npm.tag=beta --github.preRelease",
-    "test": "yarn run prepack && jest --verbose --maxWorkers=4"
+    "test": "yarn run prepack && jest --verbose --maxWorkers=5"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.10.0",
