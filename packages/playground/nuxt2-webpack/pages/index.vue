@@ -12,6 +12,21 @@
     <div class="test-apply">
       test apply
     </div>
+    <div class="box" style="--foo: 0.5;">
+      <div class="text-center space-y-2">
+        <div class="space-y-0.5">
+          <p class="text-lg text-black bg-red-500 w-[calc(400px*var(--foo))] dark:text-white font-semibold mb-2">
+            Erin Lindford
+          </p>
+          <p class="text-gray-500 dark:text-gray-300 font-medium pb-3">
+            Product Engineer
+          </p>
+        </div>
+        <button class="btn">
+          Message
+        </button>
+      </div>
+    </div>
     <img data-testid="smallImg" :src="require('../image/small.svg')" alt="small svg" class="w-20 absolute left-1/2 top-45 z-20">
     <img data-testid="bigImg" :src="require('../image/big.jpg')" alt="big jpg" class="filter grayscale blur-sm w-120 h-120 transform transition-transform rounded-full mx-auto hover:(rotate-45)">
     <div class="prose prose-xl mx-auto py-10">
