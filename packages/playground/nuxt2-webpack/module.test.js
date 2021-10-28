@@ -15,9 +15,6 @@ describe('nuxt2-webpack',  () => {
     $('style').each((i, $s) => {
       const html = $($s).html()
       expect(html).not.toContain('@apply')
-      if (html) {
-        expect(html).toMatchSnapshot('script-' + i)
-      }
     })
   })
 })
