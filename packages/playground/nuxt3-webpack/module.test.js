@@ -4,7 +4,7 @@ const fs = require('fs')
 const globby = require("globby");
 const path = require("pathe");
 
-describe('nuxt3',  () => {
+describe('nuxt3-webpack',  () => {
 
   test('renders css files without @apply', async() => {
     // Note: this is a hacky solution
