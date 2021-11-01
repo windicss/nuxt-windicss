@@ -16,12 +16,12 @@ import {
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
 import { createCommonJS } from 'mlly'
+import VitePluginWindicss from 'vite-plugin-windicss'
 import { version } from '../package.json'
 import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
 import { analyze } from './analyze'
-import VitePluginWindicss from 'vite-plugin-windicss'
 
 // Should include types only
 export * from './interfaces'
