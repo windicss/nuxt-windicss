@@ -12,7 +12,7 @@ import {
   extendWebpackConfig,
   requireModule,
   tryRequireModule,
-  importModule, requireModulePkg,
+  requireModulePkg,
 } from '@nuxt/kit-edge'
 import type { File } from '@nuxt/content/types/content'
 import { createCommonJS } from 'mlly'
@@ -21,6 +21,7 @@ import logger from './logger'
 import type { NuxtWindiOptions } from './interfaces'
 import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
 import { analyze } from './analyze'
+import VitePluginWindicss from 'vite-plugin-windicss'
 
 // Should include types only
 export * from './interfaces'
@@ -220,7 +221,6 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
     // Vite
     extendViteConfig(async(config) => {
-      const VitePluginWindicss = (await importModule('vite-plugin-windicss')).default
       const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
