@@ -34,11 +34,11 @@
     "release": "release-it "
   },
   "dependencies": {
-    "@nuxt/kit-edge": "latest",
+    "@nuxt/kit-edge": "3.0.0-27258467.4e424d0",
     "defu": "^5.0.0",
     "h3": "^0.3.1",
     "listhen": "^0.2.4",
-    "mlly": "^0.3.8",
+    "mlly": "^0.3.10",
     "pathe": "^0.2.0",
     "read-cache": "^1.0.0",
     "sirv": "^1.0.17",

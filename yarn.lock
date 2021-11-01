@@ -775,10 +775,10 @@
     ws "^7.4.3"
     xml2js "^0.4.23"
 
-"@nuxt/kit-edge@latest":
-  version "3.0.0-27255771.f78ec93"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27255771.f78ec93.tgz#f1efa63c6e3d9a5a3f52e39ebd521eef4d05f5e4"
-  integrity sha512-dPJJM/TEt0BUPq48r9r0+ORPfqKDAQFHbwyErw8Lz+Lhj+fDjYb3h9ZpXzXBOOLxBkAtiYE9VzV22vIBb8ti/Q==
+"@nuxt/kit-edge@3.0.0-27258467.4e424d0":
+  version "3.0.0-27258467.4e424d0"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27258467.4e424d0.tgz#0598d70025ef7f3befe1c465e0417b2424d53684"
+  integrity sha512-oL8ObcXc0GBgvHCIEEzx6+2dgwlyBPCLkwYhZjRImZAt3tvD/RJCJih32QgmSddsO3eBW2OqxyMjdqmJwRmgXg==
   dependencies:
     consola "^2.15.3"
     create-require "^1.1.1"
@@ -789,9 +789,9 @@
     hookable "^5.0.0"
     jiti "^1.12.9"
     lodash.template "^4.5.0"
-    mlly "^0.3.5"
+    mlly "^0.3.9"
     pathe "^0.2.0"
-    pkg-types "^0.2.3"
+    pkg-types "^0.3.1"
     rc9 "^1.2.0"
     scule "^0.2.1"
     semver "^7.3.5"
@@ -6063,10 +6063,10 @@ mlly@^0.3.0:
   resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.1.tgz#2429360aadd06b65fc5a26e519ee8a40b2561b9a"
   integrity sha512-dtEsZue7NJy5Hhk6dsMoBjmJoZIZwyWvdN+X61cEtqjDFVRUskhWDBmn5EofDUWOkPrwur6GgpCRkXOAB4ISVw==
 
-mlly@^0.3.5, mlly@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.8.tgz#588e0e462bf972a35790e1bc2178edc844322135"
-  integrity sha512-UMgeb16CrQUG+7/bHdT7rQGoeZQf9fyCqm76LKmeRB9HEYOY8cLEU4ZdB+J/7w6GEIlAEezlndhRO+AFwHUocw==
+mlly@^0.3.10, mlly@^0.3.6, mlly@^0.3.9:
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.10.tgz#cf3353565c84e951311c46c8d2c8b320d90f9eb3"
+  integrity sha512-vD3A7naDtIOqHYZhnYUrECRO6UODWNqz6T0TS/pxwolzVoWKX/mXJF1XSM3qxruCDtkzJbzJPgesByihY/r3EA==
 
 mri@^1.2.0:
   version "1.2.0"
@@ -6685,12 +6685,13 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-pkg-types@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-0.2.3.tgz#4355ee06518b278ae6473d1c1eaf35010d6cf798"
-  integrity sha512-c05moyQEGO1z16NjidOZn2wQjuAi8CZKzPXmZBWLnnL3dRqDmeMWx3IxVSuYF7zKHkjQFJ9QH3Pas772a4iXQA==
+pkg-types@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-0.3.1.tgz#d7a8b69efb8777a05afc5aabfc259a29a5d6d159"
+  integrity sha512-BjECNgz/tsyqg0/T4Z/U7WbFQXUT24nfkxPbALcrk/uHVeZf9MrGG4tfvYtu+jsrHCFMseLQ6woQddDEBATw3A==
   dependencies:
     jsonc-parser "^3.0.0"
+    mlly "^0.3.6"
     pathe "^0.2.0"
 
 pluralize@^8.0.0:
