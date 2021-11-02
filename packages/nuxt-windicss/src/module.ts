@@ -13,9 +13,8 @@ import {
   requireModule,
   tryRequireModule,
   requireModulePkg,
-} from '@nuxt/kit-edge'
+} from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
-import { createCommonJS } from 'mlly'
 import VitePluginWindicss from 'vite-plugin-windicss'
 import { version } from '../package.json'
 import logger from './logger'
@@ -152,7 +151,6 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
             const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
             const subst = '$1c.virtual ? c.src : $2$3'
             const appTemplate = file.replace(regex, subst)
-            const { __dirname } = createCommonJS(import.meta.url)
             const newPath = join(__dirname, 'template', 'App.js')
             writeFileSync(newPath, appTemplate)
             template.src = newPath
