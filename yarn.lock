@@ -775,10 +775,10 @@
     ws "^7.4.3"
     xml2js "^0.4.23"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@latest":
-  version "3.0.0-27258467.4e424d0"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27258467.4e424d0.tgz#0598d70025ef7f3befe1c465e0417b2424d53684"
-  integrity sha512-oL8ObcXc0GBgvHCIEEzx6+2dgwlyBPCLkwYhZjRImZAt3tvD/RJCJih32QgmSddsO3eBW2OqxyMjdqmJwRmgXg==
+"@nuxt/kit-edge@latest":
+  version "3.0.0-27265876.3cd4494"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27265876.3cd4494.tgz#3375d07f032a41ae6b58dc3725fae15ef5a76234"
+  integrity sha512-69oWKZiHPajONbxf4lPJdMp3Y6MlGmArVn283mlevv7jblrhQmEDDQrcfW7BIvuJ2athhfk7g8L9Ase0I1qIKg==
   dependencies:
     consola "^2.15.3"
     create-require "^1.1.1"
@@ -789,16 +789,24 @@
     hookable "^5.0.0"
     jiti "^1.12.9"
     lodash.template "^4.5.0"
-    mlly "^0.3.9"
+    mlly "^0.3.12"
     pathe "^0.2.0"
     pkg-types "^0.3.1"
     rc9 "^1.2.0"
     scule "^0.2.1"
     semver "^7.3.5"
-    std-env "^2.3.1"
+    std-env "^3.0.0"
     ufo "^0.7.9"
     unctx "^1.0.2"
-    untyped "^0.2.10"
+    untyped "^0.2.11"
+
+"@nuxt/kit@latest":
+  version "0.7.0-edge"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-0.7.0-edge.tgz#37da0dda70b76f9df054708ea3c066d60689f811"
+  integrity sha512-3+azijGDlERcmhK/Gp97cn8+I++/pn/AmYcj7ceRF++6T86ohckAY0ip/+y4dLlWJ0AGnwB6x4gybG03ltEPew==
+  dependencies:
+    "@nuxt/kit-edge" latest
+    jiti "^1.12.9"
 
 "@nuxt/test-utils@^0.2.2":
   version "0.2.2"
@@ -6063,7 +6071,12 @@ mlly@^0.3.0:
   resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.1.tgz#2429360aadd06b65fc5a26e519ee8a40b2561b9a"
   integrity sha512-dtEsZue7NJy5Hhk6dsMoBjmJoZIZwyWvdN+X61cEtqjDFVRUskhWDBmn5EofDUWOkPrwur6GgpCRkXOAB4ISVw==
 
-mlly@^0.3.6, mlly@^0.3.9:
+mlly@^0.3.12:
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.12.tgz#9928d517622558ea6ce3d5544df1a4f7c6687811"
+  integrity sha512-+5DdpxP48PpfV/FcP4j/8TREPycnROCg0hX1nmD6aoZ2lD4FpZI4sxWG6l6YpUktXi/vckj8NaAl3DVQSkIn3w==
+
+mlly@^0.3.6:
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.10.tgz#cf3353565c84e951311c46c8d2c8b320d90f9eb3"
   integrity sha512-vD3A7naDtIOqHYZhnYUrECRO6UODWNqz6T0TS/pxwolzVoWKX/mXJF1XSM3qxruCDtkzJbzJPgesByihY/r3EA==
@@ -7614,12 +7627,10 @@ statuses@~1.5.0:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-std-env@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/std-env/-/std-env-2.3.1.tgz#d42271908819c243f8defc77a140fc1fcee336a1"
-  integrity sha512-eOsoKTWnr6C8aWrqJJ2KAReXoa7Vn5Ywyw6uCXgA/xDhxPoaIsBa5aNJmISY04dLwXPBnDHW4diGM7Sn5K4R/g==
-  dependencies:
-    ci-info "^3.1.1"
+std-env@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.0.0.tgz#8dbd16bd2aadc18992072e2f5839e897f4ee2733"
+  integrity sha512-GoFEqAGzhaexp/T01rIiLOK9LHa6HmVwEUyeU4cwdSnOhfxpw9IMeAFi44SHWbCErEs29qEh7vAOUbtUmoycjA==
 
 strict-uri-encode@^2.0.0:
   version "2.0.0"
@@ -8169,10 +8180,10 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
-untyped@^0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/untyped/-/untyped-0.2.10.tgz#daee5d2b94ff5040be251077e9ddb91732017ac1"
-  integrity sha512-Ym1bZHJK3rE7n6WYVlIQPOkpCtkWcZbiy0obnmQ0Pn7a82lJVXWgyLhKE1XSyCvmg3HvEQW8kgHAE+r17G4l2Q==
+untyped@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/untyped/-/untyped-0.2.11.tgz#a956977e82ad1186232995bc4ba4b68ae7d20b26"
+  integrity sha512-KVNcu9jB+mlnQJiunAzmqpnnn9R+yniT+AkOk9ZgCIsThwh0nlP6wO+O7mJjHM7Y2yplEu3v6NNtRvb82+uGxw==
 
 untyped@^0.2.9:
   version "0.2.9"
