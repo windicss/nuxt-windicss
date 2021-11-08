@@ -34,7 +34,7 @@
     "release": "release-it "
   },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
+    "@nuxt/kit": "latest",
     "defu": "^5.0.0",
     "h3": "^0.3.1",
     "listhen": "^0.2.4",

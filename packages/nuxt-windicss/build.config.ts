@@ -10,6 +10,7 @@ export default defineBuildConfig({
   ],
   externals: [
     '@nuxt/kit',
+    '@nuxt/kit-edge',
     '@windicss/plugin-utils',
     'consola',
     'pathe',
