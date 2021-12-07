@@ -797,7 +797,7 @@
     unctx "^1.0.2"
     untyped "^0.3.0"
 
-"@nuxt/kit@latest":
+"@nuxt/kit@^0.8.1-edge":
   version "0.8.1-edge"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-0.8.1-edge.tgz#880c6b28819cd6bc6800771823ba3af392003783"
   integrity sha512-7kU+mYxRy3w9UohFK/rfrPkKXM9A4LWsTqpFN3MH7mxohy98SFBkf87B6nqE6ulXmztInK+MptS0Lr+VQa0E6w==
