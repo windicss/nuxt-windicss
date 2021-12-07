@@ -34,22 +34,24 @@
     "release": "release-it "
   },
   "dependencies": {
-    "@nuxt/kit": "latest",
     "defu": "^5.0.0",
-    "h3": "^0.3.1",
+    "h3": "^0.3.8",
     "listhen": "^0.2.4",
     "pathe": "^0.2.0",
     "read-cache": "^1.0.0",
-    "sirv": "^1.0.17",
-    "vite-plugin-windicss": "^1.5.1",
+    "sirv": "^1.0.19",
+    "vite-plugin-windicss": "^1.5.4",
     "windicss": "^3.2.1",
-    "windicss-analysis": "^0.3.4",
-    "windicss-webpack-plugin": "^1.5.6"
+    "windicss-analysis": "^0.3.5",
+    "windicss-webpack-plugin": "^1.5.9"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": "*"
   },
   "devDependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxt/types": "^2.15.8",
-    "release-it": "^14.11.6",
-    "unbuild": "^0.5.9"
+    "release-it": "^14.11.8",
+    "unbuild": "^0.6.3"
   }
 }
