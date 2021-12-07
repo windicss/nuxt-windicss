@@ -95,6 +95,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
     // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
     const windiImports = nuxt.options.css.filter(
+      // @ts-ignore
       css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
