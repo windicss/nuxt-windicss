@@ -39,6 +39,25 @@ declare module '@nuxt/types' {
   }
 }
 
+declare module '@nuxt/schema' {
+  interface NuxtConfig {
+    windicss?: NuxtWindiOptions
+  }
+
+  interface NuxtHooks {
+    'windicss:options': (options: ResolvedOptions) => NuxtHookResult
+    'windicss:config': (config: Config) => NuxtHookResult
+    'windicss:utils': (utils: WindiPluginUtils) => NuxtHookResult
+
+    // pollyfill for @nuxt/content
+    'content:file:beforeParse': (md: {
+      path: string
+      extension: string
+      data: any
+    }) => NuxtHookResult
+  }
+}
+
 declare module '@nuxt/kit' {
   interface NuxtConfig {
     windicss?: NuxtWindiOptions
