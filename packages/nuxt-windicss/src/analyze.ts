@@ -6,7 +6,7 @@ import sirv from 'sirv'
 import { resolveModule } from '@nuxt/kit'
 import { WindiPluginUtils } from '@windicss/plugin-utils'
 import defu from 'defu'
-import { AnalyzeOptions, NuxtWindiOptions } from './interfaces'
+import type { AnalyzeOptions, NuxtWindiOptions } from './types'
 
 /**
  * Starts a h3 app via listen that serves the windicss-analysis application.

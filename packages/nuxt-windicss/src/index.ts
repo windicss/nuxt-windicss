@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs'
+import { URL } from 'url'
 import { relative, join } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions } from '@windicss/plugin-utils'
@@ -18,20 +19,45 @@ import type { File } from '@nuxt/content/types/content'
 import VitePluginWindicss from 'vite-plugin-windicss'
 import { version } from '../package.json'
 import logger from './logger'
-import type { NuxtWindiOptions } from './interfaces'
-import { NAME, NUXT_CONFIG_KEY, defaultWindiOptions } from './constants'
+import type { NuxtWindiOptions } from './types'
 import { analyze } from './analyze'
 
+const __dirname = new URL('.', import.meta.url).pathname
+
 // Should include types only
-export * from './interfaces'
+export * from './types'
 
 export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
-  name: NAME,
-  version,
-  configKey: NUXT_CONFIG_KEY,
+  name: 'nuxt-windicss',
+  configKey: 'windicss',
   defaults: {
     root: nuxt.options.rootDir,
-    ...defaultWindiOptions,
+    analyze: false,
+    displayVersionInfo: true,
+    scan: {
+      dirs: ['./'],
+      exclude: [
+        'node_modules',
+        'node_modules_dev',
+        'node_modules_prod',
+        'dist',
+        '.git',
+        '.github',
+        '.nuxt',
+        // testing files & folders
+        'coverage',
+        '**/__snapshots__',
+        '*.test.js',
+      ],
+    },
+    preflight: {
+      alias: {
+        // add nuxt aliases
+        'nuxt-link': 'a',
+        // @nuxt/image module
+        'nuxt-img': 'img',
+      },
+    },
   },
   async setup(nuxtWindiOptions: NuxtWindiOptions) {
     const nuxtOptions = nuxt.options
@@ -88,7 +114,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       return windiConfig
     }
 
-    const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: NAME })
+    const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: 'nuxt-windicss' })
 
     const ensureInit = utils.init()
       .then(() => nuxt.callHook('windicss:utils', utils))
@@ -220,7 +246,7 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
 
     // Vite
     extendViteConfig(async(config) => {
-      const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: NAME })
+      const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: 'nuxt-windicss' })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
 
