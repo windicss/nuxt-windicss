@@ -15,6 +15,7 @@ importers:
       esbuild-jest: ^0.5.0
       eslint: ^8.4.1
       jest: ^27.3.0
+      unbuild: ^0.6.3
     devDependencies:
       '@antfu/eslint-config': 0.12.2_eslint@8.4.1
       '@nuxt/test-utils': 0.2.2
@@ -27,6 +28,7 @@ importers:
       esbuild-jest: 0.5.0_esbuild@0.14.2
       eslint: 8.4.1
       jest: 27.4.3
+      unbuild: 0.6.3
 
   packages/nuxt-windicss:
     specifiers:
@@ -41,7 +43,6 @@ importers:
       read-cache: ^1.0.0
       release-it: ^14.11.8
       sirv: ^1.0.19
-      unbuild: ^0.6.3
       vite-plugin-windicss: ^1.5.4
       windicss: ^3.2.1
       windicss-analysis: ^0.3.5
@@ -63,7 +64,6 @@ importers:
       '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27313139.1c88580
       '@nuxt/types': 2.15.8
       release-it: 14.11.8
-      unbuild: 0.6.3
 
 packages:
 

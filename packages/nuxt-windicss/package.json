@@ -55,7 +55,6 @@
     "@nuxt/schema": "npm:@nuxt/schema-edge@latest",
     "@nuxt/content": "^1.14.0",
     "@nuxt/types": "^2.15.8",
-    "release-it": "^14.11.8",
-    "unbuild": "^0.6.3"
+    "release-it": "^14.11.8"
   }
 }
