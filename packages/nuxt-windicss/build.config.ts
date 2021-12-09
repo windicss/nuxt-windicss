@@ -11,8 +11,5 @@ export default defineBuildConfig({
   ],
   externals: [
     '@nuxt/schema',
-    'consola',
-    'pathe',
-    'defu',
   ],
 })
