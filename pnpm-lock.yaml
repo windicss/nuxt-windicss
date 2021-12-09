@@ -16,6 +16,7 @@ importers:
       eslint: ^8.4.1
       jest: ^27.3.0
       unbuild: ^0.6.3
+      windicss: ^3.2.1
     devDependencies:
       '@antfu/eslint-config': 0.12.2_eslint@8.4.1
       '@nuxt/test-utils': 0.2.2
@@ -29,6 +30,7 @@ importers:
       eslint: 8.4.1
       jest: 27.4.3
       unbuild: 0.6.3
+      windicss: 3.2.1
 
   packages/nuxt-windicss:
     specifiers:
@@ -8587,7 +8589,6 @@ packages:
     resolution: {integrity: sha512-LusrIrryBFHAPQ/OOTbS4EWWuzI6eGeJglI9nQ3kDBr1cqH69NWt8Z8q59f9kTkgptXroejmWfksWwqgHs8EVw==}
     engines: {node: '>= 12'}
     hasBin: true
-    dev: false
 
   /windows-release/4.0.0:
     resolution: {integrity: sha512-OxmV4wzDKB1x7AZaZgXMVsdJ1qER1ed83ZrTYd5Bwq2HfJVg3DJS8nqlAG4sMoJ7mu8cuRmLEYyU13BKwctRAg==}
