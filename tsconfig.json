@@ -18,6 +18,9 @@
         "./packages/nuxt-windicss/src/index.ts"
       ]
     },
+    "types": [
+      "@nuxt/types",
+    ]
   },
   "exclude": [
     "**/dist/**",
