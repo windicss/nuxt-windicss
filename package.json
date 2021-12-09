@@ -5,25 +5,26 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn run prepack --stub",
+    "dev": "pnpm -r --parallel --filter ./packages run dev",
+    "build": "pnpm -r --parallel --filter ./packages run build",
     "prepack": "cp README.md packages/nuxt-windicss && cd packages/nuxt-windicss && yarn prepack",
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
     "lint": "eslint --fix --ext .ts,.js,.vue .",
     "release": "cd packages/nuxt-windicss && npm run release",
     "release:beta": "dotenv release-it --preReleaseId=beta --npm.tag=beta --github.preRelease",
-    "test": "yarn run prepack && jest --verbose --maxWorkers=5"
+    "test": "pnpm run build && jest --verbose --maxWorkers=5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.10.0",
+    "@antfu/eslint-config": "^0.12.2",
     "@nuxt/test-utils": "^0.2.2",
     "@nuxt/types": "^2.15.8",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/visitor-keys": "^5.3.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv-cli": "^4.1.0",
-    "esbuild": "^0.13.12",
+    "esbuild": "^0.14.2",
     "esbuild-jest": "^0.5.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.4.1",
     "jest": "^27.3.0"
   }
 }

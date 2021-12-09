@@ -8,9 +8,11 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.8"
+    "nuxt": "^2.15.8",
+    "nuxt-vite": "^0.3.5"
   },
   "devDependencies": {
+    "nuxt-windicss": "link:../../packages/nuxt-windicss",
     "@nuxt/typescript-build": "^2.1.0",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
