@@ -39,19 +39,19 @@ jobs:
 
       # Playground Dependencies
       - name: Install nuxt-bridge dependencies
-        run: cd packages/playground/nuxt-bridge && pnpm install
+        run: cd playground/nuxt-bridge && pnpm install
 
       - name: Install nuxt2-vite dependencies
-        run: cd packages/playground/nuxt2-vite && pnpm install
+        run: cd playground/nuxt2-vite && pnpm install
 
       - name: Install nuxt2-webpack dependencies
-        run: cd packages/playground/nuxt2-webpack && pnpm install
+        run: cd playground/nuxt2-webpack && pnpm install
 
       - name: Install nuxt3 dependencies
-        run: cd packages/playground/nuxt3 && pnpm install
+        run: cd playground/nuxt3 && pnpm install
 
       - name: Install nuxt3-webpack dependencies
-        run: cd packages/playground/nuxt3-webpack && pnpm install
+        run: cd playground/nuxt3-webpack && pnpm install
 
       - name: Run linter
         run: pnpm run lint
