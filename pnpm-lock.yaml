@@ -36,6 +36,7 @@ importers:
       '@nuxt/kit': npm:@nuxt/kit-edge@latest
       '@nuxt/schema': npm:@nuxt/schema-edge@latest
       '@nuxt/types': ^2.15.8
+      '@windicss/plugin-utils': ^1.5.4
       defu: ^5.0.0
       h3: ^0.3.8
       listhen: ^0.2.4
@@ -49,6 +50,7 @@ importers:
       windicss-webpack-plugin: ^1.6.0
     dependencies:
       '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27313139.1c88580
+      '@windicss/plugin-utils': 1.5.4
       defu: 5.0.0
       h3: 0.3.8
       listhen: 0.2.5
