@@ -42,7 +42,12 @@ declare module '@nuxt/schema' {
   interface NuxtConfig {
     windicss?: NuxtWindiOptions
   }
-
+  interface NuxtOptions {
+    windicss?: NuxtWindiOptions
+  }
+  interface ConfigSchema {
+    windicss?: NuxtWindiOptions
+  }
   interface NuxtHooks {
     'windicss:options': (options: ResolvedOptions) => NuxtHookResult
     'windicss:config': (config: Config) => NuxtHookResult
