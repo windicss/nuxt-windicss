@@ -27,10 +27,12 @@ const __dirname = new URL('.', import.meta.url).pathname
 // Should include types only
 export * from './types'
 
-export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
-  name: 'nuxt-windicss',
-  configKey: 'windicss',
-  defaults: {
+export default defineNuxtModule<NuxtWindiOptions>({
+  meta: {
+    name: 'nuxt-windicss',
+    configKey: 'windicss',
+  },
+  defaults: (nuxt) => ({
     root: nuxt.options.rootDir,
     analyze: false,
     displayVersionInfo: true,
@@ -58,8 +60,8 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         'nuxt-img': 'img',
       },
     },
-  },
-  async setup(nuxtWindiOptions: NuxtWindiOptions) {
+  }),
+  async setup(nuxtWindiOptions: NuxtWindiOptions, nuxt) {
     const nuxtOptions = nuxt.options
 
     // Make sure they're not using tailwind
@@ -302,4 +304,4 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       }
     }
   },
-}))
+})
