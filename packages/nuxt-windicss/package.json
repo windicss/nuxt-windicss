@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
-    "@windicss/plugin-utils": "^1.5.4",
+    "@windicss/plugin-utils": "^1.6.1",
     "consola": "^2.15.3",
     "defu": "^5.0.0",
     "h3": "^0.3.8",
@@ -48,10 +48,10 @@
     "pathe": "^0.2.0",
     "read-cache": "^1.0.0",
     "sirv": "^1.0.19",
-    "vite-plugin-windicss": "^1.5.4",
-    "windicss": "^3.2.1",
+    "vite-plugin-windicss": "^1.6.1",
+    "windicss": "^3.4.0",
     "windicss-analysis": "^0.3.5",
-    "windicss-webpack-plugin": "^1.6.0"
+    "windicss-webpack-plugin": "^1.6.2"
   },
   "devDependencies": {
     "@nuxt/content": "^1.14.0",

@@ -1,19 +1,19 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { URL } from 'url'
-import { relative, join } from 'pathe'
+import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
+  clearRequireCache,
   defineNuxtModule,
   extendViteConfig,
-  isNuxt2,
-  clearRequireCache,
-  isNuxt3,
   extendWebpackConfig,
+  isNuxt2,
+  isNuxt3,
   requireModule,
-  tryRequireModule,
   requireModulePkg,
+  tryRequireModule,
 } from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
 import VitePluginWindicss from 'vite-plugin-windicss'
@@ -27,10 +27,12 @@ const __dirname = new URL('.', import.meta.url).pathname
 // Should include types only
 export * from './types'
 
-export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
-  name: 'nuxt-windicss',
-  configKey: 'windicss',
-  defaults: {
+export default defineNuxtModule<NuxtWindiOptions>({
+  meta: {
+    name: 'nuxt-windicss',
+    configKey: 'windicss',
+  },
+  defaults: nuxt => ({
     root: nuxt.options.rootDir,
     analyze: false,
     displayVersionInfo: true,
@@ -58,8 +60,8 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
         'nuxt-img': 'img',
       },
     },
-  },
-  async setup(nuxtWindiOptions: NuxtWindiOptions) {
+  }),
+  async setup(nuxtWindiOptions: NuxtWindiOptions, nuxt) {
     const nuxtOptions = nuxt.options
 
     // Make sure they're not using tailwind
@@ -302,4 +304,4 @@ export default defineNuxtModule<NuxtWindiOptions>(nuxt => ({
       }
     }
   },
-}))
+})
