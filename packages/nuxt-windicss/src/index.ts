@@ -32,6 +32,11 @@ export default defineNuxtModule<NuxtWindiOptions>({
     name: 'nuxt-windicss',
     configKey: 'windicss',
   },
+  // support @nuxt/kit legacy
+  // @ts-ignore
+  configKey: 'windicss',
+  // @ts-ignore
+  name: 'nuxt-windicss',
   defaults: {
     analyze: false,
     displayVersionInfo: true,
