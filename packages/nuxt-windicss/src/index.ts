@@ -32,8 +32,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
     name: 'nuxt-windicss',
     configKey: 'windicss',
   },
-  defaults: nuxt => ({
-    root: nuxt.options.rootDir,
+  defaults: {
     analyze: false,
     displayVersionInfo: true,
     scan: {
@@ -60,9 +59,12 @@ export default defineNuxtModule<NuxtWindiOptions>({
         'nuxt-img': 'img',
       },
     },
-  }),
+  },
   async setup(nuxtWindiOptions: NuxtWindiOptions, nuxt) {
     const nuxtOptions = nuxt.options
+
+    if (!nuxtWindiOptions.root)
+      nuxtWindiOptions.root = nuxt.options.rootDir
 
     // Make sure they're not using tailwind
     // @todo move to a util
