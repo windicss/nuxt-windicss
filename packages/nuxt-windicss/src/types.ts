@@ -1,4 +1,4 @@
-import type { ResolvedOptions, WindiPluginUtils, UserOptions } from '@windicss/plugin-utils'
+import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import type { ListenOptions } from 'listhen'
 import type { AnalysisOptions } from 'windicss-analysis'

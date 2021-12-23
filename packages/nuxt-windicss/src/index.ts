@@ -1,19 +1,19 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { URL } from 'url'
-import { relative, join } from 'pathe'
+import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
+  clearRequireCache,
   defineNuxtModule,
   extendViteConfig,
-  isNuxt2,
-  clearRequireCache,
-  isNuxt3,
   extendWebpackConfig,
+  isNuxt2,
+  isNuxt3,
   requireModule,
-  tryRequireModule,
   requireModulePkg,
+  tryRequireModule,
 } from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
 import VitePluginWindicss from 'vite-plugin-windicss'
@@ -32,7 +32,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
     name: 'nuxt-windicss',
     configKey: 'windicss',
   },
-  defaults: (nuxt) => ({
+  defaults: nuxt => ({
     root: nuxt.options.rootDir,
     analyze: false,
     displayVersionInfo: true,

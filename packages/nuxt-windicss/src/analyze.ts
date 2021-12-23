@@ -4,7 +4,7 @@ import { listen } from 'listhen'
 import { dirname, join } from 'pathe'
 import sirv from 'sirv'
 import { resolveModule } from '@nuxt/kit'
-import { WindiPluginUtils } from '@windicss/plugin-utils'
+import type { WindiPluginUtils } from '@windicss/plugin-utils'
 import defu from 'defu'
 import type { AnalyzeOptions, NuxtWindiOptions } from './types'
 
