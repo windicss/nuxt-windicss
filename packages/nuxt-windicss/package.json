@@ -49,7 +49,7 @@
     "read-cache": "^1.0.0",
     "sirv": "^1.0.19",
     "vite-plugin-windicss": "^1.6.1",
-    "windicss": "^3.4.0",
+    "windicss": "^3.4.2",
     "windicss-analysis": "^0.3.5",
     "windicss-webpack-plugin": "^1.6.2"
   },
