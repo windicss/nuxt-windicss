@@ -19,7 +19,6 @@
 <img src='https://developer.stackblitz.com/img/open_in_stackblitz.svg' height="30" >
 </a>
 
-
 <p align="center">
 <table>
 <tbody>

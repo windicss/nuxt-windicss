@@ -11,7 +11,6 @@
     "lint": "eslint \"{packages,test}/**/*.{ts,vue,json,yml}\"",
     "lint:fix": "npm run lint -- --fix",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag",
-    "release:beta": "dotenv release-it --preReleaseId=beta --npm.tag=beta --github.preRelease",
     "test": "vitest"
   },
   "devDependencies": {
