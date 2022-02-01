@@ -1,7 +1,5 @@
 ![nuxt-windicss](https://repository-images.githubusercontent.com/343991410/68f83b80-811f-11eb-9638-51aed75785c4)
 
-<h1 align='center'>nuxt-windicss</h1>
-
 <p align='center'><a href="https://windicss.org/">Windi CSS</a> for Nuxt.js! ⚡️<br>
 <sup><em>Next generation utility-first CSS framework.</em></sup>
 </p>
@@ -10,6 +8,7 @@
 <a href='https://www.npmjs.com/package/nuxt-windicss'>
 <img src='https://img.shields.io/npm/v/nuxt-windicss?color=0EA5E9&label='>
 </a>
+<a href="https://www.npmjs.com/package/nuxt-windicss" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/nuxt-windicss?color=0EA5E9&label="></a>
 <a href='https://github.com/windicss/nuxt-windicss/actions/workflows/test.yml'>
 <img src='https://github.com/windicss/nuxt-windicss/actions/workflows/test.yml/badge.svg' >
 </a>
@@ -21,7 +20,7 @@
 <tbody>
 <td align="center">
 <img width="2000" height="0" /><br>
-<i>Status:</i> <b>Public Beta 🎉</b><br>
+<i>Status:</i> <b>Stable v2 ✅ , bridge ✅, v3 ✅</b><br>
 <sub>Made possible by my <a href="https://github.com/sponsors/harlan-zw">Sponsor Program 💖</a><br> Follow me <a href="https://twitter.com/harlan_zw">@harlan_zw</a> 🐦</sub><br>
 <img width="2000" height="0" />
 </td>

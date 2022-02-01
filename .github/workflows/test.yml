@@ -53,10 +53,10 @@ jobs:
         run: cd playground/nuxt2-webpack && pnpm install
 
       - name: Install nuxt3 dependencies
-        run: cd playground/nuxt3 && pnpm install
+        run: cd playground/nuxt3 && pnpm install && pnpm prepare
 
       - name: Install nuxt3-webpack dependencies
-        run: cd playground/nuxt3-webpack && pnpm install
+        run: cd playground/nuxt3-webpack && pnpm install && pnpm prepare
 
       - name: Run tests
         run: pnpm run test
