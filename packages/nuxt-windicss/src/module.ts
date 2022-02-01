@@ -1,8 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
-import { URL } from 'url'
 import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
-import type { ResolvedOptions } from '@windicss/plugin-utils'
+import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
   clearRequireCache,
@@ -19,15 +18,39 @@ import type { File } from '@nuxt/content/types/content'
 import VitePluginWindicss from 'vite-plugin-windicss'
 import { version } from '../package.json'
 import logger from './logger'
-import type { NuxtWindiOptions } from './types'
 import { analyze } from './analyze'
+import type { AnalyzeOptions } from './types'
 
-const __dirname = new URL('.', import.meta.url).pathname
+type NuxtHookResult = Promise<void> | void
 
-// Should include types only
-export * from './types'
+export type ModuleOptions = UserOptions & {
+  /**
+   * Pass a pre-instantiated WindiPluginUtils instance to avoid duplicate scans if you're using the engine elsewhere.
+   *
+   * @default undefined
+   */
+  utils?: WindiPluginUtils
 
-export default defineNuxtModule<NuxtWindiOptions>({
+  /**
+   * Launches Windi Analyze when in development mode.
+   * @default false
+   */
+  analyze?: AnalyzeOptions
+
+  /**
+   * Shows nuxt-windicss and windicss versions on build:before hook.
+   * @default true
+   */
+  displayVersionInfo?: boolean
+}
+
+export interface ModuleHooks {
+  'windicss:options': (options: ResolvedOptions) => NuxtHookResult
+  'windicss:config': (config: Config) => NuxtHookResult
+  'windicss:utils': (utils: WindiPluginUtils) => NuxtHookResult
+}
+
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-windicss',
     configKey: 'windicss',
@@ -63,11 +86,11 @@ export default defineNuxtModule<NuxtWindiOptions>({
       },
     },
   },
-  async setup(nuxtWindiOptions: NuxtWindiOptions, nuxt) {
+  async setup(options: ModuleOptions, nuxt) {
     const nuxtOptions = nuxt.options
 
-    if (!nuxtWindiOptions.root)
-      nuxtWindiOptions.root = nuxt.options.rootDir
+    if (!options.root)
+      options.root = nuxt.options.rootDir
 
     // Make sure they're not using tailwind
     // @todo move to a util
@@ -77,8 +100,8 @@ export default defineNuxtModule<NuxtWindiOptions>({
     }
 
     // allow user to override the options with hooks
-    const ctxOnOptionsResolved = nuxtWindiOptions.onOptionsResolved
-    nuxtWindiOptions.onOptionsResolved = async(options: ResolvedOptions) => {
+    const ctxOnOptionsResolved = options.onOptionsResolved
+    options.onOptionsResolved = async(options: ResolvedOptions) => {
       if (ctxOnOptionsResolved) {
         const result = ctxOnOptionsResolved(options)
         return typeof result === 'object' ? result : options
@@ -88,9 +111,9 @@ export default defineNuxtModule<NuxtWindiOptions>({
       return options
     }
 
-    const ctxOnConfigResolved = nuxtWindiOptions.onConfigResolved
+    const ctxOnConfigResolved = options.onConfigResolved
     let passed = false
-    nuxtWindiOptions.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
+    options.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
       if (!passed) {
         // Note: jiti issues when using requireModulePkg
         let configType = 'inline'
@@ -104,7 +127,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
         }
 
         // avoid being too verbose
-        if (nuxtWindiOptions.displayVersionInfo && nuxt.options.dev) {
+        if (options.displayVersionInfo && nuxt.options.dev) {
           nuxt.hook('build:before', () => {
             logger.info(`\`nuxt-windicss v${version}\` running with config: \`${configType}\`.`)
           })
@@ -121,7 +144,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
       return windiConfig
     }
 
-    const utils = createUtils(nuxtWindiOptions, { root: nuxtWindiOptions.root, name: 'nuxt-windicss' })
+    const utils = createUtils(options, { root: options.root, name: 'nuxt-windicss' })
 
     const ensureInit = utils.init()
       .then(() => nuxt.callHook('windicss:utils', utils))
@@ -184,7 +207,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
             const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
             const subst = '$1c.virtual ? c.src : $2$3'
             const appTemplate = file.replace(regex, subst)
-            const newPath = join(__dirname, 'template', 'App.js')
+            const newPath = join(__dirname, 'runtime', 'App.js')
             writeFileSync(newPath, appTemplate)
             template.src = newPath
             return template
@@ -245,14 +268,14 @@ export default defineNuxtModule<NuxtWindiOptions>({
     // webpack 4/5
     extendWebpackConfig((config) => {
       const WindiCSSWebpackPlugin = requireModule('windicss-webpack-plugin')
-      const plugin = new WindiCSSWebpackPlugin({ ...nuxtWindiOptions, utils })
+      const plugin = new WindiCSSWebpackPlugin({ ...options, utils })
       config.plugins = config.plugins || []
       config.plugins.push(plugin)
     })
 
     // Vite
     extendViteConfig(async(config) => {
-      const plugin = VitePluginWindicss(nuxtWindiOptions, { root: nuxtWindiOptions.root, utils, name: 'nuxt-windicss' })
+      const plugin = VitePluginWindicss(options, { root: options.root, utils, name: 'nuxt-windicss' })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
 
@@ -280,16 +303,16 @@ export default defineNuxtModule<NuxtWindiOptions>({
        *
        * This is hosted in its own server via listhen.
        */
-      if (nuxtWindiOptions.analyze !== false) {
+      if (options.analyze !== false) {
         // need to check if the server has already started to show a logger message rather than a cli badge
         let serverStarted = false
         nuxt.hook('listen', () => {
           serverStarted = true
         })
         analyze({
-          windiOptions: nuxtWindiOptions,
+          windiOptions: options,
           utils,
-        }, nuxtWindiOptions.analyze)
+        }, options.analyze)
           .then((server: any) => {
             const message = `WindCSS Analysis: ${server.url}`
             if (isNuxt3(nuxt)) {

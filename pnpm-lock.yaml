@@ -34,6 +34,7 @@ importers:
     specifiers:
       '@nuxt/content': ^1.14.0
       '@nuxt/kit': npm:@nuxt/kit-edge@latest
+      '@nuxt/module-builder': ^0.1.7
       '@nuxt/schema': npm:@nuxt/schema-edge@latest
       '@nuxt/types': ^2.15.8
       '@windicss/plugin-utils': ^1.6.3
@@ -48,7 +49,7 @@ importers:
       vite-plugin-windicss: ^1.6.3
       windicss: ^3.4.3
       windicss-analysis: ^0.3.5
-      windicss-webpack-plugin: ^1.6.2
+      windicss-webpack-plugin: ^1.6.4
     dependencies:
       '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27394404.1672148
       '@windicss/plugin-utils': 1.6.3
@@ -62,9 +63,10 @@ importers:
       vite-plugin-windicss: 1.6.3_vite@2.7.13
       windicss: 3.4.3
       windicss-analysis: 0.3.5
-      windicss-webpack-plugin: 1.6.2
+      windicss-webpack-plugin: 1.6.4
     devDependencies:
       '@nuxt/content': 1.15.1
+      '@nuxt/module-builder': 0.1.7
       '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27394404.1672148
       '@nuxt/types': 2.15.8
       release-it: 14.12.4
@@ -526,6 +528,19 @@ packages:
       unctx: 1.0.2
       untyped: 0.3.0
     dev: false
+
+  /@nuxt/module-builder/0.1.7:
+    resolution: {integrity: sha512-ueTrJhXrKKxGp6VAe2C/nOqTeRoy0qfq9RH2QVl0kq0duDyQHCe1e8dw8yBbYjTlSvfqBPYaraxpX8i2zis2cw==}
+    hasBin: true
+    dependencies:
+      consola: 2.15.3
+      mlly: 0.3.19
+      mri: 1.2.0
+      pathe: 0.2.0
+      unbuild: 0.6.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@nuxt/schema-edge/3.0.0-27394404.1672148:
     resolution: {integrity: sha512-ZsBSetHIOqwOAPjyH4bzwE/LazarXdMtK9i+TE/eKrERNkvjaJZNTFcPjJ5Usjid2XW9yyDWsI3HpvVk6jUzPg==}
@@ -6082,11 +6097,6 @@ packages:
   /untyped/0.3.0:
     resolution: {integrity: sha512-n4M5/T1wWlHFmohk0EhS+yM7W/h5dOtQldOV3MVEbZY1fTy5A47UL8+d8GLW1iwmaAwNrM5ERy3qe1k0T/Yc7A==}
 
-  /upath/2.0.1:
-    resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
-    engines: {node: '>=4'}
-    dev: false
-
   /update-notifier/5.1.0:
     resolution: {integrity: sha512-ItnICHbeMh9GqUy31hFPrD1kcuZ3rpxDZbf4KUDavXwS0bW5m7SLbDQpGX3UYr072cbrF5hFUs3r5tUsPwjfHw==}
     engines: {node: '>=10'}
@@ -6338,15 +6348,14 @@ packages:
       - supports-color
     dev: false
 
-  /windicss-webpack-plugin/1.6.2:
-    resolution: {integrity: sha512-1NhvBVmClIgxnC6C50RlqdpL9klF4g1JwJAoDNCdY0fO6o5GP6hO+E3xGCWI38l4Ij36JQZ4/CxFKWjdixXFBQ==}
+  /windicss-webpack-plugin/1.6.4:
+    resolution: {integrity: sha512-/ac7Y3eprrLnlBGoHIQG5V29OXZsYwM5RKpcp9+kxspN07sXKGGGNno1tScwY2H0/lkICMPinZa0iijf21ifzg==}
     dependencies:
       '@windicss/plugin-utils': 1.6.3
       debug: 4.3.3
       loader-utils: 2.0.2
       lodash: 4.17.21
-      magic-string: 0.25.7
-      upath: 2.0.1
+      pathe: 0.2.0
       webpack-virtual-modules: 0.4.3
       windicss: 3.4.3
     transitivePeerDependencies:

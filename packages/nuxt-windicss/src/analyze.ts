@@ -6,12 +6,12 @@ import sirv from 'sirv'
 import { resolveModule } from '@nuxt/kit'
 import type { WindiPluginUtils } from '@windicss/plugin-utils'
 import defu from 'defu'
-import type { AnalyzeOptions, NuxtWindiOptions } from './types'
+import type { AnalyzeOptions, ModuleOptions } from './types'
 
 /**
  * Starts a h3 app via listen that serves the windicss-analysis application.
  */
-export async function analyze(runtime: { windiOptions: NuxtWindiOptions; utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
+export async function analyze(runtime: { windiOptions: ModuleOptions; utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
   // options is "true", convert to an object
   if (typeof options === 'boolean')
     options = {}

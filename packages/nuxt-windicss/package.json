@@ -18,24 +18,25 @@
     "email": "harlan@harlanzw.com"
   },
   "files": [
-    "dist",
-    "index.cjs"
+    "dist"
   ],
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
     }
   },
+  "module": "./dist/module.mjs",
+  "main": "./dist/module.cjs",
+  "types": "./dist/module.d.ts",
   "sideEffects": false,
-  "main": "./index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "homepage": "https://github.com/windicss/nuxt-windicss",
   "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "scripts": {
-    "dev": "unbuild --stub",
-    "build": "unbuild",
+    "stub": "nuxt-module-build --stub",
+    "build": "nuxt-module-build",
+    "prepack": "nuxt-module-build",
     "release": "release-it"
   },
   "dependencies": {
@@ -51,10 +52,11 @@
     "vite-plugin-windicss": "^1.6.3",
     "windicss": "^3.4.3",
     "windicss-analysis": "^0.3.5",
-    "windicss-webpack-plugin": "^1.6.2"
+    "windicss-webpack-plugin": "^1.6.4"
   },
   "devDependencies": {
     "@nuxt/content": "^1.14.0",
+    "@nuxt/module-builder": "^0.1.7",
     "@nuxt/schema": "npm:@nuxt/schema-edge@latest",
     "@nuxt/types": "^2.15.8",
     "release-it": "^14.12.4"
