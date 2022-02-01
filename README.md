@@ -14,6 +14,11 @@
 </a>
 </p>
 
+<p align="center">
+<a href='https://stackblitz.com/edit/nuxt-3-windicss?file=app.vue'>
+<img src='https://developer.stackblitz.com/img/open_in_stackblitz.svg' height="30" >
+</a>
+
 
 <p align="center">
 <table>
@@ -36,7 +41,18 @@
 - 🧑‍🤝‍🧑 Plays nicely with Nuxt v3, Nuxt v2, [@nuxt/vite](https://github.com/nuxt/vite) and [@nuxt/content](https://content.nuxtjs.org/)
 - 🔎 Integrated with [windicss-analysis](https://github.com/windicss/windicss-analysis)
 
-## Install
+## Getting Started
+
+### Try it Online 
+
+<a href='https://stackblitz.com/edit/nuxt-3-windicss?file=app.vue'>
+<img src='https://developer.stackblitz.com/img/open_in_stackblitz.svg' height="30" >
+</a>
+
+- [Nuxt v2 + WindiCSS](https://stackblitz.com/edit/nuxt-v2-windicss?file=components/Tutorial.vue)
+- [Nuxt bridge + WindiCSS](https://stackblitz.com/edit/nuxt-bridge-windicss?file=README.md)
+
+### Install
 
 ```bash
 yarn add nuxt-windicss -D
