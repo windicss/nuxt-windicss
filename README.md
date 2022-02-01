@@ -45,10 +45,7 @@
 
 ### Try it Online 
 
-<a href='https://stackblitz.com/edit/nuxt-3-windicss?file=app.vue'>
-<img src='https://developer.stackblitz.com/img/open_in_stackblitz.svg' height="30" >
-</a>
-
+- [Nuxt v3 + WindiCSS](https://stackblitz.com/edit/nuxt-3-windicss?file=app.vue)
 - [Nuxt v2 + WindiCSS](https://stackblitz.com/edit/nuxt-v2-windicss?file=components/Tutorial.vue)
 - [Nuxt bridge + WindiCSS](https://stackblitz.com/edit/nuxt-bridge-windicss?file=README.md)
 
