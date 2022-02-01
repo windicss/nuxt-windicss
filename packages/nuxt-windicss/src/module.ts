@@ -1,4 +1,5 @@
-import { ensureDirSync, readFileSync, writeFileSync } from 'fs-extra'
+import { readFileSync, writeFileSync } from 'fs'
+import { ensureDirSync } from 'fs-extra'
 import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
