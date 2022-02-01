@@ -32,10 +32,8 @@ export default defineNuxtModule<NuxtWindiOptions>({
     name: 'nuxt-windicss',
     configKey: 'windicss',
   },
-  // support @nuxt/kit legacy
-  // @ts-ignore
+  // @ts-expect-error support @nuxt/kit legacy
   configKey: 'windicss',
-  // @ts-ignore
   name: 'nuxt-windicss',
   defaults: {
     analyze: false,
@@ -130,7 +128,7 @@ export default defineNuxtModule<NuxtWindiOptions>({
 
     // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
     const windiImports = nuxt.options.css.filter(
-      // @ts-ignore
+      // @ts-expect-error custom css object for windi
       css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
@@ -159,7 +157,6 @@ export default defineNuxtModule<NuxtWindiOptions>({
        * What we need to do is normalize the windi imports and then modify the App.js template to import explicitly for virtual
        * modules.
        */
-      // @ts-ignore
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
         { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
