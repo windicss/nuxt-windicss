@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import cheerio from 'cheerio'
-import globby from 'globby'
+import { globby } from 'globby'
 
 const execa = require('execa');
 const fs = require('fs')
