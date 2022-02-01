@@ -58,7 +58,6 @@
     "@nuxt/content": "^1.14.0",
     "@nuxt/module-builder": "^0.1.7",
     "@nuxt/schema": "npm:@nuxt/schema-edge@latest",
-    "@nuxt/types": "^2.15.8",
-    "release-it": "^14.12.4"
+    "@nuxt/types": "^2.15.8"
   }
 }
