@@ -12,7 +12,7 @@ export const alias: AliasOptions = {
 export default defineConfig({
   test: {
     testTimeout: 1200000,
-    include: ['playground/***/*.test.ts'],
+    include: ['playground/**/*.test.ts'],
   },
   resolve: {
     alias,

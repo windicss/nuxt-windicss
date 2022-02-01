@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "paths": {
       "nuxt-windicss": [
-        "./packages/nuxt-windicss/src/index.ts"
+        "./packages/nuxt-windicss/src/module.ts"
       ]
     },
     "types": [

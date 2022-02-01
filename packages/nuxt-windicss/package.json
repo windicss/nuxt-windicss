@@ -35,9 +35,7 @@
   "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "scripts": {
     "stub": "nuxt-module-build --stub",
-    "build": "nuxt-module-build",
-    "prepack": "nuxt-module-build",
-    "release": "release-it"
+    "build": "nuxt-module-build"
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
