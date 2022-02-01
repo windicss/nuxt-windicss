@@ -1,9 +1,9 @@
 import { describe, test, expect } from 'vitest'
+import cheerio from 'cheerio'
+import globby from 'globby'
 
-const cheerio = require('cheerio')
 const execa = require('execa');
 const fs = require('fs')
-const globby = require("globby");
 const path = require("pathe");
 
 describe('nuxt3',  () => {
