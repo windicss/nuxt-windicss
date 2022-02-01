@@ -17,18 +17,18 @@
     "name": "Harlan Wilton",
     "email": "harlan@harlanzw.com"
   },
+  "type": "module",
   "files": [
     "dist"
   ],
-  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
   },
-  "module": "./dist/module.mjs",
   "main": "./dist/module.cjs",
+  "module": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
   "sideEffects": false,
   "homepage": "https://github.com/windicss/nuxt-windicss",
