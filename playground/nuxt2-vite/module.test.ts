@@ -1,4 +1,5 @@
-const cheerio = require('cheerio')
+import { describe, test, expect } from 'vitest'
+import cheerio from 'cheerio'
 const execa = require('execa');
 const fs = require('fs')
 const path = require('pathe')
@@ -7,7 +8,7 @@ describe('nuxt2-webpack',  () => {
 
   test('index html transformed correctly', async() => {
     // Note: this is a hacky solution
-    await execa('yarn', ['run', 'nuxt', 'generate'], { cwd: __dirname });
+    await execa('pnpm', ['generate'], { cwd: __dirname });
 
     const html = fs.readFileSync(path.join(__dirname, 'dist', 'index.html'), 'utf-8')
 
@@ -15,6 +16,9 @@ describe('nuxt2-webpack',  () => {
     $('style').each((i, $s) => {
       const html = $($s).html()
       expect(html).not.toContain('@apply')
+      if (html) {
+        expect(html).toMatchSnapshot('script-' + i)
+      }
     })
   })
 })

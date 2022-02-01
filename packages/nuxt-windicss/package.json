@@ -8,6 +8,19 @@
     "windicss",
     "tailwindcss"
   ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windicss/nuxt-windicss"
+  },
+  "author": {
+    "name": "Harlan Wilton",
+    "email": "harlan@harlanzw.com"
+  },
+  "files": [
+    "dist",
+    "index.cjs"
+  ],
   "exports": {
     ".": {
       "require": "./index.cjs",
@@ -20,19 +33,6 @@
   "types": "./dist/index.d.ts",
   "homepage": "https://github.com/windicss/nuxt-windicss",
   "bugs": "https://github.com/windicss/nuxt-windicss/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/windicss/nuxt-windicss"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Harlan Wilton",
-    "email": "harlan@harlanzw.com"
-  },
-  "files": [
-    "dist",
-    "index.cjs"
-  ],
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild",

@@ -1,14 +1,16 @@
+import { describe, test, expect } from 'vitest'
+
 const cheerio = require('cheerio')
 const execa = require('execa');
 const fs = require('fs')
 const globby = require("globby");
 const path = require("pathe");
 
-describe('nuxt3-webpack',  () => {
+describe('nuxt3',  () => {
 
   test('renders css files without @apply', async() => {
     // Note: this is a hacky solution
-    await execa('yarn', ['run', 'nuxt', 'build'], { cwd: __dirname });
+    await execa('pnpm', ['build'], { cwd: __dirname });
 
     const globDir = path.join(__dirname, '.output', 'public', '_nuxt', 'assets')
 

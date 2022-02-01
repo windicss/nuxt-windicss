@@ -9,10 +9,11 @@
     "build": "pnpm -r --parallel --filter ./packages run build",
     "prepack": "cp README.md packages/nuxt-windicss && cd packages/nuxt-windicss && yarn prepack",
     "changelog": "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs",
-    "lint": "eslint --fix --ext .ts,.js,.vue .",
+    "lint": "eslint \"{packages,test}/**/*.{ts,vue,json,yml}\"",
+    "lint:fix": "npm run lint -- --fix",
     "release": "cp README.md packages/nuxt-windicss && cd packages/nuxt-windicss && pnpm run release",
     "release:beta": "dotenv release-it --preReleaseId=beta --npm.tag=beta --github.preRelease",
-    "test": "pnpm run build && jest --verbose --maxWorkers=5"
+    "test": "vitest"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.14.0",
@@ -22,11 +23,10 @@
     "@typescript-eslint/visitor-keys": "^5.8.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv-cli": "^4.1.1",
-    "esbuild": "^0.14.7",
-    "esbuild-jest": "^0.5.0",
     "eslint": "^8.5.0",
-    "jest": "27.3.0",
     "unbuild": "^0.6.7",
+    "vite": "^2.7.13",
+    "vitest": "^0.2.5",
     "windicss": "^3.4.0"
   }
 }
