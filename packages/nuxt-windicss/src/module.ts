@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs'
+import { ensureDirSync, readFileSync, writeFileSync } from 'fs-extra'
 import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
@@ -207,6 +207,8 @@ export default defineNuxtModule<ModuleOptions>({
             const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
             const subst = '$1c.virtual ? c.src : $2$3'
             const appTemplate = file.replace(regex, subst)
+            // make sure the runtime folder exists
+            ensureDirSync(join(__dirname, 'runtime'))
             const newPath = join(__dirname, 'runtime', 'App.js')
             writeFileSync(newPath, appTemplate)
             template.src = newPath

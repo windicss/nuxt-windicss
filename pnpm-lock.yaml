@@ -39,9 +39,11 @@ importers:
       '@nuxt/module-builder': ^0.1.7
       '@nuxt/schema': npm:@nuxt/schema-edge@latest
       '@nuxt/types': ^2.15.8
+      '@types/fs-extra': ^9.0.13
       '@windicss/plugin-utils': ^1.6.3
       consola: ^2.15.3
       defu: ^5.0.1
+      fs-extra: ^10.0.0
       h3: ^0.3.9
       listhen: ^0.2.6
       pathe: ^0.2.0
@@ -56,6 +58,7 @@ importers:
       '@windicss/plugin-utils': 1.6.3
       consola: 2.15.3
       defu: 5.0.1
+      fs-extra: 10.0.0
       h3: 0.3.9
       listhen: 0.2.6
       pathe: 0.2.0
@@ -70,6 +73,7 @@ importers:
       '@nuxt/module-builder': 0.1.7
       '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27394404.1672148
       '@nuxt/types': 2.15.8
+      '@types/fs-extra': 9.0.13
 
 packages:
 
@@ -829,6 +833,12 @@ packages:
     resolution: {integrity: sha512-evodFzM0PLOXmMZy8DhPN+toP6QgJiIteF6e8iD9T0xGBUllQA/DAb1nZwCIoNh7vuLvqCGPUdsLf3GSbcHd4g==}
     dependencies:
       '@types/webpack': 4.41.28
+    dev: true
+
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+    dependencies:
+      '@types/node': 17.0.13
     dev: true
 
   /@types/hast/2.3.4:

@@ -44,6 +44,7 @@
     "@windicss/plugin-utils": "^1.6.3",
     "consola": "^2.15.3",
     "defu": "^5.0.1",
+    "fs-extra": "^10.0.0",
     "h3": "^0.3.9",
     "listhen": "^0.2.6",
     "pathe": "^0.2.0",
@@ -58,6 +59,7 @@
     "@nuxt/content": "^1.14.0",
     "@nuxt/module-builder": "^0.1.7",
     "@nuxt/schema": "npm:@nuxt/schema-edge@latest",
-    "@nuxt/types": "^2.15.8"
+    "@nuxt/types": "^2.15.8",
+    "@types/fs-extra": "^9.0.13"
   }
 }

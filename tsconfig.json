@@ -20,7 +20,8 @@
     },
     "types": [
       "@nuxt/types",
-      "@windicss/plugin-utils"
+      "@windicss/plugin-utils",
+      "@nuxt/schema"
     ]
   },
   "exclude": [
