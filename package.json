@@ -16,11 +16,11 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.14.0",
+    "@antfu/eslint-config": "^0.14.2",
     "@nuxt/test-utils": "^0.2.2",
     "@nuxt/types": "^2.15.8",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/visitor-keys": "^5.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/visitor-keys": "^5.8.1",
     "cheerio": "^1.0.0-rc.10",
     "dotenv-cli": "^4.1.1",
     "eslint": "^8.5.0",
