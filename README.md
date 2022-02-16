@@ -181,6 +181,13 @@ Read the [documentation](https://windicss.org/integrations/nuxt.html) for more d
 - Windy team
 - [@antfu](https://github.com/antfu) Based on his Rollup / Vite implementation & his util package
 
+## Sponsors
+
+<p align="center">
+  <a href="https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.png">
+    <img src='https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.png'/>
+  </a>
+</p>
 
 ## License
 
