@@ -12,7 +12,6 @@ import {
   isNuxt2,
   isNuxt3,
   requireModule,
-  requireModulePkg,
   tryRequireModule,
 } from '@nuxt/kit'
 import type { File } from '@nuxt/content/types/content'
@@ -55,6 +54,9 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: 'nuxt-windicss',
     configKey: 'windicss',
+    compatibility: {
+      nuxt: '^2.0.0 || ^3.0.0-27430348.4ff1a95',
+    },
   },
   // @ts-expect-error support @nuxt/kit legacy
   configKey: 'windicss',
@@ -221,7 +223,10 @@ export default defineNuxtModule<ModuleOptions>({
     // import's in pcss files should run via windi's @apply's
     nuxt.hook('build:before', async() => {
       // only if they have postcss enabled
-      const nuxtPostcss: any = nuxt.options.build.postcss
+      const nuxtPostcss
+        = nuxt.options.postcss /* nuxt3 */
+        || nuxt.options.build.postcss.postcssOptions /* older nuxt3 */
+        || nuxt.options.build.postcss /* nuxt2 */
       if (!nuxtPostcss)
         return
 
@@ -241,30 +246,12 @@ export default defineNuxtModule<ModuleOptions>({
         },
       }
 
-      const { version: postcssLoaderVersion } = requireModulePkg('postcss-loader')
-
-      if (isNuxt3(nuxt) || Number.parseInt(postcssLoaderVersion.split('.')[0]) > 3 || nuxt.options.vite === false) {
-        if (!nuxtPostcss.postcssOptions)
-          nuxtPostcss.postcssOptions = {}
-
-        // make sure the plugin object isn't undefined booted
-        if (!nuxtPostcss.postcssOptions.plugins)
-          nuxtPostcss.postcssOptions.plugins = {}
-        // make the postcss-import apply the windi @apply's
-        nuxtPostcss.postcssOptions.plugins['postcss-import'] = {
-          ...nuxtPostcss.postcssOptions.plugins['postcss-import'],
-          ...updatedPostcssImport,
-        }
-      }
-      else {
-        // make sure the plugin object isn't undefined booted
-        if (!nuxtPostcss.plugins)
-          nuxtPostcss.plugins = {}
-        // make the postcss-import apply the windi @apply's
-        nuxtPostcss.plugins['postcss-import'] = {
-          ...nuxtPostcss.plugins['postcss-import'],
-          ...updatedPostcssImport,
-        }
+      // make sure the plugin object isn't undefined booted
+      nuxtPostcss.plugins = nuxtPostcss.plugins || {}
+      // make the postcss-import apply the windi @apply's
+      nuxtPostcss.plugins['postcss-import'] = {
+        ...nuxtPostcss.plugins['postcss-import'],
+        ...updatedPostcssImport,
       }
     })
 
