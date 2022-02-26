@@ -21,10 +21,10 @@
     "@typescript-eslint/visitor-keys": "^5.12.1",
     "bumpp": "^7.1.1",
     "cheerio": "^1.0.0-rc.10",
-    "eslint": "^8.9.0",
+    "eslint": "^8.10.0",
     "unbuild": "^0.6.9",
     "vite": "^2.8.4",
-    "vitest": "^0.5.3",
+    "vitest": "^0.5.5",
     "windicss": "^3.4.4"
   },
   "version": "2.2.6"
