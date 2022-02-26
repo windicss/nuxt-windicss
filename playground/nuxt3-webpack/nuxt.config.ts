@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt3'
 export default defineNuxtConfig({
   mode: 'static',
   static: true,
-  vite: false,
+  builder: 'webpack',
   css: [
     '@/css/main.css',
     // '@/css/global.scss',
