@@ -8,14 +8,14 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt-windicss": "link:../../packages/nuxt-windicss",
-    "postcss-loader": "^3.0.0",
     "less": "^4.1.2",
-    "nuxt3": "latest",
-    "sass": "^1.42.1",
-    "stylus": "^0.55.0",
     "less-loader": "^7.3.0",
+    "nuxt-windicss": "link:../../packages/nuxt-windicss",
+    "nuxt3": "^3.0.0-27430570.4cfad4d",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.42.1",
     "sass-loader": "^10.2.0",
+    "stylus": "^0.55.0",
     "stylus-loader": "^3.0.2"
   }
 }
