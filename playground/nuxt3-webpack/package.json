@@ -8,10 +8,11 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "@nuxt/webpack-builder": "npm:@nuxt/webpack-builder-edge@latest",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
     "nuxt-windicss": "link:../../packages/nuxt-windicss",
-    "nuxt3": "^3.0.0-27430570.4cfad4d",
+    "nuxt3": "^3.0.0-27437402.494f85a",
     "postcss-loader": "^3.0.0",
     "sass": "^1.42.1",
     "sass-loader": "^10.2.0",
