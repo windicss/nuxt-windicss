@@ -56,9 +56,6 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt: '^2.0.0 || ^3.0.0-27430348.4ff1a95',
     },
   },
-  // @ts-expect-error support @nuxt/kit legacy
-  configKey: 'windicss',
-  name: 'nuxt-windicss',
   defaults: {
     analyze: false,
     displayVersionInfo: true,
@@ -95,7 +92,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Make sure they're not using tailwind
     // @todo move to a util
-    if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss')) {
+    if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss') || nuxtOptions.modules.includes('@nuxtjs/tailwindcss')) {
       logger.error('Sorry, you can\'t use Windi CSS with Tailwind CSS. Please remove the `@nuxtjs/tailwindcss` module.')
       return
     }

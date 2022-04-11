@@ -4,14 +4,14 @@ import { listen } from 'listhen'
 import { dirname, join } from 'pathe'
 import sirv from 'sirv'
 import { resolveModule } from '@nuxt/kit'
-import type { WindiPluginUtils } from '@windicss/plugin-utils'
+import type { UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import defu from 'defu'
-import type { AnalyzeOptions, ModuleOptions } from './types'
+import type { AnalyzeOptions } from './types'
 
 /**
  * Starts a h3 app via listen that serves the windicss-analysis application.
  */
-export async function analyze(runtime: { windiOptions: ModuleOptions; utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
+export async function analyze(runtime: { windiOptions: UserOptions; utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
   // options is "true", convert to an object
   if (typeof options === 'boolean')
     options = {}
