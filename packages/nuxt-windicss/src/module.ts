@@ -1,15 +1,13 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { ensureDirSync } from 'fs-extra'
 import { join, relative } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
+  addPluginTemplate,
   clearRequireCache,
   defineNuxtModule,
   extendViteConfig,
   extendWebpackConfig,
-  isNuxt2,
   isNuxt3,
   requireModule,
   tryRequireModule,
@@ -152,73 +150,36 @@ export default defineNuxtModule<ModuleOptions>({
     const ensureInit = utils.init()
       .then(() => nuxt.callHook('windicss:utils', utils))
 
-    // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
+    // if the user hasn't manually added virtual:windi.css to their nuxt config, then we push it as the first stylesheet
     const windiImports = nuxt.options.css.filter(
       // @ts-expect-error custom css object for windi
       css => (typeof css === 'string' ? css : css.src).includes('virtual:windi'),
     )
     if (!windiImports.length)
-      nuxt.options.css.unshift('virtual:windi.css')
+      windiImports.push('virtual:windi.css')
+    addPluginTemplate({
+      filename: 'windicss.mjs',
+      getContents: () => {
+        const lines = [
+          // swap out the css inclusions and place them in our custom plugin
+          ...windiImports.map((imp) => {
+            // builds for webpack 5 don't support windi being resolved at the root for some reason
+            if (isNuxt3(nuxt) && nuxt.options.vite === false)
+              imp = join('@', imp)
 
-    // builds for webpack 5 don't support windi being resolved at the root for some reason
-    if (isNuxt3(nuxt) && nuxt.options.vite === false) {
-      nuxt.options.css = nuxt.options.css
-      // we need to remove the alias at the start for it to work
-        .map((css: string) => {
-          if (!css.includes('virtual:windi') || css.startsWith('@'))
-            return css
+            return `import \'${imp}\';`
+          }),
+          'export default () => {};',
+        ]
+        return lines.join('\n')
+      },
+    })
 
-          return join('@', css)
-        })
-    }
-
-    // Nuxt 3 supports virtual css modules
-    if (isNuxt2(nuxt)) {
-      /**
-       * Hook into the template builder, inject the Windi CSS imports.
-       *
-       * Because we want our windi styles to come before users custom styles, we need to inject them as part of the css config.
-       * However, the css config does not let us handle the virtual modules without throwing an error.
-       *
-       * What we need to do is normalize the windi imports and then modify the App.js template to import explicitly for virtual
-       * modules.
-       */
-      nuxt.hook('build:templates', (
-        { templateVars, templatesFiles }:
-        { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
-      ) => {
-        // normalise the virtual windi imports
-        templateVars.css = templateVars.css.map((css) => {
-          const src = typeof css === 'string' ? css : css.src
-          if (src.includes('virtual:windi')) {
-            return {
-              src,
-              virtual: true,
-            }
-          }
-          return css
-        })
-        // replace the contents of App.js
-        templatesFiles
-          .map((template) => {
-            if (!template.src.endsWith('App.js'))
-              return template
-
-            // we need to replace the App.js template..
-            const file = readFileSync(template.src, { encoding: 'utf-8' })
-            // regex replace the css loader
-            const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
-            const subst = '$1c.virtual ? c.src : $2$3'
-            const appTemplate = file.replace(regex, subst)
-            // make sure the runtime folder exists
-            ensureDirSync(join(__dirname, 'runtime'))
-            const newPath = join(__dirname, 'runtime', 'App.js')
-            writeFileSync(newPath, appTemplate)
-            template.src = newPath
-            return template
-          })
-      })
-    }
+    // remove virtual windi
+    nuxt.options.css = nuxt.options.css.filter(
+      // @ts-expect-error custom css object for windi
+      css => !(typeof css === 'string' ? css : css.src).includes('virtual:windi'),
+    )
 
     // import's in pcss files should run via windi's @apply's
     nuxt.hook('build:before', async() => {
