@@ -184,8 +184,8 @@ Read the [documentation](https://windicss.org/integrations/nuxt.html) for more d
 ## Sponsors
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.png">
-    <img src='https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.png'/>
+  <a href="https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.svg">
+    <img src='https://raw.githubusercontent.com/harlan-zw/static/main/sponsors.svg'/>
   </a>
 </p>
 
