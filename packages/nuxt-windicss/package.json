@@ -1,7 +1,7 @@
 {
   "name": "nuxt-windicss",
   "type": "module",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "description": "Windi CSS for Nuxt.js",
   "keywords": [
     "nuxt",
