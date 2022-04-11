@@ -278,7 +278,8 @@ export default defineNuxtModule<ModuleOptions>({
       // We need to compile md files on the fly and inject the transformed CSS
       nuxt.hook('content:file:beforeParse', async(file: File) => {
         // only applies to .md files
-        if (file.extension !== '.md') return
+        if (file.extension !== '.md')
+          return
 
         await ensureInit
         // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file

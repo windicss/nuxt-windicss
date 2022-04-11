@@ -1,5 +1,6 @@
 {
   "name": "nuxt-windicss",
+  "type": "module",
   "version": "2.2.8",
   "description": "Windi CSS for Nuxt.js",
   "keywords": [
@@ -9,27 +10,26 @@
     "tailwindcss"
   ],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/windicss/nuxt-windicss"
-  },
   "author": {
     "name": "Harlan Wilton",
     "email": "harlan@harlanzw.com"
   },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windicss/nuxt-windicss"
+  },
+  "main": "./dist/module.cjs",
+  "module": "./dist/module.mjs",
+  "types": "./dist/module.d.ts",
   "exports": {
     ".": {
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
   },
-  "main": "./dist/module.cjs",
-  "module": "./dist/module.mjs",
-  "types": "./dist/module.d.ts",
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "homepage": "https://github.com/windicss/nuxt-windicss",
   "bugs": "https://github.com/windicss/nuxt-windicss/issues",
