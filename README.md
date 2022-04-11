@@ -35,7 +35,7 @@
 ## Features
 
 - 🧩 On-demand CSS utilities (Compatible with Tailwind CSS v2) and native elements style resetting
-- 📄 Use [directives](https://windicss.org/features/directives.html) in any CSS (SCSS, LESS, etc) `@apply`, `@variants`, `@screen`, `@layer`, `theme()`, 
+- 📄 Use [directives](https://windicss.org/features/directives.html) in any CSS lang `@apply`, `@variants`, `@screen`, `@layer`, `theme()` (Note: Vite / Nuxt v3 has limited support)
 - 🎳 Support Utility Groups - e.g. `bg-gray-200 hover:(bg-gray-100 text-red-300)`
 - 🧑‍🤝‍🧑 Plays nicely with Nuxt v3, Nuxt v2, [@nuxt/vite](https://github.com/nuxt/vite) and [@nuxt/content](https://content.nuxtjs.org/)
 - 🔎 Integrated with [windicss-analysis](https://github.com/windicss/windicss-analysis)
@@ -75,7 +75,7 @@ export default {
 import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
-  buildModules: [
+  modules: [
     'nuxt-windicss',
   ],
 })
@@ -115,7 +115,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Alternatively you can provide an object to control the analysis or the server.
+Alternatively, you can provide an object to control the analysis or the server.
 
 ```js
 windicss: {
