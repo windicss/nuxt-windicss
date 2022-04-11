@@ -270,7 +270,7 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
 
       config.plugins = config.plugins || []
-      config.plugins.push(plugin)
+      config.plugins.unshift(...plugin)
     })
 
     if (nuxtOptions.dev) {
