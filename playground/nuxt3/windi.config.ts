@@ -32,7 +32,7 @@ export default defineConfig({
       red: colors.red,
       rose: colors.rose,
       yellow: colors.amber,
-      gray: colors.warmGray,
+      gray: colors.stone,
       pink: colors.pink,
     },
     extend: {

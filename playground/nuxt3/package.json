@@ -10,8 +10,8 @@
   "devDependencies": {
     "less": "^4.1.2",
     "nuxt-windicss": "link:../../packages/nuxt-windicss",
-    "nuxt3": "^3.0.0-27437402.494f85a",
-    "sass": "^1.49.9",
-    "stylus": "^0.56.0"
+    "nuxt3": "^3.0.0-27491748.3186841",
+    "sass": "^1.50.0",
+    "stylus": "^0.57.0"
   }
 }

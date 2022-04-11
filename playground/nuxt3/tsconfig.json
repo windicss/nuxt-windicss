@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "types": [
       "node",
-      "tnuxt.d.ts",
+      "nuxt.d.ts",
     ]
   }
 }

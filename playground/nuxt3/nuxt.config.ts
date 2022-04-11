@@ -1,21 +1,14 @@
 import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
-  mode: 'static',
-  static: true,
   css: [
     '@/css/main.css',
-    // '@/css/global.scss',
   ],
+  components: true,
   windicss: {
-    analyze: {
-      server: {
-        port: 4444,
-        open: true,
-      }
-    },
+    analyze: false,
   },
-  buildModules: [
+  modules: [
     'nuxt-windicss',
   ],
 })
