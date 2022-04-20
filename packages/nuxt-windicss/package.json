@@ -42,16 +42,16 @@
     "@windicss/plugin-utils": "^1.8.4",
     "consola": "^2.15.3",
     "defu": "^6.0.0",
-    "fs-extra": "^10.0.1",
-    "h3": "^0.7.3",
-    "listhen": "^0.2.8",
+    "fs-extra": "^10.1.0",
+    "h3": "^0.7.4",
+    "listhen": "^0.2.10",
     "pathe": "^0.2.0",
     "read-cache": "^1.0.0",
     "sirv": "^2.0.2",
     "vite-plugin-windicss": "^1.8.4",
     "windicss": "^3.5.1",
     "windicss-analysis": "^0.3.5",
-    "windicss-webpack-plugin": "^1.6.10"
+    "windicss-webpack-plugin": "^1.7.2"
   },
   "devDependencies": {
     "@nuxt/content": "^1.14.0",
