@@ -96,6 +96,20 @@ For Nuxt config typescript support, add the module within your `tsconfig.json`.
 }
 ```
 
+### Windi Design In DevTools
+
+Add the import with your existing windi imports and you'll have autocompletion in your Chrome DevTools! See ["Design in DevTools"](https://windicss.org/integrations/vite.html#design-in-devtools) for more information.
+
+```ts
+export default {
+  // ...  
+  css: [
+    'virtual:windi.css',
+    'virtual:windi-devtools',
+  },
+}
+```
+
 ### Windi Analyzer 
 
 > An analyser tool for [Windi CSS](https://github.com/windicss/windicss). Browse your utilities usages, have an overview of your design system, identify "bad practices", and more!
