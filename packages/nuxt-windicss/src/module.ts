@@ -85,6 +85,7 @@ export default defineNuxtModule<ModuleOptions>({
         'nuxt-img': 'img',
       },
     },
+    transformCSS: 'pre',
   },
   async setup(options: ModuleOptions, nuxt) {
     const nuxtOptions = nuxt.options
