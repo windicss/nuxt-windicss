@@ -38,7 +38,7 @@
     "build": "nuxt-module-build"
   },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
+    "@nuxt/kit": "^3.0.0-rc.1",
     "@windicss/plugin-utils": "^1.8.4",
     "consola": "^2.15.3",
     "defu": "^6.0.0",
