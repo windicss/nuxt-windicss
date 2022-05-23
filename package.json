@@ -21,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/visitor-keys": "^5.25.0",
     "bumpp": "^7.1.1",
-    "cheerio": "1.0.0-rc.11",
+    "cheerio": "1.0.0-rc.10",
     "eslint": "^8.16.0",
     "unbuild": "^0.7.4",
     "vite": "^2.9.9",
