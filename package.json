@@ -1,6 +1,7 @@
 {
   "name": "nuxt-windicss-monorepo",
   "private": true,
+  "packageManager": "pnpm@7.1.0",
   "workspaces": [
     "packages/*"
   ],

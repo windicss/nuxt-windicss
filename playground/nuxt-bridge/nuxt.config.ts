@@ -6,8 +6,12 @@ export default defineNuxtConfig({
   target: 'static',
   buildModules: [
     'nuxt-windicss',
+    'nuxt-schema-org',
     themeModule,
   ],
+  schemaOrg: {
+    canonicalHost: 'https://nuxt-windicss.com'
+  },
   css: [
     '@/css/main.css',
     '@/css/global.sass',
@@ -21,6 +25,7 @@ export default defineNuxtConfig({
         importLoaders: 3,
       },
     },
+    transpile: ['vue-demi', 'nuxt-schema-org']
   },
   components: true,
 })

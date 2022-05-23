@@ -1,5 +1,7 @@
 <template>
   <div class="h-full">
+    <SchemaOrgWebSite name="My Awesome Website" />
+    <SchemaOrgWebPage />
     <h1 data-testid="title" class="text-2xl font-bold text-center py-5 text-green-50">
       Nuxt WindiCSS Module
       <span>test</span>
