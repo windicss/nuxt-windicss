@@ -9,9 +9,6 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     themeModule,
   ],
-  schemaOrg: {
-    canonicalHost: 'https://nuxt-windicss.com'
-  },
   css: [
     '@/css/main.css',
     '@/css/global.sass',

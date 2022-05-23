@@ -9,8 +9,7 @@
   },
   "dependencies": {
     "@vueuse/head": "^0.7.6",
-    "nuxt-edge": "^2.16.0-27358576.777a4b7f",
-    "nuxt-schema-org": "^0.5.1"
+    "nuxt-edge": "^2.16.0-27358576.777a4b7f"
   },
   "devDependencies": {
     "@nuxt/bridge": "latest",
