@@ -4,7 +4,7 @@ import cheerio from 'cheerio'
 const execa = require('execa');
 const fs = require('fs')
 const path = require('pathe')
-
+/*
 describe('nuxt-bridge',  () => {
 
   test('index html transformed correctly', async() => {
@@ -20,4 +20,4 @@ describe('nuxt-bridge',  () => {
       }
     })
   })
-})
+})*/

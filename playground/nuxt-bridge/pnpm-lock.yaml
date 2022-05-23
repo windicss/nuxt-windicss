@@ -5,7 +5,6 @@ importers:
   .:
     specifiers:
       '@nuxt/bridge': latest
-      '@vueuse/head': ^0.7.6
       less: ^4.1.2
       less-loader: ^7.3.0
       nuxt-edge: ^2.16.0-27358576.777a4b7f
@@ -17,7 +16,6 @@ importers:
       stylus: ^0.54.8
       stylus-loader: ^3.0.2
     dependencies:
-      '@vueuse/head': 0.7.6
       nuxt-edge: 2.16.0-27358576.777a4b7f_pug@3.0.2
     devDependencies:
       '@nuxt/bridge': 0.10.1_2teaipayshhlj4vzbxse7ewjti
@@ -3128,12 +3126,6 @@ packages:
   /@vue/shared/3.2.35:
     resolution: {integrity: sha512-/sxDqMcy0MsfQ3LQixKYDxIinDYNy1dXTsF2Am0pv0toImWabymFQ8cFmPJnPt+gh5ElKwwn7KzQcDbLHar60A==}
     dev: true
-
-  /@vueuse/head/0.7.6:
-    resolution: {integrity: sha512-cOWqCkT3WiF5oEpw+VVEWUJd9RLD5rc7DmnFp3cePsejp+t7686uKD9Z9ZU7Twb7R/BI8iexKTmXo9D/F3v6UA==}
-    peerDependencies:
-      vue: '>=3'
-    dev: false
 
   /@webassemblyjs/ast/1.9.0:
     resolution: {integrity: sha512-C6wW5L+b7ogSDVqymbkkvuW9kruN//YisMED04xzeBBqjHa2FYnmvOlS6Xj68xWQRgWvI9cIglsjFowH/RJyEA==}
