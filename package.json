@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm -r --parallel --filter=./packages run dev",
-    "build": "pnpm -r --parallel --filter=./packages run build",
+    "dev": "pnpm -r --parallel --filter=./packages/** run dev",
+    "build": "pnpm -r --parallel --filter=./packages/** run build",
     "prepack": "cp README.md packages/nuxt-windicss && cd packages/nuxt-windicss && yarn prepack",
     "lint": "eslint \"{packages,test}/**/*.{ts,vue,json,yml}\"",
     "lint:fix": "npm run lint -- --fix",
