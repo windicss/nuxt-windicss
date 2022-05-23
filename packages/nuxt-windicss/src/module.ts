@@ -102,7 +102,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // allow user to override the options with hooks
     const ctxOnOptionsResolved = options.onOptionsResolved
-    options.onOptionsResolved = async(options: ResolvedOptions) => {
+    options.onOptionsResolved = async (options: ResolvedOptions) => {
       if (ctxOnOptionsResolved) {
         const result = ctxOnOptionsResolved(options)
         return typeof result === 'object' ? result : options
@@ -114,7 +114,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     const ctxOnConfigResolved = options.onConfigResolved
     let passed = false
-    options.onConfigResolved = async(windiConfig: Config, configFilePath?: string) => {
+    options.onConfigResolved = async (windiConfig: Config, configFilePath?: string) => {
       if (!passed) {
         // Note: jiti issues when using requireModulePkg
         let configType = 'inline'
@@ -219,7 +219,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     // import's in pcss files should run via windi's @apply's
-    nuxt.hook('build:before', async() => {
+    nuxt.hook('build:before', async () => {
       // only if they have postcss enabled
       const nuxtPostcss
         = nuxt.options.postcss /* nuxt3 */
@@ -262,7 +262,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Vite
-    extendViteConfig(async(config) => {
+    extendViteConfig(async (config) => {
       const plugin = VitePluginWindicss(options, { root: options.root, utils, name: 'nuxt-windicss' })
       // legacy compatibility with webpack plugin support
       nuxt.options.alias['windi.css'] = 'virtual:windi.css'
@@ -274,7 +274,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (nuxtOptions.dev) {
       // @nuxt/content support
       // We need to compile md files on the fly and inject the transformed CSS
-      nuxt.hook('content:file:beforeParse', async(file: File) => {
+      nuxt.hook('content:file:beforeParse', async (file: File) => {
         // only applies to .md files
         if (file.extension !== '.md')
           return
