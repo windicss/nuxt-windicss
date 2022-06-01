@@ -3,36 +3,36 @@
   "type": "module",
   "version": "2.3.2",
   "description": "Windi CSS for Nuxt.js",
+  "author": {
+    "name": "Harlan Wilton",
+    "email": "harlan@harlanzw.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/windicss/nuxt-windicss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windicss/nuxt-windicss"
+  },
+  "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "keywords": [
     "nuxt",
     "nuxt-module",
     "windicss",
     "tailwindcss"
   ],
-  "license": "MIT",
-  "author": {
-    "name": "Harlan Wilton",
-    "email": "harlan@harlanzw.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/windicss/nuxt-windicss"
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./dist/module.cjs",
+      "import": "./dist/module.mjs"
+    }
   },
   "main": "./dist/module.cjs",
   "module": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
   "files": [
     "dist"
   ],
-  "sideEffects": false,
-  "homepage": "https://github.com/windicss/nuxt-windicss",
-  "bugs": "https://github.com/windicss/nuxt-windicss/issues",
   "scripts": {
     "stub": "nuxt-module-build --stub",
     "build": "nuxt-module-build"
@@ -54,9 +54,9 @@
     "windicss-webpack-plugin": "^1.7.3"
   },
   "devDependencies": {
-    "@nuxt/content": "^1.14.0",
+    "@nuxt/content": "^2.0.1",
     "@nuxt/module-builder": "^0.1.7",
-    "@nuxt/schema": "npm:@nuxt/schema-edge@latest",
+    "@nuxt/schema": "3.0.0-rc.3",
     "@nuxt/types": "^2.15.8",
     "@types/fs-extra": "^9.0.13"
   }
