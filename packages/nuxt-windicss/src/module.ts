@@ -5,7 +5,6 @@ import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
-  addTemplate,
   clearRequireCache,
   createResolver,
   defineNuxtModule,
@@ -14,10 +13,12 @@ import {
   isNuxt2,
   isNuxt3,
   requireModule,
+  resolveModule,
   tryRequireModule,
 } from '@nuxt/kit'
 import VitePluginWindicss from 'vite-plugin-windicss'
 import type { NuxtModule } from '@nuxt/schema'
+import { defu } from 'defu'
 import { version } from '../package.json'
 import logger from './logger'
 import { analyze } from './analyze'
@@ -303,26 +304,26 @@ export default defineNuxtModule<ModuleOptions>({
         else {
           await ensureInit
 
-          addTemplate({
-            filename: 'windi/windicss.config.mjs',
-            getContents: () => `export default ${JSON.stringify({
+          const { resolve } = createResolver(import.meta.url)
+          const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
+
+          nuxt.hooks.hook('nitro:config', (nitroConfig) => {
+            nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
+              inline: [
+                // Inline module runtime in Nitro bundle
+                resolve('./runtime'),
+              ],
+            })
+
+            nitroConfig.alias['#windicss/transformer'] = resolveRuntimeModule('./server/class-extractor')
+
+            nitroConfig.virtual = nitroConfig.virtual || {}
+            nitroConfig.virtual['#windicss/config'] = `export default ${JSON.stringify({
               ...utils.options.config,
               plugins: [],
-            })}`,
-            write: true,
-          })
-
-          const resolver = createResolver(import.meta.url)
-
-          const extractorTemplate = addTemplate({
-            filename: 'windi/class-extractor.mjs',
-            src: resolver.resolve('./runtime/nitro/class-extractor.mjs'),
-            write: true,
-          })
-
-          nuxt.hooks.hook('nitro:config', (config) => {
-            config.plugins = config.plugins || []
-            config.plugins.push(extractorTemplate.dst)
+            })}`
+            nitroConfig.plugins = nitroConfig.plugins || []
+            nitroConfig.plugins.push('#windicss/transformer')
           })
         }
       }
