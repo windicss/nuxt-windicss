@@ -8,7 +8,7 @@
   "scripts": {
     "stub": "pnpm -r --parallel --filter=./packages/** run stub",
     "build": "pnpm -r --parallel --filter=./packages/** run build",
-    "prepare": "cd playground/nuxt3 && pnpm prepare",
+    "prepare": "cd playground/nuxt3 && pnpm install && pnpm prepare",
     "lint": "eslint \"{packages,test}/**/*.{ts,vue,json,yml}\"",
     "lint:fix": "npm run lint -- --fix",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag",
