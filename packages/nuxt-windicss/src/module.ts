@@ -5,7 +5,9 @@ import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
+  addTemplate,
   clearRequireCache,
+  createResolver,
   defineNuxtModule,
   extendViteConfig,
   extendWebpackConfig,
@@ -14,8 +16,8 @@ import {
   requireModule,
   tryRequireModule,
 } from '@nuxt/kit'
-import type { File } from '@nuxt/content/types/content'
 import VitePluginWindicss from 'vite-plugin-windicss'
+import type { NuxtModule } from '@nuxt/schema'
 import { version } from '../package.json'
 import logger from './logger'
 import { analyze } from './analyze'
@@ -93,9 +95,13 @@ export default defineNuxtModule<ModuleOptions>({
     if (!options.root)
       options.root = nuxt.options.rootDir
 
+    const installedModules = [
+      ...nuxt.options.modules,
+      ...nuxt.options.buildModules,
+    ]
     // Make sure they're not using tailwind
     // @todo move to a util
-    if (nuxtOptions.buildModules.includes('@nuxtjs/tailwindcss') || nuxtOptions.modules.includes('@nuxtjs/tailwindcss')) {
+    if (installedModules.includes('@nuxtjs/tailwindcss')) {
       logger.error('Sorry, you can\'t use Windi CSS with Tailwind CSS. Please remove the `@nuxtjs/tailwindcss` module.')
       return
     }
@@ -107,6 +113,7 @@ export default defineNuxtModule<ModuleOptions>({
         const result = ctxOnOptionsResolved(options)
         return typeof result === 'object' ? result : options
       }
+      // @ts-expect-error runtime type
       await nuxt.callHook('windicss:options', options)
       logger.debug('Post hook windicss:options', options)
       return options
@@ -140,6 +147,7 @@ export default defineNuxtModule<ModuleOptions>({
         const result = await ctxOnConfigResolved(windiConfig, configFilePath)
         return typeof result === 'object' ? result : windiConfig
       }
+      // @ts-expect-error runtime type
       await nuxt.callHook('windicss:config', windiConfig)
       logger.debug('Post hook windicss:config', windiConfig)
       return windiConfig
@@ -148,6 +156,7 @@ export default defineNuxtModule<ModuleOptions>({
     const utils = createUtils(options, { root: options.root, name: 'nuxt-windicss' })
 
     const ensureInit = utils.init()
+      // @ts-expect-error runtime type
       .then(() => nuxt.callHook('windicss:utils', utils))
 
     // if the user hasn't manually added virtual:windi.css to their nuxt config then we push it as the first stylesheet
@@ -181,6 +190,7 @@ export default defineNuxtModule<ModuleOptions>({
        * What we need to do is normalize the windi imports and then modify the App.js template to import explicitly for virtual
        * modules.
        */
+      // @ts-expect-error nuxt 2 typing
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
         { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
@@ -272,20 +282,50 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     if (nuxtOptions.dev) {
-      // @nuxt/content support
-      // We need to compile md files on the fly and inject the transformed CSS
-      nuxt.hook('content:file:beforeParse', async (file: File) => {
-        // only applies to .md files
-        if (file.extension !== '.md')
-          return
+      if (installedModules.includes('@nuxt/content')) {
+        if (isNuxt2(nuxt)) {
+          // @nuxt/content support
+          // We need to compile md files on the fly and inject the transformed CSS
+          // @ts-expect-error runtime type
+          nuxt.hook('content:file:beforeParse', async (file: any) => {
+            // only applies to .md files
+            if (file.extension !== '.md')
+              return
 
-        await ensureInit
-        // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
-        await utils.extractFile(file.data, file.path, true)
-        const css = await utils.generateCSS()
-        // add to the end of the file
-        file.data += `\n\n<style>${css}</style>`
-      })
+            await ensureInit
+            // instead of rebuilding the entire windi virtual module we will just insert our styles into the md file
+            await utils.extractFile(file.data, file.path, true)
+            const css = await utils.generateCSS()
+            // add to the end of the file
+            file.data += `\n\n<style>${css}</style>`
+          })
+        }
+        else {
+          await ensureInit
+
+          addTemplate({
+            filename: 'windi/windicss.config.mjs',
+            getContents: () => `export default ${JSON.stringify({
+              ...utils.options.config,
+              plugins: [],
+            })}`,
+            write: true,
+          })
+
+          const resolver = createResolver(import.meta.url)
+
+          const extractorTemplate = addTemplate({
+            filename: 'windi/class-extractor.mjs',
+            src: resolver.resolve('./runtime/nitro/class-extractor.mjs'),
+            write: true,
+          })
+
+          nuxt.hooks.hook('nitro:config', (config) => {
+            config.plugins = config.plugins || []
+            config.plugins.push(extractorTemplate.dst)
+          })
+        }
+      }
 
       /**
        * Windi Analysis UI
@@ -320,4 +360,4 @@ export default defineNuxtModule<ModuleOptions>({
       }
     }
   },
-})
+}) as NuxtModule<ModuleOptions>

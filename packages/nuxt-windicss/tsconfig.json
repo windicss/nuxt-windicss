@@ -1,0 +1,10 @@
+{
+  "extends": "../../playground/nuxt3/.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "nuxt-windicss": [
+        "./nuxt-windicss/dist/module.d.ts"
+      ]
+    }
+  }
+}
