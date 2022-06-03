@@ -12,7 +12,7 @@ export default async (nitroApp) => {
   nitroApp.hooks.hook('content:file:afterParse', async (file) => {
     await utils.ensureInit()
 
-    visit(file.body, n => !!n.props?.class, (node) => {
+    visit(file.body, n => !!n?.props?.class, (node) => {
       utils.addClasses([
         // @todo attributify support
         ...node.props.class.split(' '),
