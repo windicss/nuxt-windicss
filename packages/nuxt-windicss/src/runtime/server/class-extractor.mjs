@@ -18,7 +18,9 @@ export default async (nitroApp) => {
         ...node.props.class.split(' '),
       ])
     })
-
+    // only if there's classes to add
+    if (!utils.classesPending.size)
+      return
     const css = await utils.generateCSS()
     // add to the end of the file
     file.body.children.push({
