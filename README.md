@@ -106,7 +106,7 @@ export default {
   css: [
     'virtual:windi.css',
     'virtual:windi-devtools',
-  },
+  ],
 }
 ```
 
