@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "3.0.0-rc.6",
+    "@windicss/config": "^1.8.7",
     "@windicss/plugin-utils": "^1.8.7",
     "consola": "^2.15.3",
     "defu": "^6.0.0",

@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { ensureDirSync } from 'fs-extra'
-import { join, relative } from 'pathe'
+import { join, relative, resolve } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
@@ -16,6 +16,7 @@ import {
   resolveModule,
   tryRequireModule,
 } from '@nuxt/kit'
+import { loadConfiguration } from '@windicss/config'
 import VitePluginWindicss from 'vite-plugin-windicss'
 import type { NuxtModule } from '@nuxt/schema'
 import { defu } from 'defu'
@@ -108,6 +109,22 @@ export default defineNuxtModule<ModuleOptions>({
       return
     }
 
+    // Add Nuxt 3 Layers paths
+    if (options.scan && nuxt.options._layers?.length > 1) {
+      options.scan = options.scan === true ? {} : options.scan
+      if (typeof options.scan.dirs === 'string')
+        options.scan.dirs = [options.scan.dirs]
+      if (typeof options.scan.exclude === 'string')
+        options.scan.exclude = [options.scan.exclude]
+      const nonSrcLayers = nuxtOptions._layers
+        .filter(l => l.cwd !== nuxt.options.srcDir)
+      options.scan.dirs?.push(...nonSrcLayers.map(l => l.cwd || ''))
+      const originalExclude = options.scan.exclude as string[]
+      options.scan.exclude?.push(...nonSrcLayers
+        .map(l => originalExclude.map(p => resolve(l.cwd || '', p)))
+        .flat())
+    }
+
     // allow user to override the options with hooks
     const ctxOnOptionsResolved = options.onOptionsResolved
     options.onOptionsResolved = async (options: ResolvedOptions) => {
@@ -134,6 +151,28 @@ export default defineNuxtModule<ModuleOptions>({
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
           if (nuxt.options.dev)
             nuxt.options.watch.push(configFilePath)
+        }
+
+        // allow layers to have their own windi config
+        if (nuxt.options._layers?.length > 1) {
+          nuxtOptions._layers
+            .filter(l => l.cwd !== nuxt.options.srcDir)
+            .forEach((l) => {
+              const { config, filepath } = loadConfiguration({
+                onConfigurationError: error => console.error(error),
+                onConfigurationNotFound: () => {},
+                root: l.cwd,
+              })
+              if (!filepath || !config)
+                return
+
+              if (nuxt.options.dev)
+                nuxt.options.watch.push(filepath)
+              // fix recursion
+              // delete config.plugins
+
+              windiConfig = defu(windiConfig, config)
+            })
         }
 
         // avoid being too verbose
