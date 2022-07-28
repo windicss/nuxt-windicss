@@ -73,6 +73,7 @@ export default defineNuxtModule<ModuleOptions>({
         'dist',
         '.git',
         '.github',
+        '.output',
         '.nuxt',
         // testing files & folders
         'coverage',
