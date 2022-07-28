@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
+  // extends: ['../nuxt-theme'],
   css: [
     '@/css/main.css',
   ],
