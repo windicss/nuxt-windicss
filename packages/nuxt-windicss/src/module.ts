@@ -62,35 +62,41 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt: '^2.0.0 || ^3.0.0-rc.6',
     },
   },
-  defaults: {
-    analyze: false,
-    displayVersionInfo: true,
-    scan: {
-      dirs: ['./'],
-      exclude: [
-        'node_modules',
-        'node_modules_dev',
-        'node_modules_prod',
-        'dist',
-        '.git',
-        '.github',
-        '.output',
-        '.nuxt',
-        // testing files & folders
-        'coverage',
-        '**/__snapshots__',
-        '*.test.js',
-      ],
-    },
-    preflight: {
-      alias: {
-        // add nuxt aliases
-        'nuxt-link': 'a',
-        // @nuxt/image module
-        'nuxt-img': 'img',
+  defaults(nuxt) {
+    return {
+      analyze: false,
+      displayVersionInfo: true,
+      scan: {
+        dirs: [
+          nuxt.options.srcDir,
+        ],
+        exclude: [
+          // in case the user changes the path
+          nuxt.options.buildDir,
+          'node_modules',
+          'node_modules_dev',
+          'node_modules_prod',
+          'dist',
+          '.git',
+          '.github',
+          '.output',
+          '.nuxt',
+          // testing files & folders
+          'coverage',
+          '**/__snapshots__',
+          '*.test.js',
+        ],
       },
-    },
-    transformCSS: 'pre',
+      preflight: {
+        alias: {
+          // add nuxt aliases
+          'nuxt-link': 'a',
+          // @nuxt/image module
+          'nuxt-img': 'img',
+        },
+      },
+      transformCSS: 'pre',
+    }
   },
   async setup(options: ModuleOptions, nuxt) {
     const nuxtOptions = nuxt.options
@@ -211,7 +217,7 @@ export default defineNuxtModule<ModuleOptions>({
     // builds for webpack 5 don't support windi being resolved at the root for some reason
     if (isNuxt3(nuxt) && nuxt.options.vite === false) {
       nuxt.options.css = nuxt.options.css
-      // we need to remove the alias at the start for it to work
+        // we need to remove the alias at the start for it to work
         .map((css: string) => {
           if (!css.includes('virtual:windi') || css.startsWith('@'))
             return css
