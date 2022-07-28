@@ -59,7 +59,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: 'nuxt-windicss',
     configKey: 'windicss',
     compatibility: {
-      nuxt: '^2.0.0 || ^3.0.0-rc.1',
+      nuxt: '^2.0.0 || ^3.0.0-rc.6',
     },
   },
   defaults: {
