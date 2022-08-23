@@ -33,7 +33,7 @@ importers:
   packages/nuxt-windicss:
     specifiers:
       '@nuxt/content': ^2.0.1
-      '@nuxt/kit': 3.0.0-rc.8
+      '@nuxt/kit': ^3.0.0-rc.8
       '@nuxt/module-builder': ^0.1.7
       '@nuxt/schema': 3.0.0-rc.8
       '@nuxt/types': ^2.15.8
@@ -1382,12 +1382,6 @@ packages:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       acorn: 8.8.0
-    dev: true
-
-  /acorn/8.7.0:
-    resolution: {integrity: sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn/8.7.1:
@@ -4153,10 +4147,6 @@ packages:
       semver: 7.3.7
     dev: true
 
-  /jsonc-parser/3.0.0:
-    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
-    dev: true
-
   /jsonc-parser/3.1.0:
     resolution: {integrity: sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==}
 
@@ -5205,7 +5195,7 @@ packages:
   /pkg-types/0.3.2:
     resolution: {integrity: sha512-eBYzX/7NYsQEOR2alWY4rnQB49G62oHzFpoi9Som56aUr8vB8UGcmcIia9v8fpBeuhH3Ltentuk2OGpp4IQV3Q==}
     dependencies:
-      jsonc-parser: 3.0.0
+      jsonc-parser: 3.1.0
       mlly: 0.3.19
       pathe: 0.2.0
     dev: true
@@ -5566,7 +5556,7 @@ packages:
       es-module-lexer: 0.9.3
       esbuild: 0.14.23
       joycon: 3.1.1
-      jsonc-parser: 3.0.0
+      jsonc-parser: 3.1.0
       rollup: 2.69.0
     transitivePeerDependencies:
       - supports-color
@@ -5959,7 +5949,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      acorn: 8.7.0
+      acorn: 8.8.0
       commander: 2.20.3
       source-map: 0.6.1
       source-map-support: 0.5.21
