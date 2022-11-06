@@ -155,7 +155,9 @@ export default defineNuxtModule<ModuleOptions>({
           clearRequireCache(configFilePath)
           configType = `./${relative(nuxtOptions.rootDir, configFilePath)}`
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
+          // @ts-expect-error nuxt2
           if (nuxt.options.dev && nuxt.options.watch)
+            // @ts-expect-error nuxt2
             nuxt.options.watch.push(configFilePath)
         }
 
@@ -172,7 +174,9 @@ export default defineNuxtModule<ModuleOptions>({
               if (!filepath || !config)
                 return
 
+              // @ts-expect-error nuxt2
               if (nuxt.options.dev && nuxt.options.watch)
+                // @ts-expect-error nuxt2
                 nuxt.options.watch.push(filepath)
               // fix recursion
               // delete config.plugins
@@ -280,7 +284,9 @@ export default defineNuxtModule<ModuleOptions>({
       // only if they have postcss enabled
       const nuxtPostcss
         = nuxt.options.postcss /* nuxt3 */
-        || nuxt.options.build.postcss.postcssOptions /* older nuxt3 */
+        // @ts-expect-error older nuxt3
+        || nuxt.options.build.postcss.postcssOptions
+        // @ts-expect-error nuxt2
         || nuxt.options.build.postcss /* nuxt2 */
       if (!nuxtPostcss)
         return
@@ -401,6 +407,7 @@ export default defineNuxtModule<ModuleOptions>({
               })
             }
             else {
+              // @ts-expect-error nuxt2
               nuxt.options.cli.badgeMessages.push(message)
             }
           })
