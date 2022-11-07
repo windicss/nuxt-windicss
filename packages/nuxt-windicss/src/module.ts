@@ -396,7 +396,7 @@ export default defineNuxtModule<ModuleOptions>({
           utils,
         }, options.analyze)
           .then((server: any) => {
-            const message = `WindCSS Analysis: ${server.url}`
+            const message = `WindiCSS Analysis: ${server.url}`
             if (isNuxt3(nuxt)) {
               logger.info(message)
             }
