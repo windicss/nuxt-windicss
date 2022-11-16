@@ -169,7 +169,7 @@ export default defineNuxtModule<ModuleOptions>({
             .forEach((l) => {
               const { config, filepath } = loadConfiguration({
                 onConfigurationError: error => console.error(error),
-                onConfigurationNotFound: () => { },
+                onConfigurationNotFound: () => {},
                 root: l.cwd,
               })
               if (!filepath || !config)
@@ -246,7 +246,7 @@ export default defineNuxtModule<ModuleOptions>({
       // @ts-expect-error nuxt 2 typing
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
-          { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
+        { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
       ) => {
         // normalise the virtual windi imports
         templateVars.css = templateVars.css.map((css) => {
