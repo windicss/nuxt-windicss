@@ -1,4 +1,4 @@
-import { createApp } from 'h3'
+import { createApp, fromNodeMiddleware, toNodeListener } from 'h3'
 import { ApiMiddleware } from 'windicss-analysis'
 import { listen } from 'listhen'
 import { dirname, join } from 'pathe'
@@ -24,14 +24,14 @@ export async function analyze(runtime: { windiOptions: UserOptions; utils: Windi
 
   const app = createApp()
 
-  app.use('/api', ApiMiddleware(runtime.windiOptions, { utils: runtime.utils, ...resolvedOptions.analysis }))
+  app.use('/api', fromNodeMiddleware(ApiMiddleware(runtime.windiOptions, { utils: runtime.utils, ...resolvedOptions.analysis })))
 
   app.use(
-    sirv(
+    fromNodeMiddleware(sirv(
       join(dirname(resolveModule('windicss-analysis')), 'app'),
       { dev: true, single: true },
-    ),
+    )),
   )
 
-  return await listen(app, resolvedOptions.server)
+  return await listen(toNodeListener(app), resolvedOptions.server)
 }
