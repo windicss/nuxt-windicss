@@ -15,17 +15,17 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.29.3",
+    "@antfu/eslint-config": "^0.30.1",
     "@nuxt/test-utils": "3.0.0-rc.13",
     "@nuxt/types": "^2.15.8",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/visitor-keys": "^5.42.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/visitor-keys": "^5.43.0",
     "bumpp": "^8.2.1",
     "cheerio": "1.0.0-rc.12",
-    "eslint": "^8.26.0",
-    "unbuild": "^0.9.4",
-    "vite": "^3.2.2",
-    "vitest": "^0.24.5",
+    "eslint": "^8.27.0",
+    "unbuild": "^1.0.1",
+    "vite": "^3.2.4",
+    "vitest": "^0.25.2",
     "windicss": "^3.5.6"
   },
   "version": "2.5.3"

@@ -12,7 +12,7 @@
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
     "nuxt-windicss": "link:../../packages/nuxt-windicss",
-    "nuxt": "^3.0.0-rc.1",
+    "nuxt": "^3.0.0-rc.13",
     "postcss-loader": "^3.0.0",
     "sass": "^1.42.1",
     "sass-loader": "^10.2.0",

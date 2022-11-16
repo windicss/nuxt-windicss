@@ -19,18 +19,14 @@ describe('nuxt3',  () => {
       followSymbolicLinks: true
     })
 
+    let foundAttributify = false
     cssFiles
       .map(f => fs.readFileSync(path.join(globDir, f), 'utf-8'))
-      .forEach(html => {
-        const $ = cheerio.load(html)
-        $('style').each((i, $s) => {
-          const html = $($s).html()
-          expect(html).not.toContain('@apply')
-          if (html) {
-            expect(html).toMatchSnapshot('script-' + i)
-          }
-        })
+      .forEach(css => {
+        if (!foundAttributify && css.includes('[bg~=blue-400]'))
+          foundAttributify = true
+        expect(css).not.toContain('@apply')
       })
-
+    expect(foundAttributify).toBeTruthy()
   })
 })

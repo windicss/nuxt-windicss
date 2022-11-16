@@ -10,9 +10,9 @@
       </nuxt-link>
     </div>
     <div class="test-apply">
-      test apply
+      imported @apply
     </div>
-    <ThemeTest />
+<!--    <ThemeTest />-->
     <img data-testid="smallImg" src="/image/small.svg" alt="small svg" class="w-20 absolute left-1/2 top-45 z-20">
     <img data-testid="bigImg" src="/image/big.jpg" alt="big jpg" class="filter grayscale blur-sm w-120 h-120 transform transition-transform rounded-full mx-auto hover:(rotate-45)">
     <div class="prose prose-xl mx-auto py-10">
@@ -33,7 +33,7 @@
         p="y-2 x-4"
         border="2 rounded blue-200"
       >
-        Button
+        Attributify
       </button>
       <PostcssScoped />
       <ScssScoped />

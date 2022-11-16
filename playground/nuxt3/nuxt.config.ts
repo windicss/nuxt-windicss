@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ],
   components: true,
   windicss: {
-    analyze: false,
+    analyze: true,
   },
   modules: [
     'nuxt-windicss',
@@ -20,6 +20,14 @@ export default defineNuxtConfig({
     highlight: {
       // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: 'dracula',
+    },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+      ],
     },
   },
 })
