@@ -219,6 +219,7 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.css.unshift('virtual:windi.css')
 
     // builds for webpack 5 don't support windi being resolved at the root for some reason
+    // @ts-expect-error bad types
     if (isNuxt3(nuxt) && nuxt.options.vite === false) {
       nuxt.options.css = nuxt.options.css
         // we need to remove the alias at the start for it to work
