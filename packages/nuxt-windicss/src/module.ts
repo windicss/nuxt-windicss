@@ -106,6 +106,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     const installedModules = [
       ...nuxt.options.modules,
+      // Removed in Nuxt 3
       // ...nuxt.options.buildModules,
     ]
     // Make sure they're not using tailwind
