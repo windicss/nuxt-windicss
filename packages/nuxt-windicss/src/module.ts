@@ -106,7 +106,8 @@ export default defineNuxtModule<ModuleOptions>({
 
     const installedModules = [
       ...nuxt.options.modules,
-      ...nuxt.options.buildModules,
+      // Removed in Nuxt 3
+      // ...nuxt.options.buildModules,
     ]
     // Make sure they're not using tailwind
     // @todo move to a util
