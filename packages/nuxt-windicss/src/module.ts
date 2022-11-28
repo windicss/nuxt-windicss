@@ -106,7 +106,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     const installedModules = [
       ...nuxt.options.modules,
-      // Not defined in Nuxt 3
+      // @ts-expect-error nuxt 2
       ...(nuxt.options.buildModules || []),
     ]
     // Make sure they're not using tailwind
