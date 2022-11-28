@@ -38,7 +38,7 @@
     "build": "nuxt-module-build"
   },
   "dependencies": {
-    "@nuxt/kit": "3.0.0-rc.13",
+    "@nuxt/kit": "3.0.0",
     "@windicss/config": "^1.8.8",
     "@windicss/plugin-utils": "^1.8.8",
     "consola": "^2.15.3",
@@ -56,8 +56,8 @@
   },
   "devDependencies": {
     "@nuxt/content": "^2.2.2",
-    "@nuxt/module-builder": "^0.2.0",
-    "@nuxt/schema": "3.0.0-rc.13",
+    "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "3.0.0",
     "@nuxt/types": "^2.15.8",
     "@types/fs-extra": "^9.0.13"
   }
