@@ -155,9 +155,7 @@ export default defineNuxtModule<ModuleOptions>({
           // clearRequireCache(configFilePath)
           configType = `./${relative(nuxtOptions.rootDir, configFilePath)}`
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
-          // @ts-expect-error nuxt2
           if (nuxt.options.dev && nuxt.options.watch)
-            // @ts-expect-error nuxt2
             nuxt.options.watch.push(configFilePath)
         }
 
@@ -174,9 +172,7 @@ export default defineNuxtModule<ModuleOptions>({
               if (!filepath || !config)
                 return
 
-              // @ts-expect-error nuxt2
               if (nuxt.options.dev && nuxt.options.watch)
-                // @ts-expect-error nuxt2
                 nuxt.options.watch.push(filepath)
               // fix recursion
               // delete config.plugins
