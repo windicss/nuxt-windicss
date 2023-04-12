@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import cheerio from 'cheerio'
+import execa from 'execa'
 
-const execa = require('execa');
 const fs = require('fs')
 const path = require('pathe')
 

@@ -1,11 +1,10 @@
-import { readFileSync, writeFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { ensureDirSync } from 'fs-extra'
 import { join, relative, resolve } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
 import type { Config } from 'windicss/types/interfaces'
 import {
-  clearRequireCache,
   createResolver,
   defineNuxtModule,
   extendViteConfig,
@@ -153,12 +152,12 @@ export default defineNuxtModule<ModuleOptions>({
         let configType = 'inline'
         // this hook is ran twice for some reason
         if (configFilePath) {
-          clearRequireCache(configFilePath)
+          // clearRequireCache(configFilePath)
           configType = `./${relative(nuxtOptions.rootDir, configFilePath)}`
           // Restart Nuxt if windi file updates (for modules using windicss:config hook)
-          // @ts-expect-error nuxt2
+          // @ts-ignore nuxt2
           if (nuxt.options.dev && nuxt.options.watch)
-            // @ts-expect-error nuxt2
+            // @ts-ignore nuxt2
             nuxt.options.watch.push(configFilePath)
         }
 
@@ -175,9 +174,9 @@ export default defineNuxtModule<ModuleOptions>({
               if (!filepath || !config)
                 return
 
-              // @ts-expect-error nuxt2
+              // @ts-ignore nuxt2
               if (nuxt.options.dev && nuxt.options.watch)
-                // @ts-expect-error nuxt2
+                // @ts-ignore nuxt2
                 nuxt.options.watch.push(filepath)
               // fix recursion
               // delete config.plugins
