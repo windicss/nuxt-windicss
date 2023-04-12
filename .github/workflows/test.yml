@@ -40,10 +40,6 @@ jobs:
       - name: Build
         run: pnpm run stub && pnpm run prepare:playground && pnpm run build
 
-      # Playground Dependencies
-      - name: Install nuxt-bridge dependencies
-        run: cd playground/nuxt-bridge && pnpm install
-
       - name: Install nuxt2-vite dependencies
         run: cd playground/nuxt2-vite && pnpm install
 
