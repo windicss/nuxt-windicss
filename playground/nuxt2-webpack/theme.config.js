@@ -1,8 +1,8 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
 
-export default function() {
+export default function () {
   const nuxt = this.nuxt
   const { hook, options } = nuxt
 

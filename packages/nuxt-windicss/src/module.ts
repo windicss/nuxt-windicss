@@ -3,6 +3,7 @@ import { ensureDirSync } from 'fs-extra'
 import { join, relative, resolve } from 'pathe'
 import { createUtils } from '@windicss/plugin-utils'
 import type { ResolvedOptions, UserOptions, WindiPluginUtils } from '@windicss/plugin-utils'
+// @ts-expect-error bad types
 import type { Config } from 'windicss/types/interfaces'
 import {
   createResolver,
@@ -241,7 +242,7 @@ export default defineNuxtModule<ModuleOptions>({
       // @ts-expect-error nuxt 2 typing
       nuxt.hook('build:templates', (
         { templateVars, templatesFiles }:
-        { templateVars: { css: ({ src: string; virtual: boolean } | string)[] }; templatesFiles: { src: string }[] },
+        { templateVars: { css: ({ src: string, virtual: boolean } | string)[] }, templatesFiles: { src: string }[] },
       ) => {
         // normalise the virtual windi imports
         templateVars.css = templateVars.css.map((css) => {
@@ -263,7 +264,7 @@ export default defineNuxtModule<ModuleOptions>({
             // we need to replace the App.js template..
             const file = readFileSync(template.src, { encoding: 'utf-8' })
             // regex replace the css loader
-            const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, { isStyle: true }\)\))( %>')/gm
+            const regex = /(import '<%= )(relativeToBuild\(resolvePath\(c\.src \|\| c, \{ isStyle: true \}\)\))( %>')/g
             const subst = '$1c.virtual ? c.src : $2$3'
             const appTemplate = file.replace(regex, subst)
             // make sure the runtime folder exists
@@ -364,6 +365,7 @@ export default defineNuxtModule<ModuleOptions>({
               ],
             })
 
+            nitroConfig.alias = nitroConfig.alias || {}
             nitroConfig.alias['#windicss/transformer'] = resolveRuntimeModule('./server/class-extractor')
 
             nitroConfig.virtual = nitroConfig.virtual || {}

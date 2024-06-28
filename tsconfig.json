@@ -1,32 +1,13 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "outDir": "dist",
-    "declaration": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "stripInternal": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "paths": {
-      "nuxt-windicss": [
-        "./packages/nuxt-windicss/src/module.ts"
-      ]
-    },
-    "types": [
-      "@nuxt/types",
-      "@windicss/plugin-utils",
-      "@nuxt/schema"
-    ]
-  },
+  "extends": "./packages/nuxt-windicss/.nuxt/tsconfig.json",
   "exclude": [
-    "**/dist/**",
-    "**/.output/**",
-    "playground/**"
+    "test",
+    "docs",
+    "playground",
+    "client",
+    "scripts",
+    "dist",
+    ".nuxt",
+    ".output"
   ]
 }

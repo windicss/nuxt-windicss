@@ -34,31 +34,31 @@
     "dist"
   ],
   "scripts": {
-    "stub": "nuxt-module-build --stub",
+    "stub": "nuxt-module-build --stub && nuxt-module-build prepare",
     "build": "nuxt-module-build"
   },
   "dependencies": {
-    "@nuxt/kit": "3.4.0",
-    "@windicss/config": "^1.8.10",
-    "@windicss/plugin-utils": "^1.8.10",
-    "consola": "^3.0.1",
-    "defu": "^6.1.2",
-    "fs-extra": "^11.1.1",
-    "h3": "^1.6.4",
-    "listhen": "^1.0.4",
-    "pathe": "^1.1.0",
+    "@nuxt/kit": "3.12.2",
+    "@windicss/config": "^1.9.3",
+    "@windicss/plugin-utils": "^1.9.3",
+    "consola": "^3.2.3",
+    "defu": "^6.1.4",
+    "fs-extra": "^11.2.0",
+    "h3": "^1.12.0",
+    "listhen": "^1.7.2",
+    "pathe": "^1.1.2",
     "read-cache": "^1.0.0",
-    "sirv": "^2.0.2",
-    "vite-plugin-windicss": "^1.8.10",
+    "sirv": "^2.0.4",
+    "vite-plugin-windicss": "^1.9.3",
     "windicss": "^3.5.6",
     "windicss-analysis": "^0.3.5",
-    "windicss-webpack-plugin": "^1.7.8"
+    "windicss-webpack-plugin": "^1.8.0"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.5.2",
-    "@nuxt/module-builder": "^0.3.0",
-    "@nuxt/schema": "3.4.0",
-    "@nuxt/types": "^2.16.3",
-    "@types/fs-extra": "^11.0.1"
+    "@nuxt/content": "^2.13.0",
+    "@nuxt/module-builder": "^0.8.0",
+    "@nuxt/schema": "3.12.2",
+    "@nuxt/types": "^2.18.0",
+    "@types/fs-extra": "^11.0.4"
   }
 }

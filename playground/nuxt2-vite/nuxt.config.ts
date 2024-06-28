@@ -1,4 +1,4 @@
-import { NuxtConfig } from '@nuxt/types'
+import type { NuxtConfig } from '@nuxt/types'
 // @ts-ignore
 import themeModule from './theme.config.js'
 
@@ -14,7 +14,7 @@ const config: NuxtConfig = {
     '@/css/global.scss',
   ],
   windicss: {
-    analyze: true
+    analyze: true,
   },
   build: {
     loaders: {

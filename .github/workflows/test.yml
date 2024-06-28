@@ -38,7 +38,7 @@ jobs:
         run: pnpm run lint
 
       - name: Build
-        run: pnpm run stub && pnpm run prepare:playground && pnpm run build
+        run: pnpm run dev:prepare && pnpm run build
 
       - name: Install nuxt2-vite dependencies
         run: cd playground/nuxt2-vite && pnpm install

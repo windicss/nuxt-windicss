@@ -11,7 +11,7 @@ import type { AnalyzeOptions } from './types'
 /**
  * Starts a h3 app via listen that serves the windicss-analysis application.
  */
-export async function analyze(runtime: { windiOptions: UserOptions; utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
+export async function analyze(runtime: { windiOptions: UserOptions, utils: WindiPluginUtils }, options: AnalyzeOptions = {}) {
   // options is "true", convert to an object
   if (typeof options === 'boolean')
     options = {}

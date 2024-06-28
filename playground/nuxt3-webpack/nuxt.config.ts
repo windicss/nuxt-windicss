@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       server: {
         port: 4444,
         open: true,
-      }
+      },
     },
   },
   buildModules: [

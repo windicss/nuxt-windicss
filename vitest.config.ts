@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import type { AliasOptions } from 'vite'
 import { defineConfig } from 'vite'
 

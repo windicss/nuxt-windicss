@@ -1,6 +1,6 @@
 // @ts-ignore
-import themeModule from './theme.config.js'
 import { defineNuxtConfig } from '@nuxt/bridge'
+import themeModule from './theme.config.js'
 
 export default defineNuxtConfig({
   target: 'static',
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     '@/css/global.sass',
   ],
   windicss: {
-    analyze: true
+    analyze: true,
   },
   build: {
     loaders: {
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         importLoaders: 3,
       },
     },
-    transpile: ['vue-demi', 'nuxt-schema-org']
+    transpile: ['vue-demi', 'nuxt-schema-org'],
   },
   components: true,
 })
