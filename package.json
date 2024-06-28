@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:prepare": "pnpm prepare:playground && pnpm stub",
+    "dev:prepare": "pnpm stub && pnpm prepare:playground",
     "stub": "pnpm -r --parallel --filter=./packages/** run stub",
     "build": "pnpm -r --parallel --filter=./packages/** run build",
     "prepare:playground": "cd playground/nuxt3 && pnpm install && pnpm prepare",
