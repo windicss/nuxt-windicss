@@ -1,10 +1,8 @@
 import { describe, test, expect } from 'vitest'
-import cheerio from 'cheerio'
 import { globby } from 'globby'
-
-const fs = require('node:fs')
-const execa = require('execa')
-const path = require('pathe')
+import fs from 'fs'
+import { execa } from 'execa'
+import path from 'pathe'
 
 describe('nuxt3', () => {
   test('renders css files without @apply', async () => {
