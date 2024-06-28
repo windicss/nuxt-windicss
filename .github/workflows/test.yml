@@ -37,12 +37,6 @@ jobs:
       - name: Build
         run: pnpm run dev:prepare && pnpm run build
 
-      - name: Install nuxt2-vite dependencies
-        run: cd playground/nuxt2-vite && pnpm install
-
-      - name: Install nuxt2-webpack dependencies
-        run: cd playground/nuxt2-webpack && pnpm install
-
       - name: Install nuxt3 dependencies
         run: cd playground/nuxt3 && pnpm install && pnpm prepare
 
