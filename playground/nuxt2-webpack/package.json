@@ -8,17 +8,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.8"
+    "nuxt": "^2.18.0"
   },
   "devDependencies": {
-    "nuxt-windicss": "link:../../packages/nuxt-windicss",
     "@nuxt/typescript-build": "^2.1.0",
-    "less": "^4.1.2",
+    "less": "^4.2.0",
     "less-loader": "^7.3.0",
-    "postcss-import": "^14.0.2",
-    "pug": "^3.0.2",
-    "sass": "^1.42.1",
-    "sass-loader": "^10.2.0",
+    "nuxt-windicss": "link:../../packages/nuxt-windicss",
+    "postcss-import": "^14.1.0",
+    "pug": "^3.0.3",
+    "sass": "^1.77.6",
+    "sass-loader": "^10.5.2",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2"
   }

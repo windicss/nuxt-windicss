@@ -8,7 +8,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.15.8",
+    "nuxt": "^2.18.0",
     "nuxt-vite": "^0.3.5"
   },
   "devDependencies": {
