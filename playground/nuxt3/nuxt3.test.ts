@@ -1,6 +1,6 @@
+import fs from 'node:fs'
 import { describe, test, expect } from 'vitest'
 import { globby } from 'globby'
-import fs from 'fs'
 import { execa } from 'execa'
 import path from 'pathe'
 
