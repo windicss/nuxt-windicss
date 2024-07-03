@@ -51,10 +51,10 @@
 ### Install
 
 ```bash
-yarn add nuxt-windicss -D
-# npm i nuxt-windicss -D
+npx nuxi@latest module add windicss
 ```
 
+Note: If you're using Nuxt v2, you should stay on the 2.x tags: `npm install nuxt-windicss@2`.
 
 ## Usage
 
