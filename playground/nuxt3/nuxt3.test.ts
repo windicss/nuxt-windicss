@@ -9,23 +9,16 @@ describe('nuxt3', () => {
     // Note: this is a hacky solution
     await execa('pnpm', ['build'], { cwd: __dirname })
 
-    const globDir = path.join(__dirname, '.output', 'public', '_nuxt')
-
-    const cssFiles = await globby('*.css', {
-      cwd: globDir,
-      followSymbolicLinks: true,
-    })
-
+    const html = path.join(__dirname, '.output', 'public', 'index.html')
+    const htmlStyleBlocks = fs.readFileSync(html, 'utf-8').match(/<style>([\s\S]*?)<\/style>/g)
     let foundAttributify = false
-    cssFiles
-      .map(f => fs.readFileSync(path.join(globDir, f), 'utf-8'))
-      .forEach((css) => {
-        if (!foundAttributify && css.includes('[bg~='))
-          foundAttributify = true
-        // importing scss @apply transforms is broken
-        if (!css.includes('.test-apply'))
-          expect(css).not.toContain('@apply')
-      })
+    htmlStyleBlocks.forEach((css) => {
+      if (!foundAttributify && css.includes('[bg~='))
+        foundAttributify = true
+      // importing scss @apply transforms is broken
+      if (!css.includes('.test-apply'))
+        expect(css).not.toContain('@apply')
+    })
     expect(foundAttributify).toBeTruthy()
   })
 })
